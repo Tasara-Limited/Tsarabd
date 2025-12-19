@@ -16,6 +16,72 @@ import {
   BarChart3,
 } from 'lucide-react';
 
+
+
+export const metadata = {
+  metadataBase: new URL('https://www.tasarabd.com'),
+
+  title: {
+    default: 'Tasara Limited | Plastics Supply, Indenting & Global Procurement',
+    template: '%s | Tasara Limited',
+  },
+
+  description:
+    'Tasara Limited in Bangladesh offers global plastics materials supply, indenting business, sourcing, and procurement solutions to international partners and buyers.',
+
+  alternates: {
+    canonical: 'https://www.tasarabd.com',
+  },
+
+  openGraph: {
+    title: 'Tasara Limited | Plastics Supply & Indenting Services in Bangladesh',
+    description:
+      'Tasara Limited connects global buyers with plastics raw material suppliers, offering indenting, supply chain sourcing, and procurement services from Bangladesh.',
+    url: 'https://www.tasarabd.com',
+    siteName: 'Tasara Limited',
+    images: [
+      {
+        url: 'https://drive.google.com/drive/u/0/home',
+        width: 1200,
+        height: 630,
+        alt: 'Tasara Limited – Global Plastics Supply & Indenting',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Tasara Limited | Plastics Supply & Indenting Business',
+    description:
+      'Explore global plastics materials supply, indenting business and procurement solutions by Tasara Limited in Bangladesh.',
+    images: ['https://drive.google.com/drive/u/0/home'],
+  },
+
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+
+  keywords:
+    'Tasara, Tasarabd, Tasara Bangladesh, plastics supply, indenting business, supply chain sourcing, global procurement',
+};
+
+
+
+
+
+
+
+
+
 export default function Home() {
   return (
     <div className="min-h-screen">
