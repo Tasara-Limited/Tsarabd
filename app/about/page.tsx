@@ -20,9 +20,6 @@ export const metadata = {
 };
 
 
-
-
-
 export default function AboutPage() {
   return (
     <div className="min-h-screen">
