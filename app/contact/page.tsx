@@ -9,6 +9,18 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 
+
+
+// For the Contact page (/contact)
+export const metadata = {
+  title: 'Contact Tasara Limited - Plastic Materials Experts in Dhaka, Bangladesh',
+  description: 'Get in touch with Tasara Limited at our Uttara, Dhaka office. Call +8801886538187, email sales@tasarabd.com, or use our contact form for quotes, consultations, and plastic materials inquiries.',
+  keywords: 'contact Tasara Limited, Tasarabd contact, plastic materials Bangladesh contact, Dhaka plastic supplier, sales@tasarabd.com, +8801886538187, Uttara Dhaka office, plastic indenting inquiry, material sourcing consultation',
+};
+
+
+
+
 export default function ContactPage() {
   // Show success message if redirected from FormSubmit
   useEffect(() => {
