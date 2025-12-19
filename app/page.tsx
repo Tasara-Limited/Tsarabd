@@ -17,7 +17,6 @@ import {
 } from 'lucide-react';
 
 
-
 export const metadata = {
   metadataBase: new URL('https://www.tasarabd.com'),
 
@@ -73,12 +72,6 @@ export const metadata = {
   keywords:
     'Tasara, Tasarabd, Tasara Bangladesh, plastics supply, indenting business, supply chain sourcing, global procurement',
 };
-
-
-
-
-
-
 
 
 
