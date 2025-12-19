@@ -16,4 +16,11 @@ const nextConfig = {
   },
 };
 
+{
+  source: '/robots.txt',
+  destination: '/api/robots.txt',
+}
+
+
+
 module.exports = nextConfig;
