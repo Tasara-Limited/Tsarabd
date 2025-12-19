@@ -12,10 +12,16 @@ import {
   CheckCircle,
 } from 'lucide-react';
 
+
 export const metadata = {
-  title: 'About Us - Tasara Limited',
-  description: 'Learn about Tasara Limited, your trusted partner in global plastic materials supply since 2014. ISO 9001 certified with operations in 25+ countries.',
+  title: 'About Tasara Limited - Global Plastic Materials Supply & Indenting Services in Bangladesh',
+  description: 'Learn more about Tasara Limited, a Dhaka-based company founded in 2024, specializing in global plastic materials supply, indenting services, sourcing, and sustainable solutions for virgin and recycled plastics.',
+  keywords: 'Tasara Limited, Tasarabd, Tasara Bangladesh, about Tasara, plastic materials supply, indenting services, plastic sourcing Bangladesh, sustainable plastics, GRS certified suppliers, supply chain solutions',
 };
+
+
+
+
 
 export default function AboutPage() {
   return (
