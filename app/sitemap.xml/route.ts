@@ -1,7 +1,8 @@
 import { NextResponse } from 'next/server';
 
 export async function GET() {
-  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+  // Your sitemap XML as a plain string
+  const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
@@ -26,7 +27,8 @@ export async function GET() {
 
 </urlset>`;
 
-  return new NextResponse(sitemap, {
+  // Return as raw XML with correct content type
+  return new NextResponse(sitemapXml, {
     headers: {
       'Content-Type': 'application/xml',
     },
