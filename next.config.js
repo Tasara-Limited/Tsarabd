@@ -4,6 +4,16 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: { unoptimized: true },
+
+  // Add this rewrites block
+  async rewrites() {
+    return [
+      {
+        source: '/sitemap.xml',       // URL that Google will access
+        destination: '/api/sitemap.xml', // Your API route
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
