@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
   icons: {
     icon: [
-      { url: '/logo.png' }, // Standard favicon
+      { url: '/favicon.ico' }, // Standard favicon
       {
         url: '/logo.png', // Use this if you want to specify a specific size
         sizes: '96x96',
