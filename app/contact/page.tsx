@@ -77,36 +77,74 @@ export default function ContactPage() {
                   </CardHeader>
                   <CardContent>
 
-                    <form
-                      onSubmit={async (e) => {
-                        e.preventDefault(); // prevent page reload
-                        const form = e.currentTarget as HTMLFormElement;
-                        const formData = new FormData(form);
-                    
-                        try {
-                          const response = await fetch('https://formsubmit.co/ajax/tasaralimited@gmail.com', {
-                            method: 'POST',
-                            body: formData,
-                            headers: { Accept: 'application/json' },
-                          });
-                    
-                          const data = await response.json();
-                          if (response.ok) {
-                            alert('Thank you! Your message has been sent.');
-                            form.reset();
-                          } else {
-                            alert('Oops! Something went wrong. Please try again.');
-                          }
-                        } catch (error) {
-                          console.error(error);
-                          alert('Oops! Something went wrong. Please try again.');
-                        }
-                      }}
-                      className="space-y-6"
-                    >
-                      <input type="hidden" name="_captcha" value="false" />
-                      <Button type="submit">Send Message</Button>
-                    </form>
+
+                    'use client';
+
+import { useState } from 'react';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+
+export default function ContactForm() {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // prevent default form submission
+    setLoading(true);
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/tasaralimited@gmail.com', {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json',
+        },
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert('Thank you! Your message has been sent. We’ll get back to you soon.');
+        form.reset(); // reset the form after success
+      } else {
+        alert(data.message || 'Oops! Something went wrong.');
+      }
+    } catch (error) {
+      alert('Error sending message. Please try again later.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <div>
+        <Label htmlFor="name">Full Name *</Label>
+        <Input id="name" name="name" required placeholder="John Doe" />
+      </div>
+
+      <div>
+        <Label htmlFor="email">Email Address *</Label>
+        <Input id="email" name="email" type="email" required placeholder="john@company.com" />
+      </div>
+
+      <div>
+        <Label htmlFor="message">Message *</Label>
+        <Textarea id="message" name="message" required placeholder="Your message..." />
+      </div>
+
+      <input type="hidden" name="_captcha" value="false" />
+
+      <Button type="submit" disabled={loading}>
+        {loading ? 'Sending...' : 'Send Message'}
+      </Button>
+    </form>
+  );
+}
 
 
 
