@@ -17,15 +17,6 @@ import {
 
 
 
-// For the Services page (/services)
-export const metadata = {
-  title: 'Our Services - Tasara Limited | Plastic Materials Supply & Indenting in Bangladesh',
-  description: 'Explore comprehensive services from Tasara Limited, including indenting, global trading, sourcing & procurement, and optimized supply chain solutions for virgin and recycled plastics like PP, PS, and PE.',
-  keywords: 'Tasara services, plastic indenting services, plastic sourcing Bangladesh, supply chain solutions plastics, polypropylene supply, polystyrene procurement, polyethylene trading, recycled plastics Bangladesh, global plastic suppliers, quality assured plastics',
-};
-
-
-
 
 export default function ServicesPage() {
   return (
