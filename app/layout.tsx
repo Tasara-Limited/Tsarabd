@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: 'Tasara Limited - Global Plastic Materials Supply & Indenting Services',
 
   description:
-    'Tasara Limited connects raw material suppliers with international buyers. ISO 9001 certified supply, indenting, and procurement services for plastic materials since 2014.',
+    'Tasara Limited connects raw material suppliers with international buyers. Tasara offers a global network for sourcing high-quality plastic materials, providing indenting, procurement, and supply chain solutions tailored for diverse industries worldwide.',
 
   keywords:
     'Tasara, Tasarabd, plastic materials, indenting services, supply chain, global sourcing, polypropylene, polyethylene, polystyrene, procurement, Bangladesh, Tasara Bangladesh',
