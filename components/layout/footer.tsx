@@ -13,7 +13,7 @@ export function Footer() {
                <div className="bg-[#FFFFFF] rounded-lg transition-transform group-hover:scale-105">
               {/* Replace "logo.png" with your actual filename (e.g., logo.svg) */}
              <img
-                src="/logo.png"        // ✅ Starts with "/" → served from /public
+                src="/android-chrome-512x512.png"        // ✅ Starts with "/" → served from /public
                 alt="Tasara Logo"
                 className="h-12 w-12 "
               />
