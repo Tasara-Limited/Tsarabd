@@ -78,75 +78,86 @@ export default function ContactPage() {
                   <CardContent>
 
 
-                    'use client';
+                   <form
+                      action="https://formsubmit.co/shahbazrafi2020@gmail.com"
+                      method="POST"
+                      className="space-y-6"
+                    >
+                      <div>
+                        <Label htmlFor="email"> Full Name <span className="text-red-500">*</span></Label>
+                        <Input
+                          id="name"
+                          name="name"
+                          type="text"
+                          required
+                          placeholder="John Doe"
+                          className="mt-1"
+                        />
+                      </div>
 
-import { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
+                      <div>
+                        <Label htmlFor="email">Email Address *</Label>
+                        <Input
+                          id="email"
+                          name="email"
+                          type="email"
+                          required
+                          placeholder="john@company.com"
+                          className="mt-1"
+                        />
+                      </div>
 
-export default function ContactForm() {
-  const [loading, setLoading] = useState(false);
+                      <div>
+                        <Label htmlFor="company">Company Name</Label>
+                        <Input
+                          id="company"
+                          name="company"
+                          type="text"
+                          placeholder="ABC Corporation"
+                          className="mt-1"
+                        />
+                      </div>
 
-  const handleSubmit = async (e) => {
-    e.preventDefault(); // prevent default form submission
-    setLoading(true);
+                      <div>
+                        <Label htmlFor="phone">Phone Number</Label>
+                        <Input
+                          id="phone"
+                          name="phone"
+                          type="tel"
+                          placeholder="+880 1XXX XXXXXX"
+                          className="mt-1"
+                        />
+                      </div>
 
-    const form = e.target;
-    const formData = new FormData(form);
+                      <div>
+                        <Label htmlFor="message">Message *</Label>
+                        <Textarea
+                          id="message"
+                          name="message"
+                          required
+                          placeholder="Tell us about your plastic materials needs..."
+                          className="mt-1 min-h-[150px]"
+                        />
+                      </div>
 
-    try {
-      const response = await fetch('https://formsubmit.co/ajax/tasaralimited@gmail.com', {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json',
-        },
-      });
+                      {/* Disable CAPTCHA (optional) */}
+                      <input type="hidden" name="_captcha" value="false" />
 
-      const data = await response.json();
+                      {/* Redirect after success */}
+                      <input
+                        type="hidden"
+                        name="_next"
+                        value="https://tasara123-dmay.vercel.app//contact?success=true"
+                      />
 
-      if (response.ok) {
-        alert('Thank you! Your message has been sent. We’ll get back to you soon.');
-        form.reset(); // reset the form after success
-      } else {
-        alert(data.message || 'Oops! Something went wrong.');
-      }
-    } catch (error) {
-      alert('Error sending message. Please try again later.');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div>
-        <Label htmlFor="name">Full Name *</Label>
-        <Input id="name" name="name" required placeholder="John Doe" />
-      </div>
-
-      <div>
-        <Label htmlFor="email">Email Address *</Label>
-        <Input id="email" name="email" type="email" required placeholder="john@company.com" />
-      </div>
-
-      <div>
-        <Label htmlFor="message">Message *</Label>
-        <Textarea id="message" name="message" required placeholder="Your message..." />
-      </div>
-
-      <input type="hidden" name="_captcha" value="false" />
-
-      <Button type="submit" disabled={loading}>
-        {loading ? 'Sending...' : 'Send Message'}
-      </Button>
-    </form>
-  );
-}
-
-
+                      <Button
+                        type="submit"
+                        className="w-full bg-brand-500 hover:bg-red-700"
+                        size="lg"
+                      >
+                        Send Message
+                      </Button>
+                    </form>
 
                     
                   </CardContent>
