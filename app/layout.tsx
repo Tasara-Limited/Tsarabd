@@ -7,6 +7,7 @@ import { Footer } from '@/components/layout/footer';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://www.tasarabd.com'),
   title: 'Tasara Limited - Global Plastic Materials Supply & Indenting Services',
   description: 'Tasara Limited connects raw material suppliers with international buyers. ISO 9001 certified supply, indenting, and procurement services for plastic materials since 2014.',
   keywords: 'plastic materials, indenting services, supply chain, polypropylene, polyethylene, polystyrene, global sourcing, Bangladesh',
