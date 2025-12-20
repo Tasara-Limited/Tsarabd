@@ -76,86 +76,41 @@ export default function ContactPage() {
                     </CardDescription>
                   </CardHeader>
                   <CardContent>
+
                     <form
-                      action="https://formsubmit.co/tasaralimited@gmail.com"
-                      method="POST"
+                      onSubmit={async (e) => {
+                        e.preventDefault(); // prevent page reload
+                        const form = e.currentTarget as HTMLFormElement;
+                        const formData = new FormData(form);
+                    
+                        try {
+                          const response = await fetch('https://formsubmit.co/ajax/tasaralimited@gmail.com', {
+                            method: 'POST',
+                            body: formData,
+                            headers: { Accept: 'application/json' },
+                          });
+                    
+                          const data = await response.json();
+                          if (response.ok) {
+                            alert('Thank you! Your message has been sent.');
+                            form.reset();
+                          } else {
+                            alert('Oops! Something went wrong. Please try again.');
+                          }
+                        } catch (error) {
+                          console.error(error);
+                          alert('Oops! Something went wrong. Please try again.');
+                        }
+                      }}
                       className="space-y-6"
                     >
-                      <div>
-                        <Label htmlFor="email"> Full Name <span className="text-red-500">*</span></Label>
-                        <Input
-                          id="name"
-                          name="name"
-                          type="text"
-                          required
-                          placeholder="John Doe"
-                          className="mt-1"
-                        />
-                      </div>
-
-                      <div>
-                        <Label htmlFor="email"> Email Address <span className="text-red-500">*</span></Label>
-                        <Input
-                          id="email"
-                          name="email"
-                          type="email"
-                          required
-                          placeholder="john@company.com"
-                          className="mt-1"
-                        />
-                      </div>
-
-                      <div>
-                        <Label htmlFor="company">Company Name</Label>
-                        <Input
-                          id="company"
-                          name="company"
-                          type="text"
-                          placeholder="ABC Corporation"
-                          className="mt-1"
-                        />
-                      </div>
-
-                      <div>
-                        <Label htmlFor="phone">Phone Number</Label>
-                        <Input
-                          id="phone"
-                          name="phone"
-                          type="tel"
-                          placeholder="+880 1XXX XXXXXX"
-                          className="mt-1"
-                        />
-                      </div>
-
-                      <div>
-                        <Label htmlFor="email"> Message <span className="text-red-500">*</span></Label>
-                        <Textarea
-                          id="message"
-                          name="message"
-                          required
-                          placeholder="Tell us about your plastic materials needs..."
-                          className="mt-1 min-h-[150px]"
-                        />
-                      </div>
-
-                      {/* Disable CAPTCHA (optional) */}
                       <input type="hidden" name="_captcha" value="false" />
-
-                      {/* Redirect after success */}
-                      <input
-                        type="hidden"
-                        name="_next"
-                        value="https://tasara123-dmay.vercel.app//contact?success=true"
-                      />
-
-                      <Button
-                        type="submit"
-                        className="w-full bg-brand-500 hover:bg-red-700"
-                        size="lg"
-                      >
-                        Send Message
-                      </Button>
+                      <Button type="submit">Send Message</Button>
                     </form>
+
+
+
+                    
                   </CardContent>
                 </Card>
               </div>
