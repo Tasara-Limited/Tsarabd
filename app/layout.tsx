@@ -23,15 +23,11 @@ export const metadata: Metadata = {
 
   icons: {
     icon: [
-      { url: '/favicon.ico' }, // Standard favicon
-      {
-        url: '/logo.png', // Use this if you want to specify a specific size
-        sizes: '96x96',
-        type: 'image/png',
-      },
-      {
-        url: '/logo.png', // SVG for modern browsers
-        type: 'image/svg+xml',
+      { url: '/favicon.ico', rel: 'icon' },
+      { 
+        url: '/logo.png', 
+        sizes: '96x96', 
+        type: 'image/png' 
       },
     ],
     apple: [
