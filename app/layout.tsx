@@ -23,14 +23,14 @@ export const metadata: Metadata = {
 
   icons: {
     icon: [
-      { url: '/favicon.ico' }, // Standard favicon
+      { url: '/logo.png' }, // Standard favicon
       {
-        url: '/favicon-96x96.png', // Use this if you want to specify a specific size
+        url: '/logo.png', // Use this if you want to specify a specific size
         sizes: '96x96',
         type: 'image/png',
       },
       {
-        url: '/favicon.svg', // SVG for modern browsers
+        url: '/logo.png', // SVG for modern browsers
         type: 'image/svg+xml',
       },
     ],
