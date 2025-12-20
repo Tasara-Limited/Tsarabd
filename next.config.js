@@ -3,24 +3,19 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  images: { unoptimized: true },
 
-  // Add this rewrites block
   async rewrites() {
     return [
       {
-        source: '/sitemap.xml',       // URL that Google will access
-        destination: '/api/sitemap.xml', // Your API route
+        source: '/sitemap.xml',
+        destination: '/api/sitemap.xml',
+      },
+      {
+        source: '/robots.txt',
+        destination: '/api/robots.txt',
       },
     ];
   },
 };
-
-{
-  source: '/robots.txt',
-  destination: '/api/robots.txt',
-}
-
-
 
 module.exports = nextConfig;
