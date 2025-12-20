@@ -40,7 +40,7 @@ export function Header() {
             <div className="bg-[#FFFFFF] rounded-lg transition-transform group-hover:scale-105">
               {/* Replace "logo.png" with your actual filename (e.g., logo.svg) */}
              <img
-                src="/logo.png"        // ✅ Starts with "/" → served from /public
+                src="/favicon-96x96.png"        // ✅ Starts with "/" → served from /public
                 alt="Tasara Logo"
                 className="h-12 w-12 "
               />
