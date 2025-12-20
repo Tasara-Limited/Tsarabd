@@ -147,8 +147,9 @@ export default function ContactPage() {
                       <input
                         type="hidden"
                         name="_next"
-                        value="https://tasara123-dmay.vercel.app//contact?success=true"
+                        value="https://tasarabd.com/contact?success=true"
                       />
+
 
                       <Button
                         type="submit"
