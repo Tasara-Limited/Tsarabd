@@ -79,7 +79,7 @@ export default function ContactPage() {
 
 
                    <form
-                      action="https://formsubmit.co/shahbazrafi2020@gmail.com"
+                      action="https://formsubmit.co/tasaralimited@gmail.com"
                       method="POST"
                       className="space-y-6"
                     >
