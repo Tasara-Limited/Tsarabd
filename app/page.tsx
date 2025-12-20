@@ -215,7 +215,7 @@ max-w-5xl lg:max-w-7xl xl:max-w-8xl mx-auto
                     types: 'Pellets, Sheets, Custom Formulations, Chips, Scraps, Regrind, Crush/Kucha(Bengali)',
                   },
                   {
-                    name: 'Polystyrene (PS)',
+                    name: 'Polystyrene (PS) – Recycled & Virgin',
                     types: 'Pellets, Sheets, Custom Formulations, Chips, Scraps, Regrind, Crush/Kucha(Bengali)',
                   },
                   {
