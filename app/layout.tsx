@@ -1,6 +1,7 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import Script from 'next/script';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
     siteName: 'Tasara Limited',
     images: [
       {
-        url: '/favicon-96x96.png', // relative path is better
+        url: '/favicon-96x96.png',
         width: 800,
         height: 800,
         alt: 'Tasara Limited Logo',
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
     title: 'Tasara Limited - Plastics Supply & Indenting Business',
     description:
       'Tasara Limited offers global plastic materials supply, indenting, sourcing, and procurement services from Bangladesh.',
-    images: ['/logo.png'], // relative path works fine
+    images: ['/logo.png'],
   },
 
   robots: {
@@ -71,10 +72,6 @@ export const metadata: Metadata = {
   },
 };
 
-
-
-  
-
 export default function RootLayout({
   children,
 }: {
@@ -82,6 +79,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      {/* Google Analytics */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-Q0NG6R2H6G"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-Q0NG6R2H6G');
+        `}
+      </Script>
+
       <body className={inter.className}>
         <Header />
         <main>{children}</main>
