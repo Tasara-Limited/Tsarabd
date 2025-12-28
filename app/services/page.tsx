@@ -273,7 +273,7 @@ export default function ServicesPage() {
       ].map((material) => (
         <Card
           key={material.name}
-          className="relative overflow-hidden hover:shadow-xl transition-shadow"
+          className="relative overflow-hidden hover:shadow-2xl transition-shadow"
         >
           {/* 🔴 Background Image */}
           <div
