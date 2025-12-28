@@ -37,7 +37,7 @@ export default function AboutPage() {
               <div className="space-y-4 text-lg text-gray-700 leading-relaxed">
                 
                 <p>
-  <strong>Founded on 4 July 2024 in Dhaka, Bangladesh</strong>, <strong>Tasara Limited</strong> is a <strong>new and dynamic trading, indenting, and sourcing company</strong> connecting clients with <strong>trusted GRS-certified suppliers worldwide</strong>.
+  Founded on <strong>4 July 2024 in Dhaka, Bangladesh</strong>, <strong>Tasara Limited</strong> is a <strong>new and dynamic trading, indenting, and sourcing company</strong> connecting clients with trusted <strong>GRS-certified</strong>strong> suppliers worldwide.
 </p>
 
 <p>
@@ -45,7 +45,7 @@ export default function AboutPage() {
 </p>
 
 <p>
-  As a company committed to <strong>100% quality and chemical compliance</strong>, Tasara ensures all products meet <strong>international standards</strong>, including <strong>FR, REACH, BHT, TPCH, and Heavy Metal–Free requirements</strong>. We pride ourselves on <strong>timely delivery</strong>, <strong>trusted guidance</strong>, and <strong>customer-focused service</strong>, building <strong>strong partnerships across the globe</strong>.
+  As a company committed to <strong>100% quality and chemical compliance</strong>, Tasara ensures all products meet <strong>international standards</strong>, including <strong>FR, REACH, BHT, TPCH, and Heavy Metal–Free requirements</strong>. We pride ourselves on timely delivery, trusted guidance, and customer-focused service, building strong partnerships across the globe.
 </p>
 
                 
