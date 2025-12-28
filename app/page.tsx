@@ -208,27 +208,64 @@ max-w-5xl lg:max-w-7xl xl:max-w-8xl mx-auto
               <p className="text-xl text-gray-300 mb-8">
                 High-quality plastic materials for diverse industries worldwide
               </p>
-              <div className="space-y-4">
-                {[
-                  {
-                    name: 'Polypropylene (PP) – Recycled & Virgin',
-                    types: 'Pellets, Sheets, Custom Formulations, Chips, Scraps, Regrind, Crush/Kucha(Bengali)',
-                  },
-                  {
-                    name: 'Polystyrene (PS) – Recycled & Virgin',
-                    types: 'Pellets, Sheets, Custom Formulations, Chips, Scraps, Regrind, Crush/Kucha(Bengali)',
-                  },
-                  {
-                    name: 'Polyethylene (PE)',
-                    types: 'HDPE, LDPE, LLDPE, Recycle (HDPE, LDPE)',
-                  },
-                ].map((material) => (
-                  <div key={material.name} className="bg-gray-800 p-4 rounded-lg">
-                    <h3 className="text-lg font-semibold text-brand-400 mb-1">{material.name}</h3>
-                    <p className="text-gray-400">{material.types}</p>
-                  </div>
-                ))}
-              </div>
+
+
+
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+  {[
+    {
+      name: 'Polypropylene (PP)',
+      image: '/materials/pp.png', // Rename your file to pp.png in public/materials/
+      types: 'Pellets, Sheets, Chips, Scraps, Regrind',
+      details: 'Ideal for automotive parts and textiles.'
+    },
+    {
+      name: 'Polystyrene (PS)',
+      image: '/materials/ps.png', // Rename your file to ps.png in public/materials/
+      types: 'Pellets, Sheets, Custom Formulations',
+      details: 'Perfect for insulation and consumer goods.'
+    },
+    {
+      name: 'Polyethylene (PE)',
+      image: '/materials/pe.png', // Rename your file to pe.png in public/materials/
+      types: 'HDPE, LDPE, LLDPE, Recycle',
+      details: 'Used for bottles, films, and industrial pipes.'
+    },
+  ].map((material) => (
+    <div 
+      key={material.name} 
+      className="group relative overflow-hidden bg-gray-800 rounded-xl transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl cursor-pointer h-64"
+    >
+      {/* Background Image - Ensure file exists in public/materials/ */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+        style={{ backgroundImage: `url(${material.image})` }}
+      />
+      
+      {/* Gradient Overlay - Fixed the "Black Box" issue by making it dynamic */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+
+      {/* Content */}
+      <div className="absolute inset-0 p-6 flex flex-col justify-end">
+        <h3 className="text-xl font-bold text-white mb-2 group-hover:text-brand-400 transition-colors">
+          {material.name}
+        </h3>
+        
+        {/* Hidden Details that appear on hover */}
+        <div className="max-h-0 opacity-0 group-hover:max-h-32 group-hover:opacity-100 transition-all duration-500 overflow-hidden">
+          <p className="text-sm text-gray-300 mb-2">{material.types}</p>
+          <p className="text-xs text-brand-300 font-medium">{material.details}</p>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
+
+
+
+              
             </div>
 
             <div>
