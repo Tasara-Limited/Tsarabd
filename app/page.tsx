@@ -216,26 +216,31 @@ max-w-5xl lg:max-w-7xl xl:max-w-8xl mx-auto
   {[
     {
       name: 'Polypropylene(PP)',
+      
       image: '/materials/pp-material.png', // Rename your file to pp.png in public/materials/
       types: 'Pellets, Sheets, Chips, Scraps, Regrind',
       details: 'Ideal for automotive parts and textiles.'
     },
     {
       name: 'Polystyrene(PS)',
+     
       image: '/materials/ps-material.png', // Rename your file to ps.png in public/materials/
       types: 'Pellets, Sheets, Custom Formulations',
       details: 'Perfect for insulation and consumer goods.'
     },
     {
       name: 'Polyethylene(PE)',
+      
       image: '/materials/pe-material.png', // Rename your file to pe.png in public/materials/
       types: 'HDPE, LDPE, LLDPE, Recycle',
       details: 'Used for bottles, films, and industrial pipes.'
     },
   ].map((material) => (
-    <div 
-      key={material.name} 
-      className="group relative overflow-hidden bg-gray-800 rounded-xl transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl cursor-pointer h-64"
+  
+    <Link
+      key={material.name}
+      href="/services#materials-list"
+      className="group relative overflow-hidden bg-gray-800 rounded-xl transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl cursor-pointer h-64 block"
     >
       {/* Background Image - Ensure file exists in public/materials/ */}
       <div 
@@ -258,7 +263,7 @@ max-w-5xl lg:max-w-7xl xl:max-w-8xl mx-auto
           <p className="text-xs text-brand-300 font-medium">{material.details}</p>
         </div>
       </div>
-    </div>
+    </Link>
   ))}
 </div>
 
