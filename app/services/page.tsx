@@ -271,15 +271,9 @@ export default function ServicesPage() {
             'Bottles, films, pipes, containers, industrial products',
         },
       ].map((material) => (
-        <Card 
+        <Card
           key={material.name}
-          className="
-            relative overflow-hidden
-            color-black
-                   
-            hover:shadow-xl
-            transition-shadow
-          "
+          className="relative overflow-hidden hover:shadow-xl transition-shadow"
         >
           {/* 🔴 Background Image */}
           <div
@@ -288,16 +282,10 @@ export default function ServicesPage() {
           />
 
           {/* 🔴 Overlay */}
-          <div className="absolute inset-0 bg-black/35" />
+          <div className="absolute inset-0 bg-black/60" />
 
           {/* Content */}
-          <div className="
-              relative z-10
-              h-full
-              p-6
-              
-            "
-            >
+          <div className="relative z-10">
             <CardHeader>
               <CardTitle className="text-2xl text-white">
                 {material.name}
