@@ -215,59 +215,123 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Materials We Supply</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              High-quality plastic materials for diverse industrial applications
-            </p>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
-            {[
-              {
-                name: 'Polypropylene (PP)– Recycled & Virgin',
-                types: ['Pellets', 'Sheets', 'Custom Formulations', 'Chips', 'Scraps', 'Regrind', 'Crush/Kucha(Bengali)'],
-                applications: 'Packaging, automotive parts, textiles, medical devices',
-              },
-              {
-                name: 'Polystyrene (PS)',
-                types: ['Pellets', 'Sheets', 'Custom Formulations', 'Chips', 'Scraps', 'Regrind', 'Crush/Kucha(Bengali)'],
-                applications: 'Packaging, insulation, disposable products, consumer goods',
-              },
-              {
-                name: 'Polyethylene (PE)',
-                types: ['HDPE', 'LDPE', 'LLDPE', 'Recycle (HDPE, LDPE)'],
-                applications: 'Bottles, films, pipes, containers, industrial products',
-              },
-            ].map((material) => (
-              <Card key={material.name} className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <CardTitle className="text-2xl text-brand-500">{material.name}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="mb-4">
-                    <p className="font-semibold text-gray-900 mb-2">Available Types:</p>
-                    <ul className="space-y-1">
-                      {material.types.map((type) => (
-                        <li key={type} className="flex items-center text-gray-700">
-                          <CheckCircle className="h-4 w-4 text-green-500 mr-2 flex-shrink-0" />
-                          {type}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900 mb-2">Applications:</p>
-                    <p className="text-gray-700 text-sm">{material.applications}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+      
+<section className="py-20 bg-white">
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="text-center mb-16">
+      <h2 className="text-4xl font-bold text-gray-900 mb-4">
+        Materials We Supply
+      </h2>
+      <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+        High-quality plastic materials for diverse industrial applications
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
+      {[
+        {
+          name: 'Polypropylene (PP) – Recycled & Virgin',
+          // 🔴 NEW
+          image: 'public/materials/Polypropylene (PP)– Recycled & Virgin.png',
+          types: [
+            'Pellets',
+            'Sheets',
+            'Custom Formulations',
+            'Chips',
+            'Scraps',
+            'Regrind',
+            'Crush/Kucha(Bengali)',
+          ],
+          applications:
+            'Packaging, automotive parts, textiles, medical devices',
+        },
+        {
+          name: 'Polystyrene (PS)',
+          // 🔴 NEW
+          image: 'public/materials/Polystyrene (PS).png',
+          types: [
+            'Pellets',
+            'Sheets',
+            'Custom Formulations',
+            'Chips',
+            'Scraps',
+            'Regrind',
+            'Crush/Kucha(Bengali)',
+          ],
+          applications:
+            'Packaging, insulation, disposable products, consumer goods',
+        },
+        {
+          name: 'Polyethylene (PE)',
+          // 🔴 NEW
+          image: 'public/materials/Polystyrene (PS).png',
+          types: ['HDPE', 'LDPE', 'LLDPE', 'Recycle (HDPE, LDPE)'],
+          applications:
+            'Bottles, films, pipes, containers, industrial products',
+        },
+      ].map((material) => (
+        <Card
+          key={material.name}
+          className="relative overflow-hidden hover:shadow-xl transition-shadow"
+        >
+          {/* 🔴 Background Image */}
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${material.image})` }}
+          />
+
+          {/* 🔴 Overlay */}
+          <div className="absolute inset-0 bg-black/60" />
+
+          {/* Content */}
+          <div className="relative z-10">
+            <CardHeader>
+              <CardTitle className="text-2xl text-white">
+                {material.name}
+              </CardTitle>
+            </CardHeader>
+
+            <CardContent>
+              <div className="mb-4">
+                <p className="font-semibold text-white mb-2">
+                  Available Types:
+                </p>
+                <ul className="space-y-1">
+                  {material.types.map((type) => (
+                    <li
+                      key={type}
+                      className="flex items-center text-gray-200"
+                    >
+                      <CheckCircle className="h-4 w-4 text-green-400 mr-2 flex-shrink-0" />
+                      {type}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <p className="font-semibold text-white mb-2">
+                  Applications:
+                </p>
+                <p className="text-gray-200 text-sm">
+                  {material.applications}
+                </p>
+              </div>
+            </CardContent>
           </div>
-        </div>
-      </section>
+        </Card>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+      
 
       <section className="py-20 bg-gray-900 text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
