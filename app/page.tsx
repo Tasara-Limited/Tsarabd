@@ -215,19 +215,19 @@ max-w-5xl lg:max-w-7xl xl:max-w-8xl mx-auto
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
   {[
     {
-      name: 'Polypropylene (PP)',
+      name: 'Polypropylene(PP)',
       image: '/materials/pp-material.png', // Rename your file to pp.png in public/materials/
       types: 'Pellets, Sheets, Chips, Scraps, Regrind',
       details: 'Ideal for automotive parts and textiles.'
     },
     {
-      name: 'Polystyrene (PS)',
+      name: 'Polystyrene(PS)',
       image: '/materials/ps-material.png', // Rename your file to ps.png in public/materials/
       types: 'Pellets, Sheets, Custom Formulations',
       details: 'Perfect for insulation and consumer goods.'
     },
     {
-      name: 'Polyethylene (PE)',
+      name: 'Polyethylene(PE)',
       image: '/materials/pe-material.png', // Rename your file to pe.png in public/materials/
       types: 'HDPE, LDPE, LLDPE, Recycle',
       details: 'Used for bottles, films, and industrial pipes.'
@@ -248,7 +248,7 @@ max-w-5xl lg:max-w-7xl xl:max-w-8xl mx-auto
 
       {/* Content */}
       <div className="absolute inset-0 p-6 flex flex-col justify-end">
-        <h3 className="text-xl font-bold text-white mb-2 group-hover:text-brand-400 transition-colors">
+        <h3 className="text-xl font-bold text-brand-400 mb-2 group-hover:text-white transition-colors">
           {material.name}
         </h3>
         
