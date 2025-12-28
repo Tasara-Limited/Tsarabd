@@ -14,6 +14,8 @@ export const metadata: Metadata = {
 
   title: 'Tasara Limited - Global Plastic Materials Supply & Indenting Services',
 
+  applicationName: 'Global plastic materials supply and indenting services',
+
   description:
     'Tasara Limited connects raw material suppliers with international buyers. Tasara offers a global network for sourcing high-quality plastic materials, providing indenting, procurement, and supply chain solutions tailored for diverse industries worldwide.',
 
