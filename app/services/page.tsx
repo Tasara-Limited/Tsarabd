@@ -233,7 +233,7 @@ export default function ServicesPage() {
         {
           name: 'Polypropylene (PP) – Recycled & Virgin',
           // 🔴 NEW
-          image: '/materials/Polypropylene (PP)– Recycled & Virgin.png',
+          image: '/materials/pp-material.png',
           types: [
             'Pellets',
             'Sheets',
@@ -249,7 +249,7 @@ export default function ServicesPage() {
         {
           name: 'Polystyrene (PS)',
           // 🔴 NEW
-          image: '/materials/Polystyrene (PS).png',
+          image: '/materials/ps-material.png',
           types: [
             'Pellets',
             'Sheets',
@@ -265,7 +265,7 @@ export default function ServicesPage() {
         {
           name: 'Polyethylene (PE)',
           // 🔴 NEW
-          image: '/materials/Polystyrene (PS).png',
+          image: '/materials/pe-material.png',
           types: ['HDPE', 'LDPE', 'LLDPE', 'Recycle (HDPE, LDPE)'],
           applications:
             'Bottles, films, pipes, containers, industrial products',
