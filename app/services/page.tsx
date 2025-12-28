@@ -275,6 +275,7 @@ export default function ServicesPage() {
           key={material.name}
           className="
             relative overflow-hidden
+            color-black
             bg-transparent          /* 👉 FIX: remove default gray Card background */
             min-h-[320px]           /* 👉 FIX: force height so image can show */
             hover:shadow-xl
