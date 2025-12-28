@@ -33,7 +33,7 @@ export function Footer() {
               <a href="#" className="hover:text-brand-500 transition-colors">
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href="#" className="hover:text-brand-500 transition-colors">
+              <a href="https://www.facebook.com/profile.php?id=61585370917350" className="hover:text-brand-500 transition-colors">
                 <Facebook className="h-5 w-5" />
               </a>
             </div>
