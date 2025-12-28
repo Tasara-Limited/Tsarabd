@@ -37,7 +37,7 @@ export default function AboutPage() {
               <div className="space-y-4 text-lg text-gray-700 leading-relaxed">
                 
                 <p>
-  Founded on <strong>4 July 2024 in Dhaka, Bangladesh</strong>, <strong>Tasara Limited</strong> is a <strong>new and dynamic trading, indenting, and sourcing company</strong> connecting clients with trusted <strong>GRS-certified</strong>strong> suppliers worldwide.
+  Founded on <strong>4 July 2024 in Dhaka, Bangladesh</strong>, <strong>Tasara Limited</strong> is a <strong>new and dynamic trading, indenting, and sourcing company</strong> connecting clients with trusted <strong>GRS-certified</strong>suppliers worldwide.
 </p>
 
 <p>
