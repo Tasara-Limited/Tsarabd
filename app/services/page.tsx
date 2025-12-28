@@ -276,8 +276,7 @@ export default function ServicesPage() {
           className="
             relative overflow-hidden
             color-black
-            bg-transparent          /* 👉 FIX: remove default gray Card background */
-            min-h-[320px]           /* 👉 FIX: force height so image can show */
+                   
             hover:shadow-xl
             transition-shadow
           "
@@ -296,7 +295,7 @@ export default function ServicesPage() {
               relative z-10
               h-full
               p-6
-              flex flex-col justify-end  /* 👉 FIX: content stays readable */
+              
             "
             >
             <CardHeader>
