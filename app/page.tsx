@@ -216,19 +216,19 @@ max-w-5xl lg:max-w-7xl xl:max-w-8xl mx-auto
   {[
     {
       name: 'Polypropylene (PP)',
-      image: '/materials/pp.png', // Rename your file to pp.png in public/materials/
+      image: '/materials/pp-material.png', // Rename your file to pp.png in public/materials/
       types: 'Pellets, Sheets, Chips, Scraps, Regrind',
       details: 'Ideal for automotive parts and textiles.'
     },
     {
       name: 'Polystyrene (PS)',
-      image: '/materials/ps.png', // Rename your file to ps.png in public/materials/
+      image: '/materials/ps-material.png', // Rename your file to ps.png in public/materials/
       types: 'Pellets, Sheets, Custom Formulations',
       details: 'Perfect for insulation and consumer goods.'
     },
     {
       name: 'Polyethylene (PE)',
-      image: '/materials/pe.png', // Rename your file to pe.png in public/materials/
+      image: '/materials/pe-material.png', // Rename your file to pe.png in public/materials/
       types: 'HDPE, LDPE, LLDPE, Recycle',
       details: 'Used for bottles, films, and industrial pipes.'
     },
