@@ -34,16 +34,14 @@ export function Footer() {
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
-                href="https://www.facebook.com/profile.php?id=61585370917350"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-brand-500 transition-colors"
-              >
-                Facebook
-              </a>
-
+                      href="https://www.facebook.com/profile.php?id=61585370917350"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-brand-500 transition-colors">
+                      
                 <Facebook className="h-5 w-5" />
               </a>
+
             </div>
           </div>
 
