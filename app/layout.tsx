@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 
   title: 'Tasara Limited - Global Plastic Materials Supply & Indenting Services',
 
-  applicationName: 'Global plastic materials supply and indenting services',
+  applicationName: 'Tasara Limited',
 
   description:
     'Tasara Limited connects raw material suppliers with international buyers. Tasara offers a global network for sourcing high-quality plastic materials, providing indenting, procurement, and supply chain solutions tailored for diverse industries worldwide.',
@@ -74,6 +74,7 @@ export const metadata: Metadata = {
   },
 };
 
+
 export default function RootLayout({
   children,
 }: {
@@ -81,21 +82,36 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/* Google Analytics */}
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-Q0NG6R2H6G"
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-Q0NG6R2H6G');
-        `}
-      </Script>
-
+      <head>
+        {/* Schema.org JSON-LD for Site Name */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "Tasara Limited",
+              "alternateName": "Global plastic materials supply and indenting services",
+              "url": "https://www.tasarabd.com"
+            }),
+          }}
+        />
+      </head>
       <body className={inter.className}>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-Q0NG6R2H6G"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-Q0NG6R2H6G');
+          `}
+        </Script>
+
         <Header />
         <main>{children}</main>
         <Footer />
