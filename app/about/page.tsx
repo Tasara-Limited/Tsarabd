@@ -37,14 +37,17 @@ export default function AboutPage() {
               <div className="space-y-4 text-lg text-gray-700 leading-relaxed">
                 
                 <p>
-                  Founded on 4 July 2024 in Dhaka, Bangladesh, Tasara Limited is a new and dynamic trading, indenting, and sourcing                      company connecting clients with trusted GRS-certified suppliers worldwide.
-                </p>
-                <p>
-                  Our name reflects our philosophy: “United intend, Unique solutions” — we unite suppliers and buyers with the shared                    intent of providing tailored, reliable solutions for every client’s needs.
-                </p>
-                <p>
-                 As a company committed to 100% quality and chemical compliance, Tasara ensures all products meet international                         standards, including FR, REACH, BHT, TPCH, and Heavy Metal–Free requirements. We pride ourselves on timely delivery,                   trusted guidance, and customer-focused service, building strong partnerships across the globe.
-                </p>
+  <strong>Founded on 4 July 2024 in Dhaka, Bangladesh</strong>, <strong>Tasara Limited</strong> is a <strong>new and dynamic trading, indenting, and sourcing company</strong> connecting clients with <strong>trusted GRS-certified suppliers worldwide</strong>.
+</p>
+
+<p>
+  Our name reflects our philosophy: <strong>“United intend, Unique solutions”</strong> — we <strong>unite suppliers and buyers</strong> with the shared intent of providing <strong>tailored, reliable solutions</strong> for every client’s needs.
+</p>
+
+<p>
+  As a company committed to <strong>100% quality and chemical compliance</strong>, Tasara ensures all products meet <strong>international standards</strong>, including <strong>FR, REACH, BHT, TPCH, and Heavy Metal–Free requirements</strong>. We pride ourselves on <strong>timely delivery</strong>, <strong>trusted guidance</strong>, and <strong>customer-focused service</strong>, building <strong>strong partnerships across the globe</strong>.
+</p>
+
                 
               </div>
             </div>
