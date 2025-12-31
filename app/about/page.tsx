@@ -34,7 +34,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="max-w-4xl mx-auto px-4">
               <h2 className="text-4xl font-extrabold text-gray-900 mb-8 tracking-tight">Our Story</h2>
-                <div className="space-y-6 text-lg text-gray-700 leading-relaxed italic-content">
+                <div className="space-y-6 text-lg text-gray-700 leading-relaxed text-justify hyphens-auto [text-wrap:pretty]">
                 
                 <p>
         <strong>Tasara Limited</strong>, established on <strong>4 July 2024</strong> in Dhaka, Bangladesh, is a dynamic private limited company specializing in <strong>plastic materials, leather, and industrial accessories</strong>. As both a <strong>supplier and indenting service provider</strong>, we connect clients with <strong>trusted global partners</strong>, delivering <strong>customized, reliable, and sustainable solutions</strong> across industries.
