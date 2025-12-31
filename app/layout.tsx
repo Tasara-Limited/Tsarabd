@@ -99,9 +99,6 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        {/* 2. Initialize AOS here */}
-        <AOSInit />
-
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-Q0NG6R2H6G"
@@ -116,6 +113,12 @@ export default function RootLayout({
           `}
         </Script>
 
+
+
+
+
+
+        
         <Header />
         <main>{children}</main>
         <Footer />
@@ -123,3 +126,4 @@ export default function RootLayout({
     </html>
   );
 }
+
