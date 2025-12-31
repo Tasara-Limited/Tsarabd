@@ -4,7 +4,7 @@ import { Inter } from 'next/font/google';
 import Script from 'next/script';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
-import AOSInit from '@/components/AOSInit';  // ✅ Import must be at the top
+
 
 export const dynamic = 'force-dynamic';
 
