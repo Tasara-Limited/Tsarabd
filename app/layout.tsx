@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 import Script from 'next/script';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
+import AOSInit from '@/components/AOSInit';  // ✅ Import must be at the top
 
 export const dynamic = 'force-dynamic';
 
@@ -98,6 +99,9 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
+        {/* 2. Initialize AOS here */}
+        <AOSInit />
+
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-Q0NG6R2H6G"
