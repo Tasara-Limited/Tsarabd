@@ -36,7 +36,7 @@ export default function Home() {
               <span className="block text-brand-400 text-[20px] mt-[9px]">United intend Unique solutions</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-              Your trusted partner in global plastic materials supply and indenting services. Connecting suppliers with international buyers.
+              Your trusted partner in global plastic materials and accessories supply and indenting services. Connecting suppliers with international buyers.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="bg-brand-500 hover:bg-brand-600 text-lg px-8 py-6">
