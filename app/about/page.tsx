@@ -37,16 +37,20 @@ export default function AboutPage() {
               <div className="space-y-4 text-lg text-gray-700 leading-relaxed">
                 
                 <p>
-  Founded on <strong>4 July 2024 in Dhaka, Bangladesh</strong>, <strong>Tasara Limited</strong> is a <strong>new and dynamic trading, indenting, and sourcing company</strong> connecting clients with trusted <strong>GRS-certified</strong>suppliers worldwide.
-</p>
+        <strong>Tasara Limited</strong>, established on <strong>4 July 2024</strong> in Dhaka, Bangladesh, is a dynamic private limited company specializing in <strong>plastic materials, leather, and industrial accessories</strong>. As both a <strong>supplier and indenting service provider</strong>, we connect clients with <strong>trusted global partners</strong>, delivering <strong>customized, reliable, and sustainable solutions</strong> across industries.
+    </p>
 
-<p>
-  Our name reflects our philosophy: <strong>“United intend, Unique solutions”</strong> — we <strong>unite suppliers and buyers</strong> with the shared intent of providing <strong>tailored, reliable solutions</strong> for every client’s needs.
-</p>
+    <p>
+        All our products meet international standards. We work with GRS-certified suppliers to arrange and provide recycled polymers, reflecting our commitment to sustainable and responsible sourcing. These materials are compliant with FR, REACH, BHT, TPCH, and Heavy Metal—Free standards, ensuring clients receive <strong>certified, sustainable, and future-ready recycled polymers</strong>.
+    </p>
 
-<p>
-  As a company committed to <strong>100% quality and chemical compliance</strong>, Tasara ensures all products meet <strong>international standards</strong>, including <strong>FR, REACH, BHT, TPCH, and Heavy Metal–Free requirements</strong>. We pride ourselves on timely delivery, trusted guidance, and customer-focused service, building strong partnerships across the globe.
-</p>
+    <p>
+        Operating from Bangladesh, a rapidly growing industrial hub in South Asia, Tasara empowers industries with <strong>premium materials and accessories</strong>, supporting <strong>operational efficiency, innovation, and long-term growth</strong>. Our focus on <strong>timely delivery, expert guidance, and customer-centric service</strong> ensures seamless support for every business we serve.
+    </p>
+
+    <p>
+        Through <strong>strong global partnerships and sustainable practices</strong>, Tasara Limited aspires to be a <strong>leading supplier and indenting partner</strong>, helping industries worldwide <strong>thrive responsibly, innovate continuously, and succeed in an evolving marketplace.</strong>
+    </p>
 
                 
               </div>
