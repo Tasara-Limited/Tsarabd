@@ -6,12 +6,6 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 
 
-import type { Metadata } from "next";
-import "./globals.css";
-// 1. Import the Script component from Next.js
-import Script from "next/script";
-
-
 
 export const dynamic = 'force-dynamic';
 
