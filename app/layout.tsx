@@ -77,6 +77,8 @@ export const metadata: Metadata = {
 };
 
 
+
+
 export default function RootLayout({
   children,
 }: {
@@ -85,10 +87,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* 1. AOS CSS Link */}
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-        
-        {/* Schema.org JSON-LD */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -103,42 +102,38 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        {/* 2. Loading Animation Component */}
+        {/* The Loader Div */}
         <div id="global-loader">
           <div className="spinner"></div>
         </div>
 
-        {/* Google Analytics */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-Q0NG6R2H6G"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-Q0NG6R2H6G');
-          `}
-        </Script>
+        {/* FAIL-SAFE: This script hides the white screen if the AOS script fails */}
+        <script dangerouslySetInnerHTML={{ __html: `
+          (function() {
+            window.addEventListener('load', function() {
+              var loader = document.getElementById('global-loader');
+              if (loader) { loader.style.display = 'none'; }
+            });
+            // Backup: Hide after 3 seconds no matter what
+            setTimeout(function() {
+              var loader = document.getElementById('global-loader');
+              if (loader) { loader.style.display = 'none'; }
+            }, 3000);
+          })();
+        ` }} />
 
-        {/* 3. AOS JavaScript and Loader Cleanup */}
+        <GoogleAnalytics /> {/* Google Analytics scripts here */}
+
         <Script
           src="https://unpkg.com/aos@2.3.1/dist/aos.js"
           strategy="afterInteractive"
           onLoad={() => {
-            // Initialize AOS
             // @ts-ignore
-            AOS.init({
-              duration: 1000,
-              once: true,
-            });
-            
-            // Hide Loader after initialization
-            const loader = document.getElementById('global-loader');
-            if (loader) {
-              loader.style.display = 'none';
+            if (typeof AOS !== 'undefined') {
+              AOS.init({ duration: 1000, once: true });
             }
+            const loader = document.getElementById('global-loader');
+            if (loader) { loader.style.display = 'none'; }
           }}
         />
 
