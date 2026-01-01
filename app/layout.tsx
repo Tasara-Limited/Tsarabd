@@ -6,6 +6,13 @@ import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 
 
+import type { Metadata } from "next";
+import "./globals.css";
+// 1. Import the Script component from Next.js
+import Script from "next/script";
+
+
+
 export const dynamic = 'force-dynamic';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -84,7 +91,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* Schema.org JSON-LD for Site Name */}
+        {/* 1. AOS CSS Link */}
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+        
+        {/* Schema.org JSON-LD */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -99,6 +109,11 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
+        {/* 2. Loading Animation Component */}
+        <div id="global-loader">
+          <div className="spinner"></div>
+        </div>
+
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-Q0NG6R2H6G"
@@ -113,12 +128,26 @@ export default function RootLayout({
           `}
         </Script>
 
+        {/* 3. AOS JavaScript and Loader Cleanup */}
+        <Script
+          src="https://unpkg.com/aos@2.3.1/dist/aos.js"
+          strategy="afterInteractive"
+          onLoad={() => {
+            // Initialize AOS
+            // @ts-ignore
+            AOS.init({
+              duration: 1000,
+              once: true,
+            });
+            
+            // Hide Loader after initialization
+            const loader = document.getElementById('global-loader');
+            if (loader) {
+              loader.style.display = 'none';
+            }
+          }}
+        />
 
-
-
-
-
-        
         <Header />
         <main>{children}</main>
         <Footer />
