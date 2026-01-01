@@ -78,7 +78,6 @@ export const metadata: Metadata = {
 
 
 
-
 export default function RootLayout({
   children,
 }: {
@@ -87,7 +86,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* AOS CSS */}
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+        
+        {/* Schema.org JSON-LD */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -102,36 +104,50 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        {/* The Loader Div */}
+        {/* 1. The Loader Overlay */}
         <div id="global-loader">
           <div className="spinner"></div>
         </div>
 
-        {/* FAIL-SAFE: This script hides the white screen if the AOS script fails */}
+        {/* 2. FAIL-SAFE SCRIPT: Forces white screen to hide even if AOS fails */}
         <script dangerouslySetInnerHTML={{ __html: `
           (function() {
-            window.addEventListener('load', function() {
+            var hideLoader = function() {
               var loader = document.getElementById('global-loader');
               if (loader) { loader.style.display = 'none'; }
-            });
-            // Backup: Hide after 3 seconds no matter what
-            setTimeout(function() {
-              var loader = document.getElementById('global-loader');
-              if (loader) { loader.style.display = 'none'; }
-            }, 3000);
+            };
+            window.addEventListener('load', hideLoader);
+            setTimeout(hideLoader, 3000); // Backup: hide after 3s
           })();
         ` }} />
 
-        <GoogleAnalytics /> {/* Google Analytics scripts here */}
+        {/* 3. Your Original Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-Q0NG6R2H6G"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-Q0NG6R2H6G');
+          `}
+        </Script>
 
+        {/* 4. AOS JS and Loader Cleanup */}
         <Script
           src="https://unpkg.com/aos@2.3.1/dist/aos.js"
           strategy="afterInteractive"
           onLoad={() => {
             // @ts-ignore
             if (typeof AOS !== 'undefined') {
-              AOS.init({ duration: 1000, once: true });
+              AOS.init({
+                duration: 1000,
+                once: true,
+              });
             }
+            // Hide loader immediately once script is ready
             const loader = document.getElementById('global-loader');
             if (loader) { loader.style.display = 'none'; }
           }}
@@ -144,4 +160,3 @@ export default function RootLayout({
     </html>
   );
 }
-
