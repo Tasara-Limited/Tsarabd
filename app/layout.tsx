@@ -137,21 +137,26 @@ export default function RootLayout({
 
         {/* 4. AOS JS and Loader Cleanup */}
         <Script
-          src="https://unpkg.com/aos@2.3.1/dist/aos.js"
-          strategy="afterInteractive"
-          onLoad={() => {
-            // @ts-ignore
-            if (typeof AOS !== 'undefined') {
-              AOS.init({
-                duration: 1000,
-                once: true,
-              });
-            }
-            // Hide loader immediately once script is ready
-            const loader = document.getElementById('global-loader');
-            if (loader) { loader.style.display = 'none'; }
-          }}
-        />
+  src="https://unpkg.com/aos@2.3.1/dist/aos.js"
+  strategy="afterInteractive"
+  onLoad={() => {
+    // Access AOS via the window object to prevent TypeScript errors
+    const globalAOS = (window as any).AOS;
+    
+    if (globalAOS) {
+      globalAOS.init({
+        duration: 1000,
+        once: true,
+      });
+    }
+    
+    // Hide the white screen
+    const loader = document.getElementById('global-loader');
+    if (loader) {
+      loader.style.display = 'none';
+    }
+  }}
+/>
 
         <Header />
         <main>{children}</main>
