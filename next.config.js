@@ -3,19 +3,7 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-
-  async rewrites() {
-    return [
-      {
-        source: '/sitemap.xml',
-        destination: '/api/sitemap.xml',
-      },
-      {
-        source: '/robots.txt',
-        destination: '/api/robots.txt',
-      },
-    ];
-  },
+  // Rewrites removed to stop the redirect loop
 };
 
 module.exports = nextConfig;
