@@ -221,105 +221,85 @@ export default function ServicesPage() {
 <section id="materials-list" className="py-20 bg-white">
   <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <div className="text-center mb-16">
-      <h2 className="text-4xl font-bold text-gray-900 mb-4">
+      <h2 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">
         Materials We Supply
       </h2>
       <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-        High-quality materials for diverse industrial applications
+        High-quality plastic materials and industrial accessories for diverse applications.
       </p>
     </div>
 
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
       {[
         {
-          // Info from Box 1
-          titles: [
-            'Polypropylene (PP) – Virgin',
-            'Polystyrene (PS) – Virgin',
-            'Polyethylene (PE) – Virgin'
-          ],
+          titles: ['Polypropylene (PP) – Virgin', 'Polystyrene (PS) – Virgin', 'Polyethylene (PE) – Virgin'],
           image: '/materials/pp-material.png',
           types: ['Pellets'],
           applications: 'Packaging, automotive parts, textiles, medical devices, Bottles, films, pipes, containers, industrial products',
         },
         {
-          // Info from Box 2
-          titles: [
-            'Polypropylene (PP) – Recycled',
-            'Polystyrene (PS) – Recycled',
-            'Polyethylene (PE) – Recycled'
-          ],
+          titles: ['Polypropylene (PP) – Recycled', 'Polystyrene (PS) – Recycled', 'Polyethylene (PE) – Recycled'],
           image: '/materials/ps-material.png',
           types: ['Pellets'],
           applications: 'Packaging, automotive parts, textiles, medical devices, Bottles, films, pipes, containers, industrial products',
         },
         {
-          // Info from Box 3
-          titles: [
-            'Industrious Accessories',
-            'Leather',
-            'Leather Goods & Footwear'
-          ],
-          image: '/materials/pe-material.png', 
-          types: [
-            'Industrial & garment accessories',
-            'Raw & finished leather',
-            'Leather goods',
-            'Footwear (fashion & safety)'
-          ],
+          titles: ['Industrious Accessories', 'Leather', 'Leather Goods & Footwear'],
+          image: '/materials/pe-material.png',
+          types: ['Industrial & garment accessories', 'Raw & finished leather', 'Leather goods', 'Footwear (fashion & safety)'],
           applications: 'Garments & accessories, Bags & leather goods, Footwear manufacturing, Industrial & commercial use',
         },
       ].map((material, idx) => (
         <Card
           key={idx}
-          className="relative overflow-hidden hover:shadow-2xl transition-shadow"
+          className="group relative overflow-hidden rounded-2xl border-none transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl min-h-[520px]"
         >
           {/* Background Image - UNCHANGED */}
           <div
-            className="absolute inset-0 bg-cover bg-center"
+            className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
             style={{ backgroundImage: `url(${material.image})` }}
           />
 
-          {/* Overlay - UNCHANGED */}
-          <div className="absolute inset-0 bg-black/60" />
+          {/* Overlay - UNCHANGED (Standard dark shade) */}
+          <div className="absolute inset-0 bg-black/60 transition-opacity group-hover:bg-black/50" />
 
-          {/* Content */}
-          <div className="relative z-10 p-6">
-            <CardHeader className="p-0 mb-4">
-              <CardTitle className="text-xl text-white font-bold leading-snug">
-                {material.titles.map((title, i) => (
-                  <div key={i}>{title}</div>
-                ))}
-              </CardTitle>
-            </CardHeader>
+          {/* New Attractive Content Layout */}
+          <div className="relative z-10 h-full flex flex-col p-8 text-white">
+            <div className="mb-6">
+              {material.titles.map((title, i) => (
+                <h3 key={i} className="text-lg font-extrabold leading-tight tracking-wide mb-1 last:mb-0">
+                  {title}
+                </h3>
+              ))}
+              <div className="h-1 w-12 bg-green-500 mt-4 rounded-full" /> {/* Aesthetic accent line */}
+            </div>
 
-            <CardContent className="p-0">
-              <div className="mb-4">
-                <p className="font-semibold text-white mb-2">
-                  Available Types:
+            <div className="space-y-6">
+              <div>
+                <p className="text-xs uppercase tracking-widest text-green-400 font-bold mb-3">
+                  Available Types
                 </p>
-                <ul className="space-y-1">
+                <ul className="grid gap-2">
                   {material.types.map((type) => (
-                    <li
-                      key={type}
-                      className="flex items-center text-gray-200 text-sm"
-                    >
-                      <CheckCircle className="h-4 w-4 text-green-400 mr-2 flex-shrink-0" />
+                    <li key={type} className="flex items-center text-sm font-medium text-gray-100">
+                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-green-500/20 mr-3">
+                        <CheckCircle className="h-3 w-3 text-green-400" />
+                      </span>
                       {type}
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div>
-                <p className="font-semibold text-white mb-2 text-sm">
-                  Applications:
+              <div className="pt-6 border-t border-white/10">
+                <p className="text-xs uppercase tracking-widest text-green-400 font-bold mb-3">
+                  Industrial Applications
                 </p>
-                <p className="text-gray-200 text-sm leading-relaxed">
-                  {material.applications}
+                <p className="text-sm leading-relaxed text-gray-300 italic">
+                  "{material.applications}"
                 </p>
               </div>
-            </CardContent>
+            </div>
           </div>
         </Card>
       ))}
