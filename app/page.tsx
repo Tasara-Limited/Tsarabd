@@ -247,24 +247,25 @@ max-w-5xl lg:max-w-7xl xl:max-w-8xl mx-auto
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/100 via-black/40 to-transparent" />
 
-      {/* Content */}
-      <div className="absolute inset-0 p-5 flex flex-col justify-end">
-        {/* Sky Blue Accent Line */}
-        <div className="h-1 w-8 bg-[#73d9f5] mb-3 rounded-full group-hover:w-12 transition-all duration-500 shadow-[0_0_8px_#73d9f5]" />
+      {/* Content Container */}
+      <div className="absolute inset-0 p-6 flex flex-col justify-end">
         
         <div className="mb-1">
-          <h3 className="text-[16px] font-black text-white leading-tight">
+          {/* 🔴 Name: 18px #73d9f5 -> 19px White on Hover */}
+          <h3 className="text-[18px] font-black leading-tight transition-all duration-300 text-[#73d9f5] group-hover:text-white group-hover:text-[19px]">
             {material.name}
           </h3>
-          <p className="text-[#73d9f5] text-[11px] font-bold uppercase tracking-wider">
+          
+          {/* 🔴 Subnames: 12px White -> 13px #73d9f5 on Hover */}
+          <p className="text-[12px] font-bold uppercase tracking-wider transition-all duration-300 text-white group-hover:text-[#73d9f5] group-hover:text-[13px]">
             {material.subNames}
           </p>
         </div>
         
-        {/* Concise Types - Reveal on hover */}
+        {/* 🔴 Types: 12px Reveal on Hover */}
         <div className="max-h-0 opacity-0 group-hover:max-h-16 group-hover:opacity-100 transition-all duration-500 overflow-hidden">
           <div className="pt-2 border-t border-white/20 mt-2">
-            <p className="text-[11px] text-gray-200 font-medium leading-tight">
+            <p className="text-[12px] text-gray-200 font-medium leading-tight">
               {material.types}
             </p>
           </div>
