@@ -212,69 +212,63 @@ max-w-5xl lg:max-w-7xl xl:max-w-8xl mx-auto
 
 
 
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+   <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
   {[
     {
       name: 'Virgin Plastics',
-      titles: ['PP – Virgin', 'PS – Virgin', 'PE – Virgin'],
+      subNames: 'PP, PS, PE',
       image: '/materials/pp-material.png',
-      types: 'Pellets',
+      types: 'High-purity Pellets',
     },
     {
       name: 'Recycled Plastics',
-      titles: ['PP – Recycled', 'PS – Recycled', 'PE – Recycled'],
+      subNames: 'PP, PS, PE',
       image: '/materials/ps-material.png',
-      types: 'Regrind, Pellets, Chips',
+      types: 'Regrind, Pellets, Chips, Scraps',
     },
     {
-      name: 'Specialized Goods',
-      titles: ['Accessories', 'Leather', 'Footwear'],
+      name: 'Industrious & Leather',
+      subNames: 'Accessories & Footwear',
       image: '/materials/pe-material.png',
-      types: 'Industrial Accs, Leather & Safety Goods',
+      types: 'Garment Accs, Raw Leather, Safety Goods',
     },
   ].map((material, idx) => (
     <Link
       key={idx}
       href="/services#materials-list"
-      className="group relative overflow-hidden bg-gray-900 rounded-2xl transition-all duration-500 ease-in-out hover:scale-[1.03] hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] cursor-pointer h-64 block border border-white/5"
+      className="group relative overflow-hidden bg-gray-900 rounded-xl transition-all duration-500 ease-in-out hover:scale-[1.03] hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] cursor-pointer h-64 block"
     >
       {/* Background Image with Zoom */}
       <div 
-        className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-90"
+        className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
         style={{ backgroundImage: `url(${material.image})` }}
       />
       
-      {/* Dynamic Gradient Overlay */}
+      {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/100 via-black/40 to-transparent" />
 
-      {/* Content Area */}
+      {/* Content */}
       <div className="absolute inset-0 p-5 flex flex-col justify-end">
+        {/* Sky Blue Accent Line */}
+        <div className="h-1 w-8 bg-[#73d9f5] mb-3 rounded-full group-hover:w-12 transition-all duration-500 shadow-[0_0_8px_#73d9f5]" />
         
-        {/* Category Label (Sky Blue) */}
-        <p className="text-[#73d9f5] text-[10px] font-black uppercase tracking-[0.2em] mb-1">
-          {material.name}
-        </p>
-
-        {/* Concise Titles */}
-        <div className="mb-2">
-          {material.titles.map((title, i) => (
-            <h3 key={i} className="text-[15px] font-bold text-white leading-tight">
-              {title}
-            </h3>
-          ))}
+        <div className="mb-1">
+          <h3 className="text-[16px] font-black text-white leading-tight">
+            {material.name}
+          </h3>
+          <p className="text-[#73d9f5] text-[11px] font-bold uppercase tracking-wider">
+            {material.subNames}
+          </p>
         </div>
-
-        {/* Hover Reveal: Types only */}
-        <div className="max-h-0 opacity-0 group-hover:max-h-12 group-hover:opacity-100 transition-all duration-500 overflow-hidden">
-          <div className="pt-2 border-t border-white/20">
-            <p className="text-[12px] text-gray-200 font-medium">
-              Types: <span className="text-white font-bold">{material.types}</span>
+        
+        {/* Concise Types - Reveal on hover */}
+        <div className="max-h-0 opacity-0 group-hover:max-h-16 group-hover:opacity-100 transition-all duration-500 overflow-hidden">
+          <div className="pt-2 border-t border-white/20 mt-2">
+            <p className="text-[11px] text-gray-200 font-medium leading-tight">
+              {material.types}
             </p>
           </div>
         </div>
-
-        {/* Interactive Accent Bar */}
-        <div className="h-1 w-8 bg-[#73d9f5] rounded-full mt-2 transition-all duration-500 group-hover:w-16 shadow-[0_0_8px_rgba(115,217,245,0.4)]" />
       </div>
     </Link>
   ))}
