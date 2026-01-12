@@ -212,72 +212,85 @@ max-w-5xl lg:max-w-7xl xl:max-w-8xl mx-auto
 
 
 
-       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              {
-                titles: ['Polypropylene (PP) – Virgin', 'Polystyrene (PS) – Virgin', 'Polyethylene (PE) – Virgin'],
-                image: '/materials/pp-material.png',
-                types: 'Pellets',
-                details: 'High-purity polymers for automotive, medical, and textile manufacturing.'
-              },
-              {
-                titles: ['Polypropylene (PP) – Recycled', 'Polystyrene (PS) – Recycled', 'Polyethylene (PE) – Recycled'],
-                image: '/materials/ps-material.png',
-                types: 'Regrind, Pellets, Chips',
-                details: 'Eco-friendly sustainable materials for industrial applications and packaging.'
-              },
-              {
-                titles: ['Industrious Accessories', 'Leather', 'Leather Goods & Footwear'],
-                image: '/materials/pe-material.png',
-                types: 'Garment Accs, Raw Leather, Safety Footwear',
-                details: 'Specialized industrial accessories and premium leather goods sourcing.'
-              },
-            ].map((material, idx) => (
-              <Link
-                key={idx}
-                href="/services#materials-list"
-                className="group relative overflow-hidden bg-gray-900 rounded-[2rem] transition-all duration-500 ease-in-out hover:scale-[1.03] hover:shadow-2xl cursor-pointer h-80 block border border-white/5"
-              >
-                {/* Background Image with Hover Zoom */}
-                <div 
-                  className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110"
-                  style={{ backgroundImage: `url(${material.image})` }}
-                />
-                
-                {/* Dynamic Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent transition-opacity duration-500 group-hover:from-black/100" />
-          
-                {/* Content */}
-                <div className="absolute inset-0 p-8 flex flex-col justify-end">
-                  {/* Sky Blue Accent Line */}
-                  <div className="h-1 w-12 bg-[#73d9f5] mb-4 rounded-full transition-all duration-500 group-hover:w-20 shadow-[0_0_10px_rgba(115,217,245,0.5)]" />
-                  
-                  <div className="mb-2">
-                    {material.titles.map((title, i) => (
-                      <h3 key={i} className="text-[17px] font-black text-white leading-tight tracking-tight">
-                        {title}
-                      </h3>
-                    ))}
-                  </div>
-                  
-                  {/* Revealable Details on Hover */}
-                  <div className="max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 transition-all duration-700 ease-in-out overflow-hidden">
-                    <div className="pt-3 space-y-2 border-t border-white/10 mt-2">
-                      <p className="text-[13px] font-black uppercase tracking-widest text-[#73d9f5]">
-                        Available Types:
-                      </p>
-                      <p className="text-[14px] text-gray-200 font-bold">
-                        {material.types}
-                      </p>
-                      <p className="text-[13px] text-gray-400 font-medium leading-relaxed italic">
-                        {material.details}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            ))}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+  {[
+    {
+      category: 'Virgin Series',
+      titles: ['Polypropylene (PP)', 'Polystyrene (PS)', 'Polyethylene (PE)'],
+      image: '/materials/pp-material.png',
+      types: 'Pellets, Sheets, Custom Formulations',
+      details: 'High-purity industrial grade materials.'
+    },
+    {
+      category: 'Recycled Series',
+      titles: ['Polypropylene (PP)', 'Polystyrene (PS)', 'Polyethylene (PE)'],
+      image: '/materials/ps-material.png',
+      types: 'Regrind, Pellets, Chips, Scraps',
+      details: 'Sustainable, eco-friendly industrial solutions.'
+    },
+    {
+      category: 'Specialized Goods',
+      titles: ['Industrious Accessories', 'Leather Materials', 'Footwear Components'],
+      image: '/materials/pe-material.png',
+      types: 'Industrial Accs, Raw Leather, Safety Goods',
+      details: 'Premium sourcing for fashion and safety industries.'
+    },
+  ].map((material, idx) => (
+    <Link
+      key={idx}
+      href="/services#materials-list"
+      className="group relative overflow-hidden rounded-[2.5rem] bg-black transition-all duration-700 hover:scale-[1.02] hover:shadow-[0_20px_50px_rgba(115,217,245,0.3)] h-[450px] block"
+    >
+      {/* 🔴 Premium Background Zoom */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 ease-in-out group-hover:scale-110 opacity-80 group-hover:opacity-100"
+        style={{ backgroundImage: `url(${material.image})` }}
+      />
+      
+      {/* 🔴 High-End Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+
+      {/* Content Container */}
+      <div className="absolute inset-0 p-10 flex flex-col justify-end">
+        
+        {/* Sky Blue Label */}
+        <p className="text-[#73d9f5] text-[12px] font-black uppercase tracking-[0.3em] mb-3 translate-y-4 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+          {material.category}
+        </p>
+
+        {/* Titles with subtle spacing */}
+        <div className="space-y-1 mb-4">
+          {material.titles.map((title, i) => (
+            <h3 key={i} className="text-xl font-extrabold text-white leading-tight tracking-tight">
+              {title}
+            </h3>
+          ))}
+        </div>
+
+        {/* 🔴 Interactive "Glass" Reveal Footer */}
+        <div className="max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 transition-all duration-700 ease-in-out overflow-hidden">
+          <div className="pt-4 border-t border-white/20 mt-2">
+            <p className="text-[14px] text-gray-200 font-bold mb-1">
+              {material.types}
+            </p>
+            <p className="text-[13px] text-gray-400 font-medium italic mb-4">
+              {material.details}
+            </p>
+            
+            {/* The bridge link to services */}
+            <div className="flex items-center text-[#73d9f5] text-[13px] font-black uppercase tracking-widest">
+              View Services 
+              <span className="ml-2 transition-transform duration-300 group-hover:translate-x-2">→</span>
+            </div>
           </div>
+        </div>
+
+        {/* Default Static Accent Bar (disappears on hover) */}
+        <div className="h-1 w-12 bg-[#73d9f5] rounded-full group-hover:opacity-0 transition-opacity duration-300" />
+      </div>
+    </Link>
+  ))}
+</div>
                         
 </div>
 
