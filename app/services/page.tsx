@@ -242,7 +242,15 @@ export default function ServicesPage() {
         {
           titles: ['Polypropylene (PP) – Recycled', 'Polystyrene (PS) – Recycled', 'Polyethylene (PE) – Recycled'],
           image: '/materials/ps-material.png',
-          types: ['Pellets'],
+          types: [
+            'Pellets',
+            'Sheets',
+            'Custom Formulations',
+            'Chips',
+            'Scraps',
+            'Regrind',
+            'Crush/Kucha(Bengali)',
+          ],
           applications: 'Packaging, automotive parts, textiles, medical devices, Bottles, films, pipes, containers, industrial products',
         },
         {
