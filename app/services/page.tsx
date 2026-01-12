@@ -220,15 +220,6 @@ export default function ServicesPage() {
 
 <section id="materials-list" className="py-20 bg-white">
   <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="text-center mb-16">
-      <h2 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">
-        Materials We Supply
-      </h2>
-      <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-        High-quality plastic materials and industrial accessories for diverse applications.
-      </p>
-    </div>
-
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
       {[
         {
@@ -250,53 +241,46 @@ export default function ServicesPage() {
           applications: 'Garments & accessories, Bags & leather goods, Footwear manufacturing, Industrial & commercial use',
         },
       ].map((material, idx) => (
-        <Card
-          key={idx}
-          className="group relative overflow-hidden rounded-2xl border-none transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl min-h-[520px]"
-        >
-          {/* Background Image - UNCHANGED */}
-          <div
-            className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-            style={{ backgroundImage: `url(${material.image})` }}
-          />
+        <Card key={idx} className="relative overflow-hidden rounded-3xl border-none h-full min-h-[500px]">
+          {/* Background & Overlay - UNCHANGED */}
+          <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${material.image})` }} />
+          <div className="absolute inset-0 bg-black/70" />
 
-          {/* Overlay - UNCHANGED (Standard dark shade) */}
-          <div className="absolute inset-0 bg-black/60 transition-opacity group-hover:bg-black/50" />
-
-          {/* New Attractive Content Layout */}
-          <div className="relative z-10 h-full flex flex-col p-8 text-white">
-            <div className="mb-6">
+          {/* High-Contrast Content */}
+          <div className="relative z-10 p-8 flex flex-col h-full text-white">
+            <div className="mb-8">
               {material.titles.map((title, i) => (
-                <h3 key={i} className="text-lg font-extrabold leading-tight tracking-wide mb-1 last:mb-0">
+                <h3 key={i} className="text-xl font-black leading-tight tracking-tight mb-1">
                   {title}
                 </h3>
               ))}
-              <div className="h-1 w-12 bg-green-500 mt-4 rounded-full" /> {/* Aesthetic accent line */}
+              {/* Green accent line for better visual structure */}
+              <div className="h-1 w-16 bg-green-500 mt-4 rounded-full" />
             </div>
 
-            <div className="space-y-6">
+            <div className="space-y-8">
               <div>
-                <p className="text-xs uppercase tracking-widest text-green-400 font-bold mb-3">
+                {/* Brightened and Uppercase Label for Clarity */}
+                <p className="text-xs font-black uppercase tracking-widest text-green-400 mb-4">
                   Available Types
                 </p>
-                <ul className="grid gap-2">
+                <ul className="space-y-3">
                   {material.types.map((type) => (
-                    <li key={type} className="flex items-center text-sm font-medium text-gray-100">
-                      <span className="flex h-5 w-5 items-center justify-center rounded-full bg-green-500/20 mr-3">
-                        <CheckCircle className="h-3 w-3 text-green-400" />
-                      </span>
+                    <li key={type} className="flex items-center text-sm font-bold text-white">
+                      <CheckCircle className="h-4 w-4 text-green-400 mr-3 flex-shrink-0" />
                       {type}
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="pt-6 border-t border-white/10">
-                <p className="text-xs uppercase tracking-widest text-green-400 font-bold mb-3">
+              <div className="pt-6 border-t border-white/20">
+                {/* Brightened and Uppercase Label for Clarity */}
+                <p className="text-xs font-black uppercase tracking-widest text-green-400 mb-4">
                   Industrial Applications
                 </p>
-                <p className="text-sm leading-relaxed text-gray-300 italic">
-                  "{material.applications}"
+                <p className="text-[15px] leading-relaxed text-gray-100 font-medium">
+                  {material.applications}
                 </p>
               </div>
             </div>
@@ -306,7 +290,6 @@ export default function ServicesPage() {
     </div>
   </div>
 </section>
-
 
 
 
