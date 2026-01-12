@@ -255,67 +255,24 @@ export default function ServicesPage() {
       ].map((material, idx) => (
         <Card 
           key={idx} 
-          className="group relative overflow-hidden rounded-[2rem] border-none h-full min-h-[520px] transition-all duration-500 shadow-xl"
+          className="group relative overflow-hidden rounded-[2.5rem] border-none h-full min-h-[520px] transition-all duration-500 shadow-xl"
         >
-          {/* Background Zoom Effect */}
+          {/* 🔴 Background Image with Smooth Zoom */}
           <div 
-            className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110" 
+            className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 ease-out group-hover:scale-110" 
             style={{ backgroundImage: `url(${material.image})` }} 
           />
           
-          {/* Deep Dark Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/90" />
+          {/* Deep Dark Overlay for Maximum Contrast */}
+          <div className="absolute inset-0 bg-black/75 transition-opacity duration-500 group-hover:bg-black/70" />
 
           <div className="relative z-10 p-10 flex flex-col h-full text-white">
             
-            {/* 🔴 NEW BLUE ACCENT TITLE SECTION */}
+            {/* 🔴 Title Section with New Sky Blue Accent */}
             <div className="mb-10">
               <div className="flex flex-col gap-1.5">
                 {material.titles.map((title, i) => (
                   <h3 key={i} className="text-[21px] font-black tracking-tight leading-tight">
-                    {title}
-                  </h3>
-                ))}
-              </div>
-              
-              {/* Using your #0089bf hex color here */}
-              <div className="mt-5 h-1.5 w-16 rounded-full bg-[#0089bf] shadow-[0_0_10px_rgba(0,137,191,0.5)] transition-all duration-300 group-hover:w-24" />
-            </div>
-
-            <div className="space-y-10">
-              <div>
-                {/* Available Types Label in Blue */}
-                <p className="text-[13px] font-black uppercase tracking-[0.2em] text-[#0089bf] mb-5">
-                  Available Types
-                </p>
-                <ul className="space-y-4">
-                  {material.types.map((type) => (
-                    <li key={type} className="flex items-center text-[17px] font-bold text-white">
-                      {/* CheckCircle in Blue */}
-                      <CheckCircle className="h-5 w-5 text-[#0089bf] mr-3 flex-shrink-0" />
-                      {type}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="pt-8 border-t border-white/10">
-                {/* Industrial Applications Label in Blue */}
-                <p className="text-[13px] font-black uppercase tracking-[0.2em] text-[#0089bf] mb-5">
-                  Industrial Applications
-                </p>
-                <p className="text-[16px] leading-relaxed text-gray-200 font-semibold italic">
-                  "{material.applications}"
-                </p>
-              </div>
-            </div>
-          </div>
-        </Card>
-      ))}
-    </div>
-  </div>
-</section>
-
 
       
 
