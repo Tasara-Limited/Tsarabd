@@ -217,6 +217,7 @@ export default function ServicesPage() {
 
 
       
+
 <section id="materials-list" className="py-20 bg-white">
   <div className="container mx-auto px-4 sm:px-6 lg:px-8">
     <div className="text-center mb-16">
@@ -224,101 +225,81 @@ export default function ServicesPage() {
         Materials We Supply
       </h2>
       <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-        High-quality plastic materials for diverse industrial applications
+        High-quality industrial materials and accessories
       </p>
     </div>
 
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
       {[
         {
-          name: 'Polypropylene (PP) – Recycled & Virgin',
-          // 🔴 NEW
-          image: '/materials/pp-material.png',
-          types: [
-            'Pellets',
-            'Sheets',
-            'Custom Formulations',
-            'Chips',
-            'Scraps',
-            'Regrind',
-            'Crush/Kucha(Bengali)',
+          name: [
+            'Polypropylene (PP) – Virgin',
+            'Polystyrene (PS) – Virgin',
+            'Polyethylene (PE) – Virgin'
           ],
-          applications:
-            'Packaging, automotive parts, textiles, medical devices',
+          types: ['Pellets'],
+          applications: 'Packaging, automotive parts, textiles, medical devices, Bottles, films, pipes, containers, industrial products',
+          bgColor: 'bg-[#919191]' // Matches the grey in your screenshot
         },
         {
-          name: 'Polystyrene (PS)',
-          // 🔴 NEW
-          image: '/materials/ps-material.png',
-          types: [
-            'Pellets',
-            'Sheets',
-            'Custom Formulations',
-            'Chips',
-            'Scraps',
-            'Regrind',
-            'Crush/Kucha(Bengali)',
+          name: [
+            'Polypropylene (PP) – Recycled',
+            'Polystyrene (PS) – Recycled',
+            'Polyethylene (PE) – Recycled'
           ],
-          applications:
-            'Packaging, insulation, disposable products, consumer goods',
+          types: ['Pellets'],
+          applications: 'Packaging, automotive parts, textiles, medical devices, Bottles, films, pipes, containers, industrial products',
+          bgColor: 'bg-[#919191]'
         },
         {
-          name: 'Polyethylene (PE)',
-          // 🔴 NEW
-          image: '/materials/pe-material.png',
-          types: ['HDPE', 'LDPE', 'LLDPE', 'Recycle (HDPE, LDPE)'],
-          applications:
-            'Bottles, films, pipes, containers, industrial products',
+          name: [
+            'Industrious Accessories',
+            'Leather',
+            'Leather Goods & Footwear'
+          ],
+          types: [
+            'Industrial & garment accessories',
+            'Raw & finished leather',
+            'Leather goods',
+            'Footwear (fashion & safety)'
+          ],
+          applications: 'Garments & accessories, Bags & leather goods, Footwear manufacturing, Industrial & commercial use',
+          bgColor: 'bg-[#919191]'
         },
-      ].map((material) => (
+      ].map((material, index) => (
         <Card
-          key={material.name}
-          className="relative overflow-hidden hover:shadow-2xl transition-shadow"
+          key={index}
+          /* Updated styling: rounded corners and background color from image */
+          className={`relative overflow-hidden rounded-[3rem] border-none ${material.bgColor} p-8 min-h-[500px] text-white shadow-lg`}
         >
-          {/* 🔴 Background Image */}
-          <div
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${material.image})` }}
-          />
+          <div className="relative z-10 flex flex-col h-full">
+            <div className="text-center mb-8">
+              {/* Maps through the multiple names per box */}
+              {material.name.map((line, i) => (
+                <h3 key={i} className="text-lg font-bold leading-tight">
+                  {line}
+                </h3>
+              ))}
+            </div>
 
-          {/* 🔴 Overlay */}
-          <div className="absolute inset-0 bg-black/60" />
+            <div className="mb-8">
+              <p className="font-semibold mb-3">Available Types:</p>
+              <ul className="space-y-2">
+                {material.types.map((type) => (
+                  <li key={type} className="flex items-start text-sm">
+                    <span className="mr-2">•</span>
+                    {type}
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Content */}
-          <div className="relative z-10">
-            <CardHeader>
-              <CardTitle className="text-2xl text-white">
-                {material.name}
-              </CardTitle>
-            </CardHeader>
-
-            <CardContent>
-              <div className="mb-4">
-                <p className="font-semibold text-white mb-2">
-                  Available Types:
-                </p>
-                <ul className="space-y-1">
-                  {material.types.map((type) => (
-                    <li
-                      key={type}
-                      className="flex items-center text-gray-200"
-                    >
-                      <CheckCircle className="h-4 w-4 text-green-400 mr-2 flex-shrink-0" />
-                      {type}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div>
-                <p className="font-semibold text-white mb-2">
-                  Applications:
-                </p>
-                <p className="text-gray-200 text-sm">
-                  {material.applications}
-                </p>
-              </div>
-            </CardContent>
+            <div className="mt-auto">
+              <p className="font-semibold mb-2">Applications:</p>
+              <p className="text-sm leading-relaxed">
+                {material.applications}
+              </p>
+            </div>
           </div>
         </Card>
       ))}
