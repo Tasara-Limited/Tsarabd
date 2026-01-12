@@ -212,81 +212,75 @@ max-w-5xl lg:max-w-7xl xl:max-w-8xl mx-auto
 
 
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
   {[
     {
       category: 'Virgin Series',
-      titles: ['Polypropylene (PP)', 'Polystyrene (PS)', 'Polyethylene (PE)'],
+      titles: ['PP – Virgin', 'PS – Virgin', 'PE – Virgin'],
       image: '/materials/pp-material.png',
-      types: 'Pellets, Sheets, Custom Formulations',
-      details: 'High-purity industrial grade materials.'
+      types: 'Pellets, Sheets, Custom',
+      details: 'High-purity industrial polymers.'
     },
     {
       category: 'Recycled Series',
-      titles: ['Polypropylene (PP)', 'Polystyrene (PS)', 'Polyethylene (PE)'],
+      titles: ['PP – Recycled', 'PS – Recycled', 'PE – Recycled'],
       image: '/materials/ps-material.png',
-      types: 'Regrind, Pellets, Chips, Scraps',
-      details: 'Sustainable, eco-friendly industrial solutions.'
+      types: 'Regrind, Pellets, Chips',
+      details: 'Sustainable industrial solutions.'
     },
     {
       category: 'Specialized Goods',
-      titles: ['Industrious Accessories', 'Leather Materials', 'Footwear Components'],
+      titles: ['Accessories', 'Leather', 'Footwear'],
       image: '/materials/pe-material.png',
-      types: 'Industrial Accs, Raw Leather, Safety Goods',
-      details: 'Premium sourcing for fashion and safety industries.'
+      types: 'Industrial & Garment Accs',
+      details: 'Premium sourcing & safety goods.'
     },
   ].map((material, idx) => (
     <Link
       key={idx}
       href="/services#materials-list"
-      className="group relative overflow-hidden rounded-[2.5rem] bg-black transition-all duration-700 hover:scale-[1.02] hover:shadow-[0_20px_50px_rgba(115,217,245,0.3)] h-[450px] block"
+      className="group relative overflow-hidden rounded-2xl bg-black transition-all duration-500 hover:scale-105 hover:shadow-2xl cursor-pointer h-64 block"
     >
-      {/* 🔴 Premium Background Zoom */}
+      {/* Background Image with Hover Zoom */}
       <div 
-        className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 ease-in-out group-hover:scale-110 opacity-80 group-hover:opacity-100"
+        className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-in-out group-hover:scale-110 opacity-70 group-hover:opacity-90"
         style={{ backgroundImage: `url(${material.image})` }}
       />
       
-      {/* 🔴 High-End Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+      {/* Dark Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/100 via-black/40 to-transparent" />
 
-      {/* Content Container */}
-      <div className="absolute inset-0 p-10 flex flex-col justify-end">
+      {/* Content */}
+      <div className="absolute inset-0 p-5 flex flex-col justify-end">
         
-        {/* Sky Blue Label */}
-        <p className="text-[#73d9f5] text-[12px] font-black uppercase tracking-[0.3em] mb-3 translate-y-4 opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+        {/* Category Label (Small & Bright) */}
+        <p className="text-[#73d9f5] text-[10px] font-black uppercase tracking-widest mb-1">
           {material.category}
         </p>
 
-        {/* Titles with subtle spacing */}
-        <div className="space-y-1 mb-4">
+        {/* Titles (Compact Font Size) */}
+        <div className="mb-2">
           {material.titles.map((title, i) => (
-            <h3 key={i} className="text-xl font-extrabold text-white leading-tight tracking-tight">
+            <h3 key={i} className="text-[15px] font-bold text-white leading-tight">
               {title}
             </h3>
           ))}
         </div>
 
-        {/* 🔴 Interactive "Glass" Reveal Footer */}
-        <div className="max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 transition-all duration-700 ease-in-out overflow-hidden">
-          <div className="pt-4 border-t border-white/20 mt-2">
-            <p className="text-[14px] text-gray-200 font-bold mb-1">
+        {/* Concise Info - appears on hover */}
+        <div className="max-h-0 opacity-0 group-hover:max-h-20 group-hover:opacity-100 transition-all duration-500 overflow-hidden">
+          <div className="pt-2 border-t border-white/20">
+            <p className="text-[11px] text-gray-200 font-bold leading-none mb-1">
               {material.types}
             </p>
-            <p className="text-[13px] text-gray-400 font-medium italic mb-4">
+            <p className="text-[10px] text-gray-400 italic">
               {material.details}
             </p>
-            
-            {/* The bridge link to services */}
-            <div className="flex items-center text-[#73d9f5] text-[13px] font-black uppercase tracking-widest">
-              View Services 
-              <span className="ml-2 transition-transform duration-300 group-hover:translate-x-2">→</span>
-            </div>
           </div>
         </div>
 
-        {/* Default Static Accent Bar (disappears on hover) */}
-        <div className="h-1 w-12 bg-[#73d9f5] rounded-full group-hover:opacity-0 transition-opacity duration-300" />
+        {/* Static Accent Bar */}
+        <div className="h-1 w-8 bg-[#73d9f5] rounded-full mt-2 group-hover:w-16 transition-all duration-500" />
       </div>
     </Link>
   ))}
