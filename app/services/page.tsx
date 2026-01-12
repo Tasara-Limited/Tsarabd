@@ -220,6 +220,16 @@ export default function ServicesPage() {
 
 <section id="materials-list" className="py-20 bg-white">
   <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div className="text-center mb-16">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            Materials We Supply
+          </h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            High-quality plastic materials for diverse industrial applications
+          </p>
+    </div>
+    
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
       {[
         {
@@ -241,46 +251,53 @@ export default function ServicesPage() {
           applications: 'Garments & accessories, Bags & leather goods, Footwear manufacturing, Industrial & commercial use',
         },
       ].map((material, idx) => (
-        <Card key={idx} className="relative overflow-hidden rounded-3xl border-none h-full min-h-[500px]">
-          {/* Background & Overlay - UNCHANGED */}
-          <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${material.image})` }} />
+        <Card 
+          key={idx} 
+          className="group relative overflow-hidden rounded-3xl border-none h-full min-h-[520px] transition-all duration-500 hover:shadow-2xl"
+        >
+          {/* 🔴 Background Image with Hover Zoom */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110" 
+            style={{ backgroundImage: `url(${material.image})` }} 
+          />
+          
+          {/* Overlay - UNCHANGED */}
           <div className="absolute inset-0 bg-black/70" />
 
-          {/* High-Contrast Content */}
-          <div className="relative z-10 p-8 flex flex-col h-full text-white">
+          {/* Content Layer */}
+          <div className="relative z-10 p-9 flex flex-col h-full text-white">
             <div className="mb-8">
               {material.titles.map((title, i) => (
                 <h3 key={i} className="text-xl font-black leading-tight tracking-tight mb-1">
                   {title}
                 </h3>
               ))}
-              {/* Green accent line for better visual structure */}
-              <div className="h-1 w-16 bg-green-500 mt-4 rounded-full" />
+              <div className="h-1.5 w-16 bg-green-500 mt-4 rounded-full" />
             </div>
 
-            <div className="space-y-8">
+            <div className="space-y-10">
               <div>
-                {/* Brightened and Uppercase Label for Clarity */}
-                <p className="text-xs font-black uppercase tracking-widest text-green-400 mb-4">
+                {/* 🔴 Increased Label Size & Contrast */}
+                <p className="text-[13px] font-black uppercase tracking-[0.15em] text-green-400 mb-5">
                   Available Types
                 </p>
-                <ul className="space-y-3">
+                <ul className="space-y-4">
                   {material.types.map((type) => (
-                    <li key={type} className="flex items-center text-sm font-bold text-white">
-                      <CheckCircle className="h-4 w-4 text-green-400 mr-3 flex-shrink-0" />
+                    <li key={type} className="flex items-center text-[16px] font-bold text-white">
+                      <CheckCircle className="h-5 w-5 text-green-400 mr-3 flex-shrink-0" />
                       {type}
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="pt-6 border-t border-white/20">
-                {/* Brightened and Uppercase Label for Clarity */}
-                <p className="text-xs font-black uppercase tracking-widest text-green-400 mb-4">
+              <div className="pt-8 border-t border-white/30">
+                {/* 🔴 Increased Label Size & Contrast */}
+                <p className="text-[13px] font-black uppercase tracking-[0.15em] text-green-400 mb-5">
                   Industrial Applications
                 </p>
-                <p className="text-[15px] leading-relaxed text-gray-100 font-medium">
-                  {material.applications}
+                <p className="text-[16px] leading-relaxed text-gray-100 font-semibold italic">
+                  "{material.applications}"
                 </p>
               </div>
             </div>
