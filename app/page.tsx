@@ -212,68 +212,76 @@ max-w-5xl lg:max-w-7xl xl:max-w-8xl mx-auto
 
 
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-  {[
-    {
-      name: 'Polypropylene(PP)',
-      
-      image: '/materials/pp-material.png', // Rename your file to pp.png in public/materials/
-      types: 'Pellets, Sheets, Chips, Scraps, Regrind',
-      details: 'Ideal for automotive parts and textiles.'
-    },
-    {
-      name: 'Polystyrene(PS)',
-     
-      image: '/materials/ps-material.png', // Rename your file to ps.png in public/materials/
-      types: 'Pellets, Sheets, Custom Formulations',
-      details: 'Perfect for insulation and consumer goods.'
-    },
-    {
-      name: 'Polyethylene(PE)',
-      
-      image: '/materials/pe-material.png', // Rename your file to pe.png in public/materials/
-      types: 'HDPE, LDPE, LLDPE, Recycle',
-      details: 'Used for bottles, films, and industrial pipes.'
-    },
-  ].map((material) => (
-  
-    <Link
-      key={material.name}
-      href="/services#materials-list"
-      className="group relative overflow-hidden bg-gray-800 rounded-xl transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl cursor-pointer h-64 block"
-    >
-      {/* Background Image - Ensure file exists in public/materials/ */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
-        style={{ backgroundImage: `url(${material.image})` }}
-      />
-      
-      {/* Gradient Overlay - Fixed the "Black Box" issue by making it dynamic */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
-
-      {/* Content */}
-      <div className="absolute inset-0 p-6 flex flex-col justify-end">
-        <h3 className="text-xl font-bold text-brand-400 mb-2 group-hover:text-white transition-colors">
-          {material.name}
-        </h3>
-        
-        {/* Hidden Details that appear on hover */}
-        <div className="max-h-0 opacity-0 group-hover:max-h-32 group-hover:opacity-100 transition-all duration-500 overflow-hidden">
-          <p className="text-sm text-gray-300 mb-2">{material.types}</p>
-          <p className="text-xs text-brand-300 font-medium">{material.details}</p>
-        </div>
-      </div>
-    </Link>
-  ))}
+       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                titles: ['Polypropylene (PP) – Virgin', 'Polystyrene (PS) – Virgin', 'Polyethylene (PE) – Virgin'],
+                image: '/materials/pp-material.png',
+                types: 'Pellets',
+                details: 'High-purity polymers for automotive, medical, and textile manufacturing.'
+              },
+              {
+                titles: ['Polypropylene (PP) – Recycled', 'Polystyrene (PS) – Recycled', 'Polyethylene (PE) – Recycled'],
+                image: '/materials/ps-material.png',
+                types: 'Regrind, Pellets, Chips',
+                details: 'Eco-friendly sustainable materials for industrial applications and packaging.'
+              },
+              {
+                titles: ['Industrious Accessories', 'Leather', 'Leather Goods & Footwear'],
+                image: '/materials/pe-material.png',
+                types: 'Garment Accs, Raw Leather, Safety Footwear',
+                details: 'Specialized industrial accessories and premium leather goods sourcing.'
+              },
+            ].map((material, idx) => (
+              <Link
+                key={idx}
+                href="/services#materials-list"
+                className="group relative overflow-hidden bg-gray-900 rounded-[2rem] transition-all duration-500 ease-in-out hover:scale-[1.03] hover:shadow-2xl cursor-pointer h-80 block border border-white/5"
+              >
+                {/* Background Image with Hover Zoom */}
+                <div 
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 group-hover:scale-110"
+                  style={{ backgroundImage: `url(${material.image})` }}
+                />
+                
+                {/* Dynamic Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent transition-opacity duration-500 group-hover:from-black/100" />
+          
+                {/* Content */}
+                <div className="absolute inset-0 p-8 flex flex-col justify-end">
+                  {/* Sky Blue Accent Line */}
+                  <div className="h-1 w-12 bg-[#73d9f5] mb-4 rounded-full transition-all duration-500 group-hover:w-20 shadow-[0_0_10px_rgba(115,217,245,0.5)]" />
+                  
+                  <div className="mb-2">
+                    {material.titles.map((title, i) => (
+                      <h3 key={i} className="text-[17px] font-black text-white leading-tight tracking-tight">
+                        {title}
+                      </h3>
+                    ))}
+                  </div>
+                  
+                  {/* Revealable Details on Hover */}
+                  <div className="max-h-0 opacity-0 group-hover:max-h-40 group-hover:opacity-100 transition-all duration-700 ease-in-out overflow-hidden">
+                    <div className="pt-3 space-y-2 border-t border-white/10 mt-2">
+                      <p className="text-[13px] font-black uppercase tracking-widest text-[#73d9f5]">
+                        Available Types:
+                      </p>
+                      <p className="text-[14px] text-gray-200 font-bold">
+                        {material.types}
+                      </p>
+                      <p className="text-[13px] text-gray-400 font-medium leading-relaxed italic">
+                        {material.details}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+                        
 </div>
 
-
-
-
-              
-            </div>
-
-            <div>
+        <div>
               <h3 className="text-3xl font-bold mb-6">Industries We Serve</h3>
               <div className="grid grid-cols-2 gap-4">
                 {[
