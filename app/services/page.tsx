@@ -273,6 +273,48 @@ export default function ServicesPage() {
               <div className="flex flex-col gap-1.5">
                 {material.titles.map((title, i) => (
                   <h3 key={i} className="text-[21px] font-black tracking-tight leading-tight">
+                    {title}
+                  </h3>
+                ))}
+              </div>
+              
+              {/* Accent Bar with #73d9f5 and a Glow effect */}
+              <div className="mt-5 h-1.5 w-14 rounded-full bg-[#73d9f5] shadow-[0_0_15px_rgba(115,217,245,0.6)] transition-all duration-500 group-hover:w-24" />
+            </div>
+
+            <div className="space-y-10">
+              <div>
+                {/* Available Types Label in Sky Blue */}
+                <p className="text-[13px] font-black uppercase tracking-[0.25em] text-[#73d9f5] mb-5">
+                  Available Types
+                </p>
+                <ul className="space-y-4">
+                  {material.types.map((type) => (
+                    <li key={type} className="flex items-center text-[17px] font-bold text-white">
+                      {/* Check icon updated to sky blue */}
+                      <CheckCircle className="h-5 w-5 text-[#73d9f5] mr-3 flex-shrink-0" />
+                      {type}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="pt-8 border-t border-white/10">
+                {/* Applications Label in Sky Blue */}
+                <p className="text-[13px] font-black uppercase tracking-[0.25em] text-[#73d9f5] mb-5">
+                  Industrial Applications
+                </p>
+                <p className="text-[16px] leading-relaxed text-gray-100 font-semibold italic">
+                  "{material.applications}"
+                </p>
+              </div>
+            </div>
+          </div>
+        </Card>
+      ))}
+    </div>
+  </div>
+</section>
 
       
 
