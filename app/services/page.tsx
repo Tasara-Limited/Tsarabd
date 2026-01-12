@@ -231,7 +231,6 @@ export default function ServicesPage() {
     </div>
 
     
-
     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
       {[
         {
@@ -255,50 +254,55 @@ export default function ServicesPage() {
       ].map((material, idx) => (
         <Card 
           key={idx} 
-          className="group relative overflow-hidden rounded-3xl border-none h-full min-h-[520px] transition-all duration-500 hover:shadow-2xl"
+          className="group relative overflow-hidden rounded-3xl border-none h-full min-h-[520px] transition-all duration-500 shadow-xl hover:shadow-2xl"
         >
-          {/* 🔴 Background Image with Hover Zoom */}
+          {/* Background Zoom Effect */}
           <div 
-            className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-110" 
+            className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 ease-out group-hover:scale-110" 
             style={{ backgroundImage: `url(${material.image})` }} 
           />
           
-          {/* Overlay - UNCHANGED */}
-          <div className="absolute inset-0 bg-black/70" />
+          {/* Deep Dark Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/40" />
 
-          {/* Content Layer */}
           <div className="relative z-10 p-9 flex flex-col h-full text-white">
-            <div className="mb-8">
-              {material.titles.map((title, i) => (
-                <h3 key={i} className="text-xl font-black leading-tight tracking-tight mb-1">
-                  {title}
-                </h3>
-              ))}
-              <div className="h-1.5 w-16 bg-green-500 mt-4 rounded-full" />
+            
+            {/* 🔴 ATTRACTIVE TITLE SECTION */}
+            <div className="mb-10">
+              <div className="flex flex-col gap-1">
+                {material.titles.map((title, i) => (
+                  <h3 key={i} className="text-[22px] font-extrabold tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-gray-400">
+                    {title}
+                  </h3>
+                ))}
+              </div>
+              
+              {/* Animated Accent Bar */}
+              <div className="relative mt-5 h-1.5 w-20 overflow-hidden rounded-full bg-gray-800">
+                <div className="absolute inset-0 w-full bg-gradient-to-r from-green-500 to-emerald-400 transition-transform duration-500 group-hover:translate-x-2" />
+              </div>
             </div>
 
             <div className="space-y-10">
               <div>
-                {/* 🔴 Increased Label Size & Contrast */}
-                <p className="text-[13px] font-black uppercase tracking-[0.15em] text-green-400 mb-5">
+                <p className="text-[13px] font-black uppercase tracking-[0.2em] text-green-400 mb-5">
                   Available Types
                 </p>
                 <ul className="space-y-4">
                   {material.types.map((type) => (
-                    <li key={type} className="flex items-center text-[16px] font-bold text-white">
-                      <CheckCircle className="h-5 w-5 text-green-400 mr-3 flex-shrink-0" />
+                    <li key={type} className="flex items-center text-[17px] font-bold text-white group-hover:text-green-50 transition-colors">
+                      <CheckCircle className="h-5 w-5 text-green-500 mr-3 flex-shrink-0 shadow-sm" />
                       {type}
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="pt-8 border-t border-white/30">
-                {/* 🔴 Increased Label Size & Contrast */}
-                <p className="text-[13px] font-black uppercase tracking-[0.15em] text-green-400 mb-5">
+              <div className="pt-8 border-t border-white/10">
+                <p className="text-[13px] font-black uppercase tracking-[0.2em] text-green-400 mb-5">
                   Industrial Applications
                 </p>
-                <p className="text-[16px] leading-relaxed text-gray-100 font-semibold italic">
+                <p className="text-[16px] leading-relaxed text-gray-200 font-medium italic">
                   "{material.applications}"
                 </p>
               </div>
@@ -309,7 +313,6 @@ export default function ServicesPage() {
     </div>
   </div>
 </section>
-
 
 
       
