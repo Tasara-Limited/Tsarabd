@@ -232,7 +232,7 @@ export default function ServicesPage() {
 
     
 
-<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div className="grid grid-cols-1 md:grid-cols-3 gap-10 p-6">
   {[
     {
       category: 'Virgin',
@@ -258,59 +258,64 @@ export default function ServicesPage() {
   ].map((item, idx) => (
     <Card 
       key={idx} 
-      className="group relative overflow-hidden rounded-[2.5rem] border-none h-full min-h-[520px] transition-all duration-500 shadow-xl"
+      className="group relative overflow-hidden rounded-[3rem] border-none h-full min-h-[580px] transition-all duration-700 hover:shadow-2xl hover:-translate-y-2"
     >
-      {/* Background Image */}
+      {/* Background Image with Parallax-style Zoom */}
       <div 
         className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 ease-out group-hover:scale-110" 
         style={{ backgroundImage: `url(${item.image})` }} 
       />
       
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/75 transition-opacity duration-500 group-hover:bg-black/80" />
+      {/* Layered Gradient Overlay for Depth */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/70 to-black/90" />
 
-      <div className="relative z-10 p-10 flex flex-col h-full text-white">
+      <div className="relative z-10 p-12 flex flex-col h-full text-white">
         
-        {/* Category Header - Solway font */}
-        <div className="mb-8 text-center">
-          <h2 className="text-3xl font-bold tracking-wide" style={{ fontFamily: "'Solway', serif" }}>
+        {/* Category Header - Solway Bold */}
+        <div className="mb-10 text-center">
+          <h2 className="text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400" 
+              style={{ fontFamily: "'Solway', serif" }}>
             {item.category}
           </h2>
         </div>
 
         {/* Materials List - Arimo font */}
-        <div className="mb-10">
-          <ul className="space-y-1">
+        <div className="mb-12 flex-grow">
+          <ul className="space-y-3">
             {item.materials.map((material, i) => (
-              <li key={i} className="text-[18px] leading-tight" style={{ fontFamily: "'Arimo', sans-serif" }}>
-                {i + 1}. {material}
+              <li key={i} className="text-[20px] font-medium opacity-90 hover:opacity-100 transition-opacity" 
+                  style={{ fontFamily: "'Arimo', sans-serif" }}>
+                <span className="text-[#73d9f5] mr-3 font-bold">{i + 1}.</span> {material}
               </li>
             ))}
           </ul>
         </div>
 
-        <div className="space-y-8">
+        <div className="space-y-10">
+          {/* Types Section - Montserrat */}
           <div>
-            {/* Available Types Label - Montserrat font */}
-            <p className="text-[14px] font-bold tracking-wider mb-4" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-              Available Types:
+            <p className="text-[12px] font-black uppercase tracking-[0.3em] text-[#73d9f5] mb-4" 
+               style={{ fontFamily: "'Montserrat', sans-serif" }}>
+              Available Types
             </p>
-            <ul className="space-y-3">
+            <ul className="grid grid-cols-1 gap-2">
               {item.types.map((type) => (
-                <li key={type} className="flex items-center text-[16px] text-gray-200">
-                  <span className="mr-2 h-1.5 w-1.5 rounded-full bg-white flex-shrink-0" />
+                <li key={type} className="flex items-center text-[15px] text-gray-200">
+                  <div className="h-1.5 w-1.5 rounded-full bg-[#73d9f5] mr-3 shadow-[0_0_8px_#73d9f5]" />
                   {type}
                 </li>
               ))}
             </ul>
           </div>
 
+          {/* Applications Section - DM Sans */}
           <div>
-            {/* Applications Label & Text - DM Sans font */}
-            <p className="text-[14px] font-bold tracking-wider mb-3" style={{ fontFamily: "'DM Sans', sans-serif" }}>
-              Applications:
+            <p className="text-[12px] font-black uppercase tracking-[0.3em] text-[#73d9f5] mb-4" 
+               style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              Applications
             </p>
-            <p className="text-[15px] leading-relaxed text-gray-300" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+            <p className="text-[15px] leading-relaxed text-gray-300 font-medium" 
+               style={{ fontFamily: "'DM Sans', sans-serif" }}>
               {item.applications}
             </p>
           </div>
