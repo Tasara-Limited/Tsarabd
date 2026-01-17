@@ -218,40 +218,20 @@ export default function ServicesPage() {
 
       
 
-<section id="materials-list" className="py-20 bg-white">
-  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-
-    <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Materials We Supply
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            High-quality plastic materials for diverse industrial applications
-          </p>
-    </div>
-
-    
-
-<div className="grid grid-cols-1 md:grid-cols-3 gap-8 p-6">
+<div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6">
   {[
     {
       category: 'Virgin',
       materials: ['Polypropylene (PP)', 'Polystyrene (PS)', 'Polyethylene (PE)'],
       image: '/materials/pp-material.png',
-      types: ['Pellets'],
+      types: ['Pellets', 'Sheets', 'Chips', 'Scraps', 'Regrind'],
       applications: 'Packaging, automotive parts, textiles, medical devices, Bottles, films, pipes, containers, industrial products',
     },
     {
       category: 'Recycled',
       materials: ['Polypropylene (PP)', 'Polystyrene (PS)', 'Polyethylene (PE)'],
       image: '/materials/ps-material.png',
-      types: [
-            'Pellets',
-            'Sheets',
-            'Chips',
-            'Scraps',
-            'Regrind',
-          ],
+      types: ['Pellets', 'Sheets', 'Chips', 'Scraps', 'Regrind'],
       applications: 'Packaging, automotive parts, textiles, medical devices, Bottles, films, pipes, containers, industrial products',
     },
     {
@@ -264,42 +244,35 @@ export default function ServicesPage() {
   ].map((item, idx) => (
     <Card 
       key={idx} 
-      className="group relative overflow-hidden rounded-2xl border border-gray-800/50 h-full min-h-[600px] transition-all duration-700 hover:shadow-2xl hover:-translate-y-2 hover:border-[#73d9f5]/30 hover:shadow-[#73d9f5]/10"
+      className="group relative overflow-hidden rounded-xl border border-gray-800/40 h-full min-h-[520px] transition-all duration-500 hover:shadow-xl hover:-translate-y-1 hover:border-[#73d9f5]/30 hover:shadow-[#73d9f5]/5"
     >
-      {/* Background Image with Enhanced Overlay */}
+      {/* Background Image */}
       <div 
-        className="absolute inset-0 bg-cover bg-center transition-all duration-1000 ease-out group-hover:scale-110" 
+        className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105" 
         style={{ backgroundImage: `url(${item.image})` }} 
       />
       
-      {/* Layered Gradient Overlay with Blue Tint */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/80 to-black/95 group-hover:via-black/85" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#73d9f5]/5 via-transparent to-transparent opacity-50 group-hover:opacity-70 transition-opacity duration-700" />
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/85 to-black/95" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#73d9f5]/10 via-transparent to-transparent opacity-40 group-hover:opacity-60 transition-opacity duration-500" />
 
-      <div className="relative z-10 p-10 flex flex-col h-full text-white">
+      <div className="relative z-10 p-8 flex flex-col h-full text-white">
         
-        {/* Category Header - Enhanced */}
-        <div className="mb-12 text-center">
-          <div className="inline-block px-6 py-2 rounded-full bg-black/40 backdrop-blur-sm border border-white/10 mb-4">
-            <span className="text-xs font-semibold tracking-widest text-[#73d9f5] uppercase" 
-                  style={{ fontFamily: "'Montserrat', sans-serif" }}>
-              Material Category
-            </span>
-          </div>
-          <h2 className="text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-[#a5e7fa]" 
+        {/* Category Header - Simplified */}
+        <div className="mb-8 text-center">
+          <h2 className="text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-[#a5e7fa]" 
               style={{ fontFamily: "'Solway', serif" }}>
             {item.category}
           </h2>
         </div>
 
-        {/* Materials List - Enhanced */}
-        <div className="mb-10 flex-grow">
-          <ul className="space-y-4">
+        {/* Materials List - Compact */}
+        <div className="mb-8 flex-grow">
+          <ul className="space-y-3">
             {item.materials.map((material, i) => (
-              <li key={i} className="flex items-start group/item transition-all duration-300 hover:translate-x-1" 
-                  style={{ fontFamily: "'Arimo', sans-serif" }}>
-                <span className="text-2xl font-bold text-[#73d9f5] mr-3 min-w-[28px]">{i + 1}.</span>
-                <span className="text-[20px] font-semibold opacity-95 group-hover/item:opacity-100 transition-opacity pt-1">
+              <li key={i} className="flex items-start" style={{ fontFamily: "'Arimo', sans-serif" }}>
+                <span className="text-xl font-bold text-[#73d9f5] mr-2 min-w-[24px]">{i + 1}.</span>
+                <span className="text-lg font-semibold opacity-95 pt-0.5">
                   {material}
                 </span>
               </li>
@@ -307,38 +280,38 @@ export default function ServicesPage() {
           </ul>
         </div>
 
-        <div className="space-y-10 mt-auto">
-          {/* Types Section - Enhanced */}
-          <div className="bg-black/30 backdrop-blur-sm rounded-xl p-5 border border-white/5">
-            <div className="flex items-center mb-4">
-              <div className="h-3 w-3 rounded-full bg-[#73d9f5] mr-3 animate-pulse" />
-              <p className="text-xs font-black uppercase tracking-[0.3em] text-[#73d9f5]" 
+        <div className="space-y-6 mt-auto">
+          {/* Types Section - Compact */}
+          <div>
+            <div className="flex items-center mb-2">
+              <div className="h-2 w-2 rounded-full bg-[#73d9f5] mr-2" />
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#73d9f5]" 
                  style={{ fontFamily: "'Montserrat', sans-serif" }}>
                 Available Types
               </p>
             </div>
-            <ul className="grid grid-cols-1 gap-3">
-              {item.types.map((type, index) => (
-                <li key={type} className="flex items-center text-[15px] text-gray-200 group/type">
-                  <div className="h-2 w-2 rounded-full bg-[#73d9f5] mr-3 shadow-[0_0_8px_#73d9f5] group-hover/type:shadow-[0_0_12px_#73d9f5] transition-all duration-300" />
-                  <span className="group-hover/type:text-white transition-colors duration-300">{type}</span>
+            <ul className="grid grid-cols-1 gap-1.5">
+              {item.types.map((type) => (
+                <li key={type} className="flex items-center text-sm text-gray-200">
+                  <div className="h-1.5 w-1.5 rounded-full bg-[#73d9f5] mr-2" />
+                  <span>{type}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Applications Section - Enhanced */}
-          <div className="bg-gradient-to-r from-black/40 to-transparent rounded-xl p-5 border-l-4 border-[#73d9f5]">
-            <div className="flex items-center mb-4">
-              <svg className="w-4 h-4 text-[#73d9f5] mr-3" fill="currentColor" viewBox="0 0 20 20">
+          {/* Applications Section - Compact */}
+          <div>
+            <div className="flex items-center mb-2">
+              <svg className="w-3 h-3 text-[#73d9f5] mr-2" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
               </svg>
-              <p className="text-xs font-black uppercase tracking-[0.3em] text-[#73d9f5]" 
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#73d9f5]" 
                  style={{ fontFamily: "'DM Sans', sans-serif" }}>
                 Applications
               </p>
             </div>
-            <p className="text-[15px] leading-relaxed text-gray-300 font-medium" 
+            <p className="text-sm leading-relaxed text-gray-300" 
                style={{ fontFamily: "'DM Sans', sans-serif" }}>
               {item.applications}
             </p>
