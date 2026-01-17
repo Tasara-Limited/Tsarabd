@@ -255,7 +255,7 @@ export default function ServicesPage() {
   ].map((item, idx) => (
     <Card 
       key={idx} 
-      className="group relative overflow-hidden rounded-xl border border-gray-800/40 h-full min-h-[520px] transition-all duration-500 hover:shadow-xl hover:-translate-y-1 hover:border-[#73d9f5]/30 hover:shadow-[#73d9f5]/5"
+      className="group relative overflow-hidden rounded-xl border border-gray-800/40 h-full min-h-[540px] transition-all duration-500 hover:shadow-xl hover:-translate-y-1 hover:border-[#73d9f5]/40 hover:shadow-[#73d9f5]/10"
     >
       {/* Background Image */}
       <div 
@@ -264,26 +264,27 @@ export default function ServicesPage() {
       />
       
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/85 to-black/95" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#73d9f5]/10 via-transparent to-transparent opacity-40 group-hover:opacity-60 transition-opacity duration-500" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/80 to-black/95" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#73d9f5]/10 via-transparent to-transparent opacity-50 group-hover:opacity-70 transition-opacity duration-500" />
 
       <div className="relative z-10 p-8 flex flex-col h-full text-white">
         
-        {/* Category Header - Simplified */}
+        {/* Category Header - Larger */}
         <div className="mb-8 text-center">
-          <h2 className="text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-[#a5e7fa]" 
+          <h2 className="text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-[#a5e7fa]" 
               style={{ fontFamily: "'Solway', serif" }}>
             {item.category}
           </h2>
         </div>
 
-        {/* Materials List - Compact */}
+        {/* Materials List - Larger */}
         <div className="mb-8 flex-grow">
-          <ul className="space-y-3">
+          <ul className="space-y-4">
             {item.materials.map((material, i) => (
-              <li key={i} className="flex items-start" style={{ fontFamily: "'Arimo', sans-serif" }}>
-                <span className="text-xl font-bold text-[#73d9f5] mr-2 min-w-[24px]">{i + 1}.</span>
-                <span className="text-lg font-semibold opacity-95 pt-0.5">
+              <li key={i} className="flex items-start hover:translate-x-1 transition-transform duration-200" 
+                  style={{ fontFamily: "'Arimo', sans-serif" }}>
+                <span className="text-2xl font-bold text-[#73d9f5] mr-3 min-w-[28px]">{i + 1}.</span>
+                <span className="text-2xl font-semibold opacity-95 pt-1">
                   {material}
                 </span>
               </li>
@@ -291,38 +292,38 @@ export default function ServicesPage() {
           </ul>
         </div>
 
-        <div className="space-y-6 mt-auto">
-          {/* Types Section - Compact */}
-          <div>
-            <div className="flex items-center mb-2">
-              <div className="h-2 w-2 rounded-full bg-[#73d9f5] mr-2" />
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#73d9f5]" 
+        <div className="space-y-8 mt-auto">
+          {/* Types Section - Larger */}
+          <div className="bg-black/20 backdrop-blur-sm rounded-lg p-5 border border-white/10">
+            <div className="flex items-center mb-4">
+              <div className="h-3 w-3 rounded-full bg-[#73d9f5] mr-3 shadow-[0_0_6px_#73d9f5]" />
+              <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#73d9f5]" 
                  style={{ fontFamily: "'Montserrat', sans-serif" }}>
                 Available Types
               </p>
             </div>
-            <ul className="grid grid-cols-1 gap-1.5">
+            <ul className="grid grid-cols-1 gap-2">
               {item.types.map((type) => (
-                <li key={type} className="flex items-center text-sm text-gray-200">
-                  <div className="h-1.5 w-1.5 rounded-full bg-[#73d9f5] mr-2" />
+                <li key={type} className="flex items-center text-base text-gray-200 hover:text-white transition-colors duration-200">
+                  <div className="h-2 w-2 rounded-full bg-[#73d9f5] mr-3" />
                   <span>{type}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Applications Section - Compact */}
-          <div>
-            <div className="flex items-center mb-2">
-              <svg className="w-3 h-3 text-[#73d9f5] mr-2" fill="currentColor" viewBox="0 0 20 20">
+          {/* Applications Section - Larger */}
+          <div className="bg-gradient-to-r from-black/30 to-transparent rounded-lg p-5 border-l-4 border-[#73d9f5]">
+            <div className="flex items-center mb-4">
+              <svg className="w-5 h-5 text-[#73d9f5] mr-3" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
               </svg>
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#73d9f5]" 
+              <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#73d9f5]" 
                  style={{ fontFamily: "'DM Sans', sans-serif" }}>
                 Applications
               </p>
             </div>
-            <p className="text-sm leading-relaxed text-gray-300" 
+            <p className="text-base leading-relaxed text-gray-300 font-medium" 
                style={{ fontFamily: "'DM Sans', sans-serif" }}>
               {item.applications}
             </p>
