@@ -232,7 +232,7 @@ export default function ServicesPage() {
 
     
 
-<div className="grid grid-cols-1 md:grid-cols-3 gap-10 p-6">
+<div className="grid grid-cols-1 md:grid-cols-3 gap-8 p-6">
   {[
     {
       category: 'Virgin',
@@ -258,62 +258,80 @@ export default function ServicesPage() {
   ].map((item, idx) => (
     <Card 
       key={idx} 
-      className="group relative overflow-hidden rounded-[3rem] border-none h-full min-h-[580px] transition-all duration-700 hover:shadow-2xl hover:-translate-y-2"
+      className="group relative overflow-hidden rounded-2xl border border-gray-800/50 h-full min-h-[600px] transition-all duration-700 hover:shadow-2xl hover:-translate-y-2 hover:border-[#73d9f5]/30 hover:shadow-[#73d9f5]/10"
     >
-      {/* Background Image with Parallax-style Zoom */}
+      {/* Background Image with Enhanced Overlay */}
       <div 
-        className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 ease-out group-hover:scale-110" 
+        className="absolute inset-0 bg-cover bg-center transition-all duration-1000 ease-out group-hover:scale-110" 
         style={{ backgroundImage: `url(${item.image})` }} 
       />
       
-      {/* Layered Gradient Overlay for Depth */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/70 to-black/90" />
+      {/* Layered Gradient Overlay with Blue Tint */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/80 to-black/95 group-hover:via-black/85" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#73d9f5]/5 via-transparent to-transparent opacity-50 group-hover:opacity-70 transition-opacity duration-700" />
 
-      <div className="relative z-10 p-12 flex flex-col h-full text-white">
+      <div className="relative z-10 p-10 flex flex-col h-full text-white">
         
-        {/* Category Header - Solway Bold */}
-        <div className="mb-10 text-center">
-          <h2 className="text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400" 
+        {/* Category Header - Enhanced */}
+        <div className="mb-12 text-center">
+          <div className="inline-block px-6 py-2 rounded-full bg-black/40 backdrop-blur-sm border border-white/10 mb-4">
+            <span className="text-xs font-semibold tracking-widest text-[#73d9f5] uppercase" 
+                  style={{ fontFamily: "'Montserrat', sans-serif" }}>
+              Material Category
+            </span>
+          </div>
+          <h2 className="text-5xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-[#a5e7fa]" 
               style={{ fontFamily: "'Solway', serif" }}>
             {item.category}
           </h2>
         </div>
 
-        {/* Materials List - Arimo font */}
-        <div className="mb-12 flex-grow">
-          <ul className="space-y-3">
+        {/* Materials List - Enhanced */}
+        <div className="mb-10 flex-grow">
+          <ul className="space-y-4">
             {item.materials.map((material, i) => (
-              <li key={i} className="text-[20px] font-medium opacity-90 hover:opacity-100 transition-opacity" 
+              <li key={i} className="flex items-start group/item transition-all duration-300 hover:translate-x-1" 
                   style={{ fontFamily: "'Arimo', sans-serif" }}>
-                <span className="text-[#73d9f5] mr-3 font-bold">{i + 1}.</span> {material}
+                <span className="text-2xl font-bold text-[#73d9f5] mr-3 min-w-[28px]">{i + 1}.</span>
+                <span className="text-[20px] font-semibold opacity-95 group-hover/item:opacity-100 transition-opacity pt-1">
+                  {material}
+                </span>
               </li>
             ))}
           </ul>
         </div>
 
-        <div className="space-y-10">
-          {/* Types Section - Montserrat */}
-          <div>
-            <p className="text-[12px] font-black uppercase tracking-[0.3em] text-[#73d9f5] mb-4" 
-               style={{ fontFamily: "'Montserrat', sans-serif" }}>
-              Available Types
-            </p>
-            <ul className="grid grid-cols-1 gap-2">
-              {item.types.map((type) => (
-                <li key={type} className="flex items-center text-[15px] text-gray-200">
-                  <div className="h-1.5 w-1.5 rounded-full bg-[#73d9f5] mr-3 shadow-[0_0_8px_#73d9f5]" />
-                  {type}
+        <div className="space-y-10 mt-auto">
+          {/* Types Section - Enhanced */}
+          <div className="bg-black/30 backdrop-blur-sm rounded-xl p-5 border border-white/5">
+            <div className="flex items-center mb-4">
+              <div className="h-3 w-3 rounded-full bg-[#73d9f5] mr-3 animate-pulse" />
+              <p className="text-xs font-black uppercase tracking-[0.3em] text-[#73d9f5]" 
+                 style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                Available Types
+              </p>
+            </div>
+            <ul className="grid grid-cols-1 gap-3">
+              {item.types.map((type, index) => (
+                <li key={type} className="flex items-center text-[15px] text-gray-200 group/type">
+                  <div className="h-2 w-2 rounded-full bg-[#73d9f5] mr-3 shadow-[0_0_8px_#73d9f5] group-hover/type:shadow-[0_0_12px_#73d9f5] transition-all duration-300" />
+                  <span className="group-hover/type:text-white transition-colors duration-300">{type}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Applications Section - DM Sans */}
-          <div>
-            <p className="text-[12px] font-black uppercase tracking-[0.3em] text-[#73d9f5] mb-4" 
-               style={{ fontFamily: "'DM Sans', sans-serif" }}>
-              Applications
-            </p>
+          {/* Applications Section - Enhanced */}
+          <div className="bg-gradient-to-r from-black/40 to-transparent rounded-xl p-5 border-l-4 border-[#73d9f5]">
+            <div className="flex items-center mb-4">
+              <svg className="w-4 h-4 text-[#73d9f5] mr-3" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
+              </svg>
+              <p className="text-xs font-black uppercase tracking-[0.3em] text-[#73d9f5]" 
+                 style={{ fontFamily: "'DM Sans', sans-serif" }}>
+                Applications
+              </p>
+            </div>
             <p className="text-[15px] leading-relaxed text-gray-300 font-medium" 
                style={{ fontFamily: "'DM Sans', sans-serif" }}>
               {item.applications}
