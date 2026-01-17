@@ -232,87 +232,97 @@ export default function ServicesPage() {
 
     
 
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {[
-        {
-          titles: ['Polypropylene (PP) – Virgin', 'Polystyrene (PS) – Virgin', 'Polyethylene (PE) – Virgin'],
-          image: '/materials/pp-material.png',
-          types: ['Pellets'],
-          applications: 'Packaging, automotive parts, textiles, medical devices, Bottles, films, pipes, containers, industrial products',
-        },
-        {
-          titles: ['Polypropylene (PP) – Recycled', 'Polystyrene (PS) – Recycled', 'Polyethylene (PE) – Recycled'],
-          image: '/materials/ps-material.png',
-          types: ['Pellets'],
-          applications: 'Packaging, automotive parts, textiles, medical devices, Bottles, films, pipes, containers, industrial products',
-        },
-        {
-          titles: ['Industrious Accessories', 'Leather', 'Leather Goods & Footwear'],
-          image: '/materials/pe-material.png',
-          types: ['Industrial & garment accessories', 'Raw & finished leather', 'Leather goods', 'Footwear (fashion & safety)'],
-          applications: 'Garments & accessories, Bags & leather goods, Footwear manufacturing, Industrial & commercial use',
-        },
-      ].map((material, idx) => (
-        <Card 
-          key={idx} 
-          className="group relative overflow-hidden rounded-[2.5rem] border-none h-full min-h-[520px] transition-all duration-500 shadow-xl"
-        >
-          {/* 🔴 Background Image with Smooth Zoom */}
-          <div 
-            className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 ease-out group-hover:scale-110" 
-            style={{ backgroundImage: `url(${material.image})` }} 
-          />
-          
-          {/* Deep Dark Overlay for Maximum Contrast */}
-          <div className="absolute inset-0 bg-black/75 transition-opacity duration-500 group-hover:bg-black/70" />
+<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+  {[
+    {
+      category: 'Virgin',
+      materials: ['Polypropylene (PP)', 'Polystyrene (PS)', 'Polyethylene (PE)'],
+      image: '/materials/pp-material.png',
+      types: ['Pellets'],
+      applications: 'Packaging, automotive parts, textiles, medical devices, Bottles, films, pipes, containers, industrial products',
+    },
+    {
+      category: 'Recycled',
+      materials: ['Polypropylene (PP)', 'Polystyrene (PS)', 'Polyethylene (PE)'],
+      image: '/materials/ps-material.png',
+      types: ['Pellets'],
+      applications: 'Packaging, automotive parts, textiles, medical devices, Bottles, films, pipes, containers, industrial products',
+    },
+    {
+      category: 'Others',
+      materials: ['Industrious Accessories', 'Leather', 'Leather Goods & Footwear'],
+      image: '/materials/pe-material.png',
+      types: ['Industrial & garment accessories', 'Raw & finished leather', 'Leather goods', 'Footwear (fashion & safety)'],
+      applications: 'Garments & accessories, Bags & leather goods, Footwear manufacturing, Industrial & commercial use',
+    },
+  ].map((item, idx) => (
+    <Card 
+      key={idx} 
+      className="group relative overflow-hidden rounded-[2.5rem] border-none h-full min-h-[520px] transition-all duration-500 shadow-xl"
+    >
+      {/* Background Image */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 ease-out group-hover:scale-110" 
+        style={{ backgroundImage: `url(${item.image})` }} 
+      />
+      
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/75 transition-opacity duration-500 group-hover:bg-black/80" />
 
-          <div className="relative z-10 p-10 flex flex-col h-full text-white">
-            
-            {/* 🔴 Title Section with New Sky Blue Accent */}
-            <div className="mb-10">
-              <div className="flex flex-col gap-1.5">
-                {material.titles.map((title, i) => (
-                  <h3 key={i} className="text-[21px] font-black tracking-tight leading-tight">
-                    {title}
-                  </h3>
-                ))}
-              </div>
-              
-              {/* Accent Bar with #73d9f5 and a Glow effect */}
-              <div className="mt-5 h-1.5 w-14 rounded-full bg-[#73d9f5] shadow-[0_0_15px_rgba(115,217,245,0.6)] transition-all duration-500 group-hover:w-24" />
-            </div>
+      <div className="relative z-10 p-10 flex flex-col h-full text-white">
+        
+        {/* Category Header - Solway font */}
+        <div className="mb-8 text-center">
+          <h2 className="text-3xl font-bold tracking-wide" style={{ fontFamily: "'Solway', serif" }}>
+            {item.category}
+          </h2>
+        </div>
 
-            <div className="space-y-10">
-              <div>
-                {/* Available Types Label in Sky Blue */}
-                <p className="text-[13px] font-black uppercase tracking-[0.25em] text-[#73d9f5] mb-5">
-                  Available Types
-                </p>
-                <ul className="space-y-4">
-                  {material.types.map((type) => (
-                    <li key={type} className="flex items-center text-[17px] font-bold text-white">
-                      {/* Check icon updated to sky blue */}
-                      <CheckCircle className="h-5 w-5 text-[#73d9f5] mr-3 flex-shrink-0" />
-                      {type}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+        {/* Materials List - Arimo font */}
+        <div className="mb-10">
+          <ul className="space-y-1">
+            {item.materials.map((material, i) => (
+              <li key={i} className="text-[18px] leading-tight" style={{ fontFamily: "'Arimo', sans-serif" }}>
+                {i + 1}. {material}
+              </li>
+            ))}
+          </ul>
+        </div>
 
-              <div className="pt-8 border-t border-white/10">
-                {/* Applications Label in Sky Blue */}
-                <p className="text-[13px] font-black uppercase tracking-[0.25em] text-[#73d9f5] mb-5">
-                  Industrial Applications
-                </p>
-                <p className="text-[16px] leading-relaxed text-gray-100 font-semibold italic">
-                  "{material.applications}"
-                </p>
-              </div>
-            </div>
+        <div className="space-y-8">
+          <div>
+            {/* Available Types Label - Montserrat font */}
+            <p className="text-[14px] font-bold tracking-wider mb-4" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+              Available Types:
+            </p>
+            <ul className="space-y-3">
+              {item.types.map((type) => (
+                <li key={type} className="flex items-center text-[16px] text-gray-200">
+                  <span className="mr-2 h-1.5 w-1.5 rounded-full bg-white flex-shrink-0" />
+                  {type}
+                </li>
+              ))}
+            </ul>
           </div>
-        </Card>
-      ))}
-    </div>
+
+          <div>
+            {/* Applications Label & Text - DM Sans font */}
+            <p className="text-[14px] font-bold tracking-wider mb-3" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              Applications:
+            </p>
+            <p className="text-[15px] leading-relaxed text-gray-300" style={{ fontFamily: "'DM Sans', sans-serif" }}>
+              {item.applications}
+            </p>
+          </div>
+        </div>
+      </div>
+    </Card>
+  ))}
+</div>
+
+
+
+    
   </div>
 </section>
 
