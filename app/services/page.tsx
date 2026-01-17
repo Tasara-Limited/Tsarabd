@@ -245,7 +245,7 @@ export default function ServicesPage() {
       category: 'Recycled',
       materials: ['Polypropylene (PP)', 'Polystyrene (PS)', 'Polyethylene (PE)'],
       image: '/materials/ps-material.png',
-      types: ['Pellets'],
+      types: ['Pellets, Sheets, Chips, Scraps, Regrind'],
       applications: 'Packaging, automotive parts, textiles, medical devices, Bottles, films, pipes, containers, industrial products',
     },
     {
