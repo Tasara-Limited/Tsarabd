@@ -235,7 +235,7 @@ export default function ServicesPage() {
       category: 'Virgin',
       materials: ['Polypropylene (PP)', 'Polystyrene (PS)', 'Polyethylene (PE)'],
       image: '/materials/pp-material.png',
-      types: ['Pellets', 'Sheets', 'Chips', 'Scraps', 'Regrind'],
+      types: ['Pellets', 'Film'],
       applications: 'Packaging, automotive parts, textiles, medical devices, Bottles, films, pipes, containers, industrial products',
     },
     {
