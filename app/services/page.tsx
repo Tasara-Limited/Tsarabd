@@ -323,7 +323,7 @@ export default function ServicesPage() {
                 Applications
               </p>
             </div>
-            <p className="text-sm leading-relaxed text-gray-300 font-medium" 
+            <p className="text-sm leading-relaxed text-white font-medium text-base" 
                style={{ fontFamily: "'DM Sans', sans-serif" }}>
               {item.applications}
             </p>
