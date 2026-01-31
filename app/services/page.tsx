@@ -283,7 +283,7 @@ export default function ServicesPage() {
             {item.materials.map((material, i) => (
               <li key={i} className="flex items-center hover:translate-x-1 transition-transform duration-200" 
                   style={{ fontFamily: "'Arimo', sans-serif" }}>
-                <span className="text-2xl font-bold text-[#73d9f5] mr-3 min-w-[28px]">{i + 1}.</span>
+                <span className="text-2xl font-bold text-[#73d9f5] mr-3">•</span>
                 <span className="text-xl font-semibold opacity-95">
                   {material}
                 </span>
