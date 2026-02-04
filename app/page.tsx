@@ -252,9 +252,13 @@ max-w-5xl lg:max-w-7xl xl:max-w-8xl mx-auto
         
         <div className="mb-1">
           {/* 🔴 Name: 18px #73d9f5 -> 19px White on Hover */}
-          <h3 className="text-[18px] font-black leading-tight transition-all duration-300 text-[#73d9f5] group-hover:text-white group-hover:text-[19px]">
-            {material.name}
-          </h3>
+          <h3 className={`font-black leading-tight transition-all duration-300 group-hover:text-white 
+            ${material.name === 'Industrial Products' 
+              ? 'text-[16px] group-hover:text-[17px]' 
+              : 'text-[18px] group-hover:text-[19px]'}`}
+              >
+                {material.name}
+              </h3>
           
           {/* 🔴 Subnames: 12px White -> 13px #73d9f5 on Hover */}
           <p className="text-[12px] font-bold uppercase tracking-wider transition-all duration-300 text-white group-hover:text-[#73d9f5] group-hover:text-[13px]">
