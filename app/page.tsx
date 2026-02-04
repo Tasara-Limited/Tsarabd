@@ -252,7 +252,7 @@ max-w-5xl lg:max-w-7xl xl:max-w-8xl mx-auto
         
         <div className="mb-1">
           {/* 🔴 Name: 18px #73d9f5 -> 19px White on Hover */}
-          <h3 className={`font-black leading-tight transition-all duration-300 group-hover:text-white 
+          <h3 className={`font-black leading-tight transition-all duration-300 text-[#73d9f5] group-hover:text-white 
             ${material.name === 'Industrial Products' 
               ? 'text-[16px] group-hover:text-[17px]' 
               : 'text-[18px] group-hover:text-[19px]'}`}
