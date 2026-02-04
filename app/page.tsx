@@ -227,7 +227,7 @@ max-w-5xl lg:max-w-7xl xl:max-w-8xl mx-auto
       types: 'Regrind, Pellets, Chips, Scraps',
     },
     {
-      name: 'Industrious & Leather',
+      name: 'Industrial & Leather',
       subNames: 'Accessories & Footwear',
       image: '/materials/pe-material.png',
       types: 'Garment Accs, Raw Leather, Safety Goods',
