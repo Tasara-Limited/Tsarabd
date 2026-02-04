@@ -261,9 +261,13 @@ max-w-5xl lg:max-w-7xl xl:max-w-8xl mx-auto
               </h3>
           
           {/* 🔴 Subnames: 12px White -> 13px #73d9f5 on Hover */}
-          <p className="text-[12px] font-bold uppercase tracking-wider transition-all duration-300 text-white group-hover:text-[#73d9f5] group-hover:text-[13px]">
-            {material.subNames}
-          </p>
+          <p className={`font-bold uppercase tracking-wider transition-all duration-300 text-white group-hover:text-[#73d9f5] 
+              ${material.name === 'Industrial Products' 
+                ? 'text-[11px] group-hover:text-[12px]' 
+                : 'text-[12px] group-hover:text-[13px]'}`}
+            >
+              {material.subNames}
+            </p>
         </div>
         
         {/* 🔴 Types: 12px Reveal on Hover */}
