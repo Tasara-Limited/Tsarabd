@@ -247,9 +247,9 @@ export default function ServicesPage() {
     },
     {
       category: 'Others',
-      materials: ['Industrial Accessories', 'Leather', 'Leather Goods & Footwear'],
+      materials: ['Industrial Accessories', 'Leather, Footwear & Garments'],
       image: '/materials/pe-material.png',
-      types: ['Industrial & garment accessories', 'Raw & finished leather', 'Leather goods', 'Footwear (fashion & safety)'],
+      types: ['Industrial & garment accessories', 'Raw & finished leather', 'Leather goods', 'Footwear (fashion & safety)', 'Apparel'],
       applications: 'Garments & accessories, Bags & leather goods, Footwear manufacturing, Industrial & commercial use',
     },
   ].map((item, idx) => (
