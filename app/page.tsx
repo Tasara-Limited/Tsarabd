@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import Image from 'next/image';
+
 import {
   ArrowRight,
   Globe,
@@ -182,7 +182,7 @@ const ProductCardCarousel = () => {
                         transition: `all ${CAROUSEL_CONFIG.transitionSpeed}s cubic-bezier(0.4, 0, 0.2, 1)`,
                       }}
                     >
-                      <Image 
+                      <img 
                         src={src} 
                         alt={`Product ${i % productImages.length + 1}`} 
                         className="w-full h-full object-cover"
@@ -290,6 +290,7 @@ export default function Home() {
       </section>
 
       <ProductCardCarousel />
+
 
       
 
