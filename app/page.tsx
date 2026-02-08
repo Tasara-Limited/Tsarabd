@@ -19,25 +19,12 @@ import {
 } from 'lucide-react';
 import { useState, useEffect, useRef, useCallback } from 'react';
 
-// 🔴 CONFIGURATION - Easy to change ratios
 const CAROUSEL_CONFIG = {
-  // Change background color here:
   backgroundColor: 'bg-gradient-to-r from-blue-50 to-purple-50',
-  
-  // Text colors based on background
   titleColor: 'text-gray-900',
   descriptionColor: 'text-gray-600',
-  
-  // 🔴 RATIO CONFIG - Change these values for different ratios
-  leftColumnRatio: 'lg:w-2/5',   // 40% for title/paragraph (4 in 6:4 ratio)
-  rightColumnRatio: 'lg:w-3/5',  // 60% for carousel (6 in 6:4 ratio)
-  
-  // Alternative ratios (uncomment one):
-  // For 5:5 ratio (equal): leftColumnRatio: 'lg:w-1/2', rightColumnRatio: 'lg:w-1/2'
-  // For 7:3 ratio: leftColumnRatio: 'lg:w-3/10', rightColumnRatio: 'lg:w-7/10'
-  // For 4:6 ratio: leftColumnRatio: 'lg:w-2/5', rightColumnRatio: 'lg:w-3/5'
-  
-  // Animation speeds
+  leftColumnRatio: 'lg:w-2/5',
+  rightColumnRatio: 'lg:w-3/5',
   slideSpeed: 1500,
   transitionSpeed: 0.4,
   hoverTransitionSpeed: 0.3,
@@ -66,7 +53,6 @@ const ProductCardCarousel = () => {
     "/materialimg/p13.png",
   ];
 
-  // Create tripled array for infinite loop
   const cards = [...productImages, ...productImages, ...productImages];
   const step = 288;
   const centerOffset = 2;
@@ -109,44 +95,40 @@ const ProductCardCarousel = () => {
   return (
     <section className={`py-20 ${CAROUSEL_CONFIG.backgroundColor}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* 🔴 UPDATED: Flex container for side-by-side layout */}
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           
-          {/* 🔴 LEFT COLUMN: Title & Paragraph (40%) */}
+          {/* LEFT COLUMN: Title & Paragraph (40%) */}
           <div className={`${CAROUSEL_CONFIG.leftColumnRatio} w-full`}>
-            <div className="lg:text-left">
-              <h2 className={`text-4xl font-bold mb-6 ${CAROUSEL_CONFIG.titleColor}`}>
+            <div className="lg:text-left lg:pr-10">
+              <h2 className={`text-4xl font-bold mb-8 ${CAROUSEL_CONFIG.titleColor} tracking-tight`}>
                 Tasara Limited
               </h2>
-              <div className={`space-y-4 leading-relaxed ${CAROUSEL_CONFIG.descriptionColor}`}>
-                <p className="text-lg">
-                  Tasara Limited, based in Bangladesh, specializes in plastic materials, leather, and industrial accessories, 
-                  providing supplier and indenting services through trusted global partners.
-                </p>
-                <p className="text-lg">
-                  We source from GRS-certified suppliers and offer recycled polymers compliant with 
-                  <span className="font-semibold text-brand-400 "> FR, REACH, BHT, TPCH and</span> <br></br> <span className="font-semibold text-brand-400 "> Heavy Metal–Free</span> standards.
-                </p>
-                <p className="text-lg font-medium">
-                  Our goal is to be a reliable, sustainable supplier and indenting partner, supporting industries 
-                  with quality materials and responsible sourcing.
-                </p>
-              </div>
               
-              {/* Additional content can go here */}
-              <div className="mt-8">
-                {/* <h3 className={`text-2xl font-semibold mb-4 ${CAROUSEL_CONFIG.titleColor}`}>
-                  Premium Plastic Materials
-                </h3> */}
-                <p className={`${CAROUSEL_CONFIG.descriptionColor}`}>
-                  From virgin plastics to recycled materials, we offer a wide range of high-quality products
-                  for packaging, automotive, construction, and consumer goods industries
+              {/* 🔴 IMPROVED TEXT STYLING */}
+              <div className="space-y-6 text-lg text-gray-700 leading-relaxed text-justify [text-wrap:pretty] hyphens-auto">
+                <p className="tracking-[0.01em]">
+                  <strong>Tasara Limited</strong>, based in Bangladesh, specializes in 
+                  <strong> plastic materials, leather, and industrial accessories</strong>, 
+                  providing <strong>supplier and indenting services</strong> through 
+                  <strong> trusted global partners</strong>.
+                </p>
+
+                <p className="tracking-[0.01em]">
+                  We source from <strong>GRS-certified suppliers</strong> and offer recycled polymers 
+                  compliant with <strong>FR, REACH, BHT, TPCH, and Heavy Metal–Free</strong> standards, 
+                  ensuring clients receive <strong>certified, sustainable, and future-ready materials</strong>.
+                </p>
+
+                <p className="tracking-[0.01em] font-medium bg-gray-50/50 p-5 rounded-xl border-l-4 border-brand-500">
+                  Our goal is to be a <strong>reliable, sustainable supplier and indenting partner</strong>, 
+                  supporting industries with <strong>quality materials and responsible sourcing</strong>.
                 </p>
               </div>
+
             </div>
           </div>
           
-          {/* 🔴 RIGHT COLUMN: Carousel (60%) */}
+          {/* RIGHT COLUMN: Carousel (60%) */}
           <div className={`${CAROUSEL_CONFIG.rightColumnRatio} w-full`}>
             <div className="relative h-[560px]">
               {/* Blur Background */}
@@ -269,7 +251,6 @@ export default function Home() {
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="text-lg px-8 py-6 border-white text-black hover:bg-[#e0dcdc]">
-
                 <Link href="/services">
                   Our Services
                 </Link>
@@ -297,7 +278,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 🔴 Product Carousel Section - Now with left/right layout */}
       <ProductCardCarousel />
 
       
