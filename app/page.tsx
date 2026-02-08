@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import Image from 'next/image';
 import {
   ArrowRight,
   Globe,
@@ -54,7 +55,16 @@ const ProductCardCarousel = () => {
   ];
 
   const cards = [...productImages, ...productImages, ...productImages];
-  const step = 288;
+  
+  // 🔴 SMALLER CARD SIZES (reduced from 240x360)
+  const cardWidth = 200;  // Reduced from 240
+  const cardHeight = 300; // Reduced from 360
+  
+  // 🔴 SMALLER CONTAINER HEIGHT (reduced from 560)
+  const containerHeight = 460; // Reduced from 560
+  
+  // 🔴 STEP REMAINS PROPORTIONAL (cardWidth + margins)
+  const step = cardWidth + 48; // 200 + 48 (24px margin each side)
   const centerOffset = 2;
 
   const move = useCallback((dir: number) => {
@@ -104,7 +114,6 @@ const ProductCardCarousel = () => {
                 Tasara Limited
               </h2>
               
-              {/* 🔴 IMPROVED TEXT STYLING */}
               <div className="space-y-6 text-lg text-gray-700 leading-relaxed text-justify [text-wrap:pretty] hyphens-auto">
                 <p className="tracking-[0.01em]">
                   <strong>Tasara Limited</strong>, based in Bangladesh, specializes in 
@@ -124,13 +133,12 @@ const ProductCardCarousel = () => {
                   supporting industries with <strong>quality materials and responsible sourcing</strong>.
                 </p>
               </div>
-
             </div>
           </div>
           
-          {/* RIGHT COLUMN: Carousel (60%) */}
+          {/* RIGHT COLUMN: Carousel (60%) - NOW SMALLER */}
           <div className={`${CAROUSEL_CONFIG.rightColumnRatio} w-full`}>
-            <div className="relative h-[560px]">
+            <div className="relative" style={{ height: `${containerHeight}px` }}>
               {/* Blur Background */}
               <div
                 className="absolute inset-0 bg-cover bg-center rounded-2xl transition-all duration-500"
@@ -153,7 +161,7 @@ const ProductCardCarousel = () => {
                   ref={trackRef}
                   className="flex items-center h-full"
                   style={{
-                    transform: `translateX(${-index * step + 320}px)`,
+                    transform: `translateX(${-index * step + 270}px)`, // 🔴 Adjusted for smaller cards
                     transition: isTransitioning 
                       ? `transform ${CAROUSEL_CONFIG.transitionSpeed}s cubic-bezier(0.4, 0, 0.2, 1)` 
                       : 'none',
@@ -162,16 +170,19 @@ const ProductCardCarousel = () => {
                   {cards.map((src, i) => (
                     <div
                       key={i}
-                      className={`flex-none w-[240px] h-[360px] mx-[24px] rounded-2xl overflow-hidden transition-all cursor-pointer transform-gpu ${
+                      className={`flex-none rounded-2xl overflow-hidden transition-all cursor-pointer transform-gpu ${
                         i === index 
                           ? 'scale-[1.45] brightness-100 z-20 shadow-2xl shadow-black/30' 
                           : 'scale-[0.85] brightness-[0.65] hover:scale-[0.9] hover:brightness-75'
                       }`}
                       style={{
+                        width: `${cardWidth}px`,
+                        height: `${cardHeight}px`,
+                        margin: '0 24px',
                         transition: `all ${CAROUSEL_CONFIG.transitionSpeed}s cubic-bezier(0.4, 0, 0.2, 1)`,
                       }}
                     >
-                      <img 
+                      <Image 
                         src={src} 
                         alt={`Product ${i % productImages.length + 1}`} 
                         className="w-full h-full object-cover"
@@ -182,22 +193,22 @@ const ProductCardCarousel = () => {
                 </div>
               </div>
 
-              {/* Navigation Buttons */}
+              {/* Navigation Buttons - Adjusted for smaller container */}
               <div className="absolute inset-0 pointer-events-none z-30">
                 <button
                   onClick={() => move(-1)}
-                  className="absolute left-[-40px] top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gray-900/80 hover:bg-gray-900 text-white flex items-center justify-center backdrop-blur-sm transition-all pointer-events-auto hover:scale-110 border border-white/20"
+                  className="absolute left-[-35px] top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-gray-900/80 hover:bg-gray-900 text-white flex items-center justify-center backdrop-blur-sm transition-all pointer-events-auto hover:scale-110 border border-white/20"
                   aria-label="Previous product"
                 >
-                  <span className="text-lg font-bold">❮</span>
+                  <span className="text-base font-bold">❮</span>
                 </button>
                 
                 <button
                   onClick={() => move(1)}
-                  className="absolute right-[-40px] top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-gray-900/80 hover:bg-gray-900 text-white flex items-center justify-center backdrop-blur-sm transition-all pointer-events-auto hover:scale-110 border border-white/20"
+                  className="absolute right-[-35px] top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-gray-900/80 hover:bg-gray-900 text-white flex items-center justify-center backdrop-blur-sm transition-all pointer-events-auto hover:scale-110 border border-white/20"
                   aria-label="Next product"
                 >
-                  <span className="text-lg font-bold">❯</span>
+                  <span className="text-base font-bold">❯</span>
                 </button>
               </div>
 
