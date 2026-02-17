@@ -52,6 +52,9 @@ const ProductCardCarousel = () => {
     "/materialimg/p11.png",
     "/materialimg/p12.png",
     "/materialimg/p13.png",
+    "/materialimg/p14.png",
+    "/materialimg/p15.png",
+    "/materialimg/p16.png",
   ];
 
   const cards = [...productImages, ...productImages, ...productImages];
