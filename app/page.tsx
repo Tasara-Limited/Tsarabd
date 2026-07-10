@@ -157,14 +157,16 @@ const ProductCardCarousel = () => {
               ))}
             </div>
 
-            {/* View All Products Button (নিউ অ্যাডড) */}
-            <div className="flex justify-center mt-6 lg:justify-start lg:pl-2">
-              <Button asChild size="lg" className="bg-brand-500 hover:bg-brand-600 text-white font-medium px-8 py-5 rounded-xl shadow-md transition-all hover:shadow-lg group/btn">
-                <Link href="/products" className="flex items-center gap-2">
-                  View All Products 
-                  <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover/btn:translate-x-1" />
-                </Link>
-              </Button>
+          
+            {/* View All Products Link (ছবির মতো সেন্টারে) */}
+            <div className="flex justify-center w-full mt-10">
+              <Link 
+                href="/products" 
+                className="inline-flex items-center gap-2 text-[#0082a6] hover:text-[#005f7a] font-semibold text-lg transition-all group/btn"
+              >
+                View all products 
+                <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover/btn:translate-x-1.5 text-[#0082a6] group-hover/btn:text-[#005f7a]" />
+              </Link>
             </div>
 
             {/* Navigation Buttons */}
