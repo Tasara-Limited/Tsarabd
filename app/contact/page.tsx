@@ -79,7 +79,7 @@ export default function ContactPage() {
           </div>
 
           {/* Form and Side Block Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-16">
             
             {/* Contact Form Block */}
             <div data-aos="fade-right" data-aos-duration="900">
@@ -244,14 +244,29 @@ export default function ContactPage() {
               </Card>
               
             </div>
-
           </div>
+
+          {/* New Google Maps Section for Tasara Limited */}
+          <div className="w-full mt-12" data-aos="fade-up" data-aos-duration="1000">
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden h-full min-h-[500px]">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4489.299162301807!2d90.40211607533973!3d23.873787778586454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c563c4c13fab%3A0x40a842d2104318fe!2sTasara%20Limited!5e1!3m2!1sen!2sbd!4v1783692740517!5m2!1sen!2sbd"
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: '500px' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="strict-origin-when-cross-origin"
+                title="Tasara Limited Location"
+              ></iframe>
+            </div>
+          </div>
+
         </div>
       </section>
     </div>
   );
 }
-
 
 
 
