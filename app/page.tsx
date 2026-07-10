@@ -1,3 +1,473 @@
+
+
+'use client';
+
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+
+import {
+  ArrowRight,
+  Globe,
+  Shield,
+  TrendingUp,
+  Users,
+  Award,
+  Zap,
+  CheckCircle,
+  Package,
+  Truck,
+  BarChart3,
+} from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+
+const CAROUSEL_CONFIG = {
+  backgroundColor: 'bg-gradient-to-r from-blue-50 to-purple-50',
+  titleColor: 'text-gray-900',
+  descriptionColor: 'text-gray-600',
+  leftColumnRatio: 'lg:w-2/5',
+  rightColumnRatio: 'lg:w-3/5',
+  slideSpeed: 3000,
+};
+
+const ProductCardCarousel = () => {
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  const products = [
+    { src: "/materialimg/PP-natural-compound.png", name: "PP Natural Compound", grade: "Recycled", price: "$0.90 - $1.20" },
+    { src: "/materialimg/PP-natural-compound2.png", name: "PP Natural Compound", grade: "Recycled", price: "$0.90 - $1.20" },
+    { src: "/materialimg/p3.png", name: "PP White Compound", grade: "Recycled", price: "$0.90 - $1.20" },
+    { src: "/materialimg/p4.png", name: "PP Dull Natural Compound", grade: "Recycled", price: "$0.90 - $1.20" },
+    { src: "/materialimg/p5.png", name: "PP Black Compound", grade: "Recycled", price: "$0.65 - $0.90" },
+    { src: "/materialimg/p6.png", name: "GPPS Virgin", grade: "Virgin", price: "$1.00 - $1.50" },
+    { src: "/materialimg/p7.png", name: "PP Black Compound", grade: "Recycled", price: "$0.65 - $0.90" },
+    { src: "/materialimg/p8.png", name: "HIPS White Compound", grade: "Recycled", price: "$1.20 - $1.65" },
+    { src: "/materialimg/p9.png", name: "HIPS Virgin", grade: "Virgin", price: "$1.20 - $1.50" },
+    { src: "/materialimg/p10.png", name: "HIPS Virgin", grade: "Virgin", price: "$1.20 - $1.50" },
+    { src: "/materialimg/p11.png", name: "HIPS White Compound", grade: "Recycled", price: "$1.20 - $1.65" },
+    { src: "/materialimg/p12.png", name: "GPPS Natural Compound", grade: "Recycled", price: "$1.00 - $1.65" },
+    { src: "/materialimg/p13.png", name: "PP Black Compound", grade: "Recycled", price: "$0.65 - $0.90" },
+    { src: "/materialimg/p14.png", name: "HIPS Black Compound", grade: "Recycled", price: "$0.80 - $1.20" },
+    { src: "/materialimg/p15.png", name: "HIPS Black Compound", grade: "Recycled", price: "$0.80 - $1.20" },
+    { src: "/materialimg/p16.png", name: "HIPS Black Compound", grade: "Recycled", price: "$0.80 - $1.20" },
+  ];
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (!trackRef.current) return;
+    const container = trackRef.current;
+    const scrollAmount = container.clientWidth * 0.6;
+    container.scrollBy({
+      left: direction === 'left' ? -scrollAmount : scrollAmount,
+      behavior: 'smooth',
+    });
+  };
+
+  useEffect(() => {
+    const container = trackRef.current;
+    if (!container) return;
+
+    const autoPlay = setInterval(() => {
+      if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
+        container.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        container.scrollBy({ left: 240, behavior: 'smooth' });
+      }
+    }, CAROUSEL_CONFIG.slideSpeed);
+
+    return () => clearInterval(autoPlay);
+  }, []);
+
+  return (
+    <section className={`py-20 ${CAROUSEL_CONFIG.backgroundColor}`}>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+          
+          {/* LEFT COLUMN: Title & Paragraph */}
+          <div className={`${CAROUSEL_CONFIG.leftColumnRatio} w-full`}>
+            <div className="lg:text-left lg:pr-10">
+              <h2 className={`text-4xl font-bold mb-8 ${CAROUSEL_CONFIG.titleColor} tracking-tight`}>
+                Tasara Limited
+              </h2>
+              
+              <div className="space-y-6 text-lg text-gray-700 leading-relaxed text-justify [text-wrap:pretty] hyphens-auto">
+                <p className="tracking-[0.01em]">
+                  <strong>Tasara Limited</strong>, based in Bangladesh, specializes in{' '}
+                  <strong>plastic materials, leather, and industrial accessories</strong>,{' '}
+                  providing <strong>supplier and indenting services</strong> through{' '}
+                  <strong>trusted global partners</strong>.
+                </p>
+
+                <p className="tracking-[0.01em]">
+                  We source from <strong>GRS-certified suppliers</strong> and offer recycled polymers{' '}
+                  compliant with <strong>FR, REACH, BHT, TPCH, and Heavy Metal–Free</strong> standards,{' '}
+                  ensuring clients receive <strong>certified, sustainable, and future-ready materials</strong>.
+                </p>
+
+                <p className="tracking-[0.01em] font-medium bg-gray-50/50 p-5 rounded-xl border-l-4 border-brand-500">
+                  Our goal is to be a <strong>reliable, sustainable supplier and indenting partner</strong>,{' '}
+                  supporting industries with <strong>quality materials and responsible sourcing</strong>.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          {/* RIGHT COLUMN: Modern Carousel */}
+          <div className={`${CAROUSEL_CONFIG.rightColumnRatio} w-full relative group`}>
+            
+            {/* Carousel Track */}
+            <div
+              ref={trackRef}
+              className="flex gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory py-6 px-2 scroll-smooth"
+              style={{ scrollbarWidth: 'none' }}
+            >
+              {products.map((product, i) => (
+                <div
+                  key={i}
+                  className="flex-none w-[210px] sm:w-[230px] bg-white rounded-2xl overflow-hidden snap-center shadow-md transition-all duration-300 ease-out md:hover:scale-105 md:hover:shadow-[0_0_25px_rgba(0,0,0,0.12)] md:hover:z-10 border border-gray-100 flex flex-col"
+                >
+                  {/* Product Image */}
+                  <div className="w-full h-[220px] sm:h-[240px] bg-gray-50 relative overflow-hidden">
+                    <img 
+                      src={product.src} 
+                      alt={product.name} 
+                      className="w-full h-full object-cover pointer-events-none"
+                      loading="lazy"
+                    />
+                    <div className="absolute top-3 left-3">
+                      <span className={`text-[11px] font-bold px-2.5 py-1 rounded-full text-white ${
+                        product.grade === 'Virgin' ? 'bg-blue-600' : 'bg-emerald-600'
+                      }`}>
+                        {product.grade}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Product Details */}
+                  <div className="p-4 flex flex-col justify-between flex-grow bg-white">
+                    <h3 className="font-bold text-gray-800 text-[15px] leading-snug line-clamp-2 min-h-[40px]">
+                      {product.name}
+                    </h3>
+                    <div className="mt-3 pt-2 border-t border-gray-100 flex items-center justify-between">
+                      <span className="text-[11px] text-gray-500 uppercase font-semibold tracking-wider">Est. Price</span>
+                      <span className="text-[13px] font-bold text-brand-600">{product.price}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Navigation Buttons */}
+            <button
+              onClick={() => scroll('left')}
+              className="absolute left-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/70 hover:bg-black text-white hidden md:flex items-center justify-center backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 shadow-lg z-20"
+              aria-label="Previous product"
+            >
+              <span className="text-lg font-bold">❮</span>
+            </button>
+            
+            <button
+              onClick={() => scroll('right')}
+              className="absolute right-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/70 hover:bg-black text-white hidden md:flex items-center justify-center backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 shadow-lg z-20"
+              aria-label="Next product"
+            >
+              <span className="text-lg font-bold">❯</span>
+            </button>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default function Home() {
+  return (
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white pt-32 pb-20 overflow-hidden">
+        <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:40px_40px]" />
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent" />
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+              Tasara Limited
+              <span className="block text-brand-400 text-[20px] mt-[9px]">United intend Unique solutions</span>
+            </h1>
+            <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
+              Your trusted partner in global plastic materials and accessories supply and indenting services. Connecting suppliers with international buyers.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button asChild size="lg" className="bg-brand-500 hover:bg-brand-600 text-lg px-8 py-6">
+                <Link href="/contact">
+                  Get a Quote <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="text-lg px-8 py-6 border-white text-black hover:bg-[#e0dcdc]">
+                <Link href="/services">
+                  Our Services
+                </Link>
+              </Button>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-10 mt-16 sm:mt-20 max-w-5xl lg:max-w-7xl xl:max-w-8xl mx-auto">
+            {[
+              { number: 'Globality', label: 'A trusted global network.' },
+              { number: 'Quality First', label: 'Certified material standards' },
+              { number: 'Integrated services', label: 'Innovative Flow' },
+              { number: '2024', label: 'Established' },
+            ].map((stat) => (
+              <div key={stat.label} className="text-center px-4">
+                <div className="text-2xl sm:text-3xl font-bold text-brand-400 mb-2 md:whitespace-nowrap">
+                  {stat.number}
+                </div>
+                <div className="text-sm sm:text-base text-gray-400 md:whitespace-nowrap">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <ProductCardCarousel />
+
+      {/* Core Services Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Core Services</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Comprehensive solutions for your plastic materials supply chain needs
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: Package,
+                title: 'Indenting Services',
+                description: 'Authorized agent for global plastic manufacturers with competitive pricing and factory warranties',
+                features: ['Direct Factory Sourcing', 'Manufacturer Warranties', 'Competitive Rates'],
+              },
+              {
+                icon: Truck,
+                title: 'Trading, Sourcing & Procurement',
+                description: 'Leverage our global network for specialty and standard materials with quality assurance',
+                features: ['Global Network Access', 'Material Matching', 'Sample Evaluation'],
+              },
+              {
+                icon: BarChart3,
+                title: 'Supply Chain Solutions',
+                description: 'End-to-end inventory management and logistics optimization for efficient operations',
+                features: ['Inventory Management', 'Just-in-Time Delivery', 'Logistics Optimization'],
+              },
+            ].map((service) => (
+              <Card key={service.title} className="hover:shadow-xl transition-shadow">
+                <CardHeader>
+                  <div className="w-16 h-16 bg-brand-500 rounded-lg flex items-center justify-center mb-4">
+                    <service.icon className="h-8 w-8 text-white" />
+                  </div>
+                  <CardTitle className="text-2xl mb-2">{service.title}</CardTitle>
+                  <CardDescription className="text-base">{service.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2">
+                    {service.features.map((feature) => (
+                      <li key={feature} className="flex items-center text-gray-700">
+                        <CheckCircle className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Button asChild size="lg" className="bg-brand-500 hover:bg-brand-600">
+              <Link href="/services">
+                View All Services <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Materials Section */}
+      <section className="py-20 bg-gray-900 text-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-4xl font-bold mb-6">Materials We Supply</h2>
+              <p className="text-xl text-gray-300 mb-8">
+                High-quality plastic materials for diverse industries worldwide
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {[
+                  {
+                    name: 'Virgin Plastics',
+                    subNames: 'PP, PS, PE',
+                    image: '/materials/pp-material.png',
+                    types: 'High-purity Pellets',
+                  },
+                  {
+                    name: 'Recycled Plastics',
+                    subNames: 'PP, PS, PE',
+                    image: '/materials/ps-material.png',
+                    types: 'Regrind, Pellets, Chips, Scraps',
+                  },
+                  {
+                    name: 'Industrial Products',
+                    subNames: 'Industrial Accessories, Leather, Footwear & Garments',
+                    image: '/materials/pe-material.png',
+                    types: 'Garment Accs, Raw Leather, Safety Goods, Apparel',
+                  },
+                ].map((material, idx) => (
+                  <Link
+                    key={idx}
+                    href="/services#materials-list"
+                    className="group relative overflow-hidden bg-gray-900 rounded-xl transition-all duration-500 ease-in-out hover:scale-[1.03] hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] cursor-pointer h-64 block"
+                  >
+                    <div
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
+                      style={{ backgroundImage: `url(${material.image})` }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/100 via-black/40 to-transparent" />
+                    <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                      <div className="mb-1">
+                        <h3 className={`font-black leading-tight transition-all duration-300 text-[#73d9f5] group-hover:text-white ${
+                          material.name === 'Industrial Products' ? 'text-[17px] group-hover:text-[18px]' : 'text-[18px] group-hover:text-[19px]'
+                        }`}>
+                          {material.name}
+                        </h3>
+                        <p className={`font-bold uppercase tracking-wider transition-all duration-300 text-white group-hover:text-[#73d9f5] ${
+                          material.name === 'Industrial Products' ? 'text-[11px] group-hover:text-[12px]' : 'text-[12px] group-hover:text-[13px]'
+                        }`}>
+                          {material.subNames}
+                        </p>
+                      </div>
+                      <div className="max-h-0 opacity-0 group-hover:max-h-16 group-hover:opacity-100 transition-all duration-500 overflow-hidden">
+                        <div className="pt-2 border-t border-white/20 mt-2">
+                          <p className="text-[12px] text-gray-200 font-medium leading-tight">
+                            {material.types}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <h3 className="text-3xl font-bold mb-6">Industries We Serve</h3>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  'Packaging',
+                  'Automotive',
+                  'Construction',
+                  'Electronics',
+                  'Medical Devices',
+                  'Consumer Goods',
+                ].map((industry) => (
+                  <div
+                    key={industry}
+                    className="bg-gray-800 p-4 rounded-lg text-center hover:bg-brand-500 transition-colors cursor-pointer"
+                  >
+                    {industry}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose Tasara Limited</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Building global connections between suppliers and businesses worldwide
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: Globe,
+                title: 'Global Network',
+                description: 'Connect global manufacturers with customers through direct sourcing, technical support, and reliable supply coordination.',
+              },
+              {
+                icon: Shield,
+                title: 'Quality Assurance',
+                description: 'Tasara ensures 100% quality, working with GRS-certified suppliers and complying with FR, REACH, BHT, TPCH, and Heavy Metal–Free standards, meeting global chemical compliance requirements.',
+              },
+              {
+                icon: TrendingUp,
+                title: 'Competitive Pricing',
+                description: 'On-time delivery, competitive pricing, and consistent quality to streamline your operations',
+              },
+              {
+                icon: Zap,
+                title: 'Reliable Partnerships',
+                description: 'Delivering the best materials at the right time with trusted guidance, building lasting relationships.',
+              },
+              {
+                icon: Users,
+                title: 'Industry Experience',
+                description: 'Our team brings expertise from the hanger and packaging sectors, ensuring tailored solutions for both virgin and recycled plastics.',
+              },
+              {
+                icon: Award,
+                title: 'Sustainability Focus',
+                description: 'We offer sustainable options to meet your business’s environmental goals.',
+              },
+            ].map((feature) => (
+              <Card key={feature.title} className="border-2 hover:border-brand-500 transition-colors hover:shadow-lg">
+                <CardHeader>
+                  <div className="w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center mb-4">
+                    <feature.icon className="h-6 w-6 text-brand-500" />
+                  </div>
+                  <CardTitle className="text-xl">{feature.title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <CardDescription className="text-base">{feature.description}</CardDescription>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-brand-500 text-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-4xl font-bold mb-6">Ready to Partner With Us?</h2>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">
+            Get competitive quotes and expert consultation for your plastic materials needs
+          </p>
+          <Button asChild size="lg" variant="secondary" className="bg-white text-brand-500 hover:bg-gray-100 text-lg px-8 py-6">
+            <Link href="/contact">
+              Contact Us Today <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+          </Button>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+
+
+
 // 'use client';
 
 // import Link from 'next/link';
@@ -548,474 +1018,3 @@
 //     </div>
 //   );
 // }
-
-
-
-
-
-
-
-'use client';
-
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-
-import {
-  ArrowRight,
-  Globe,
-  Shield,
-  TrendingUp,
-  Users,
-  Award,
-  Zap,
-  CheckCircle,
-  Package,
-  Truck,
-  BarChart3,
-} from 'lucide-react';
-import { useState, useEffect, useRef } from 'react';
-
-const CAROUSEL_CONFIG = {
-  backgroundColor: 'bg-gradient-to-r from-blue-50 to-purple-50',
-  titleColor: 'text-gray-900',
-  descriptionColor: 'text-gray-600',
-  leftColumnRatio: 'lg:w-2/5',
-  rightColumnRatio: 'lg:w-3/5',
-  slideSpeed: 3000,
-};
-
-const ProductCardCarousel = () => {
-  const trackRef = useRef<HTMLDivElement>(null);
-
-  const products = [
-    { src: "/materialimg/PP-natural-compound.png", name: "PP Natural Compound", grade: "Recycled", price: "$0.90 - $1.20" },
-    { src: "/materialimg/PP-natural-compound2.png", name: "PP Natural Compound", grade: "Recycled", price: "$0.90 - $1.20" },
-    { src: "/materialimg/p3.png", name: "PP White Compound", grade: "Recycled", price: "$0.90 - $1.20" },
-    { src: "/materialimg/p4.png", name: "PP Dull Natural Compound", grade: "Recycled", price: "$0.90 - $1.20" },
-    { src: "/materialimg/p5.png", name: "PP Black Compound", grade: "Recycled", price: "$0.65 - $0.90" },
-    { src: "/materialimg/p6.png", name: "GPPS Virgin", grade: "Virgin", price: "$1.00 - $1.50" },
-    { src: "/materialimg/p7.png", name: "PP Black Compound", grade: "Recycled", price: "$0.65 - $0.90" },
-    { src: "/materialimg/p8.png", name: "HIPS White Compound", grade: "Recycled", price: "$1.20 - $1.65" },
-    { src: "/materialimg/p9.png", name: "HIPS Virgin", grade: "Virgin", price: "$1.20 - $1.50" },
-    { src: "/materialimg/p10.png", name: "HIPS Virgin", grade: "Virgin", price: "$1.20 - $1.50" },
-    { src: "/materialimg/p11.png", name: "HIPS White Compound", grade: "Recycled", price: "$1.20 - $1.65" },
-    { src: "/materialimg/p12.png", name: "GPPS Natural Compound", grade: "Recycled", price: "$1.00 - $1.65" },
-    { src: "/materialimg/p13.png", name: "PP Black Compound", grade: "Recycled", price: "$0.65 - $0.90" },
-    { src: "/materialimg/p14.png", name: "HIPS Black Compound", grade: "Recycled", price: "$0.80 - $1.20" },
-    { src: "/materialimg/p15.png", name: "HIPS Black Compound", grade: "Recycled", price: "$0.80 - $1.20" },
-    { src: "/materialimg/p16.png", name: "HIPS Black Compound", grade: "Recycled", price: "$0.80 - $1.20" },
-  ];
-
-  const scroll = (direction: 'left' | 'right') => {
-    if (!trackRef.current) return;
-    const container = trackRef.current;
-    const scrollAmount = container.clientWidth * 0.6;
-    container.scrollBy({
-      left: direction === 'left' ? -scrollAmount : scrollAmount,
-      behavior: 'smooth',
-    });
-  };
-
-  useEffect(() => {
-    const container = trackRef.current;
-    if (!container) return;
-
-    const autoPlay = setInterval(() => {
-      if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
-        container.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        container.scrollBy({ left: 240, behavior: 'smooth' });
-      }
-    }, CAROUSEL_CONFIG.slideSpeed);
-
-    return () => clearInterval(autoPlay);
-  }, []);
-
-  return (
-    <section className={`py-20 ${CAROUSEL_CONFIG.backgroundColor}`}>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-          
-          {/* LEFT COLUMN: Title & Paragraph */}
-          <div className={`${CAROUSEL_CONFIG.leftColumnRatio} w-full`}>
-            <div className="lg:text-left lg:pr-10">
-              <h2 className={`text-4xl font-bold mb-8 ${CAROUSEL_CONFIG.titleColor} tracking-tight`}>
-                Tasara Limited
-              </h2>
-              
-              <div className="space-y-6 text-lg text-gray-700 leading-relaxed text-justify [text-wrap:pretty] hyphens-auto">
-                <p className="tracking-[0.01em]">
-                  <strong>Tasara Limited</strong>, based in Bangladesh, specializes in{' '}
-                  <strong>plastic materials, leather, and industrial accessories</strong>,{' '}
-                  providing <strong>supplier and indenting services</strong> through{' '}
-                  <strong>trusted global partners</strong>.
-                </p>
-
-                <p className="tracking-[0.01em]">
-                  We source from <strong>GRS-certified suppliers</strong> and offer recycled polymers{' '}
-                  compliant with <strong>FR, REACH, BHT, TPCH, and Heavy Metal–Free</strong> standards,{' '}
-                  ensuring clients receive <strong>certified, sustainable, and future-ready materials</strong>.
-                </p>
-
-                <p className="tracking-[0.01em] font-medium bg-gray-50/50 p-5 rounded-xl border-l-4 border-brand-500">
-                  Our goal is to be a <strong>reliable, sustainable supplier and indenting partner</strong>,{' '}
-                  supporting industries with <strong>quality materials and responsible sourcing</strong>.
-                </p>
-              </div>
-            </div>
-          </div>
-          
-          {/* RIGHT COLUMN: Modern Carousel */}
-          <div className={`${CAROUSEL_CONFIG.rightColumnRatio} w-full relative group`}>
-            
-            {/* Carousel Track */}
-            <div
-              ref={trackRef}
-              className="flex gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory py-6 px-2 scroll-smooth"
-              style={{ scrollbarWidth: 'none' }}
-            >
-              {products.map((product, i) => (
-                <div
-                  key={i}
-                  className="flex-none w-[210px] sm:w-[230px] bg-white rounded-2xl overflow-hidden snap-center shadow-md transition-all duration-300 ease-out md:hover:scale-105 md:hover:shadow-[0_0_25px_rgba(0,0,0,0.12)] md:hover:z-10 border border-gray-100 flex flex-col"
-                >
-                  {/* Product Image */}
-                  <div className="w-full h-[220px] sm:h-[240px] bg-gray-50 relative overflow-hidden">
-                    <img 
-                      src={product.src} 
-                      alt={product.name} 
-                      className="w-full h-full object-cover pointer-events-none"
-                      loading="lazy"
-                    />
-                    <div className="absolute top-3 left-3">
-                      <span className={`text-[11px] font-bold px-2.5 py-1 rounded-full text-white ${
-                        product.grade === 'Virgin' ? 'bg-blue-600' : 'bg-emerald-600'
-                      }`}>
-                        {product.grade}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Product Details */}
-                  <div className="p-4 flex flex-col justify-between flex-grow bg-white">
-                    <h3 className="font-bold text-gray-800 text-[15px] leading-snug line-clamp-2 min-h-[40px]">
-                      {product.name}
-                    </h3>
-                    <div className="mt-3 pt-2 border-t border-gray-100 flex items-center justify-between">
-                      <span className="text-[11px] text-gray-500 uppercase font-semibold tracking-wider">Est. Price</span>
-                      <span className="text-[13px] font-bold text-brand-600">{product.price}</span>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Navigation Buttons */}
-            <button
-              onClick={() => scroll('left')}
-              className="absolute left-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/70 hover:bg-black text-white hidden md:flex items-center justify-center backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 shadow-lg z-20"
-              aria-label="Previous product"
-            >
-              <span className="text-lg font-bold">❮</span>
-            </button>
-            
-            <button
-              onClick={() => scroll('right')}
-              className="absolute right-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/70 hover:bg-black text-white hidden md:flex items-center justify-center backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 shadow-lg z-20"
-              aria-label="Next product"
-            >
-              <span className="text-lg font-bold">❯</span>
-            </button>
-
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default function Home() {
-  return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:40px_40px]" />
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent" />
-
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-              Tasara Limited
-              <span className="block text-brand-400 text-[20px] mt-[9px]">United intend Unique solutions</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-              Your trusted partner in global plastic materials and accessories supply and indenting services. Connecting suppliers with international buyers.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" className="bg-brand-500 hover:bg-brand-600 text-lg px-8 py-6">
-                <Link href="/contact">
-                  Get a Quote <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="text-lg px-8 py-6 border-white text-black hover:bg-[#e0dcdc]">
-                <Link href="/services">
-                  Our Services
-                </Link>
-              </Button>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-10 mt-16 sm:mt-20 max-w-5xl lg:max-w-7xl xl:max-w-8xl mx-auto">
-            {[
-              { number: 'Globality', label: 'A trusted global network.' },
-              { number: 'Quality First', label: 'Certified material standards' },
-              { number: 'Integrated services', label: 'Innovative Flow' },
-              { number: '2024', label: 'Established' },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center px-4">
-                <div className="text-2xl sm:text-3xl font-bold text-brand-400 mb-2 md:whitespace-nowrap">
-                  {stat.number}
-                </div>
-                <div className="text-sm sm:text-base text-gray-400 md:whitespace-nowrap">
-                  {stat.label}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <ProductCardCarousel />
-
-      {/* Core Services Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Core Services</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Comprehensive solutions for your plastic materials supply chain needs
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Package,
-                title: 'Indenting Services',
-                description: 'Authorized agent for global plastic manufacturers with competitive pricing and factory warranties',
-                features: ['Direct Factory Sourcing', 'Manufacturer Warranties', 'Competitive Rates'],
-              },
-              {
-                icon: Truck,
-                title: 'Trading, Sourcing & Procurement',
-                description: 'Leverage our global network for specialty and standard materials with quality assurance',
-                features: ['Global Network Access', 'Material Matching', 'Sample Evaluation'],
-              },
-              {
-                icon: BarChart3,
-                title: 'Supply Chain Solutions',
-                description: 'End-to-end inventory management and logistics optimization for efficient operations',
-                features: ['Inventory Management', 'Just-in-Time Delivery', 'Logistics Optimization'],
-              },
-            ].map((service) => (
-              <Card key={service.title} className="hover:shadow-xl transition-shadow">
-                <CardHeader>
-                  <div className="w-16 h-16 bg-brand-500 rounded-lg flex items-center justify-center mb-4">
-                    <service.icon className="h-8 w-8 text-white" />
-                  </div>
-                  <CardTitle className="text-2xl mb-2">{service.title}</CardTitle>
-                  <CardDescription className="text-base">{service.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    {service.features.map((feature) => (
-                      <li key={feature} className="flex items-center text-gray-700">
-                        <CheckCircle className="h-5 w-5 text-green-500 mr-2 flex-shrink-0" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Button asChild size="lg" className="bg-brand-500 hover:bg-brand-600">
-              <Link href="/services">
-                View All Services <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Materials Section */}
-      <section className="py-20 bg-gray-900 text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl font-bold mb-6">Materials We Supply</h2>
-              <p className="text-xl text-gray-300 mb-8">
-                High-quality plastic materials for diverse industries worldwide
-              </p>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                {[
-                  {
-                    name: 'Virgin Plastics',
-                    subNames: 'PP, PS, PE',
-                    image: '/materials/pp-material.png',
-                    types: 'High-purity Pellets',
-                  },
-                  {
-                    name: 'Recycled Plastics',
-                    subNames: 'PP, PS, PE',
-                    image: '/materials/ps-material.png',
-                    types: 'Regrind, Pellets, Chips, Scraps',
-                  },
-                  {
-                    name: 'Industrial Products',
-                    subNames: 'Industrial Accessories, Leather, Footwear & Garments',
-                    image: '/materials/pe-material.png',
-                    types: 'Garment Accs, Raw Leather, Safety Goods, Apparel',
-                  },
-                ].map((material, idx) => (
-                  <Link
-                    key={idx}
-                    href="/services#materials-list"
-                    className="group relative overflow-hidden bg-gray-900 rounded-xl transition-all duration-500 ease-in-out hover:scale-[1.03] hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] cursor-pointer h-64 block"
-                  >
-                    <div
-                      className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
-                      style={{ backgroundImage: `url(${material.image})` }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/100 via-black/40 to-transparent" />
-                    <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                      <div className="mb-1">
-                        <h3 className={`font-black leading-tight transition-all duration-300 text-[#73d9f5] group-hover:text-white ${
-                          material.name === 'Industrial Products' ? 'text-[17px] group-hover:text-[18px]' : 'text-[18px] group-hover:text-[19px]'
-                        }`}>
-                          {material.name}
-                        </h3>
-                        <p className={`font-bold uppercase tracking-wider transition-all duration-300 text-white group-hover:text-[#73d9f5] ${
-                          material.name === 'Industrial Products' ? 'text-[11px] group-hover:text-[12px]' : 'text-[12px] group-hover:text-[13px]'
-                        }`}>
-                          {material.subNames}
-                        </p>
-                      </div>
-                      <div className="max-h-0 opacity-0 group-hover:max-h-16 group-hover:opacity-100 transition-all duration-500 overflow-hidden">
-                        <div className="pt-2 border-t border-white/20 mt-2">
-                          <p className="text-[12px] text-gray-200 font-medium leading-tight">
-                            {material.types}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-
-            <div>
-              <h3 className="text-3xl font-bold mb-6">Industries We Serve</h3>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  'Packaging',
-                  'Automotive',
-                  'Construction',
-                  'Electronics',
-                  'Medical Devices',
-                  'Consumer Goods',
-                ].map((industry) => (
-                  <div
-                    key={industry}
-                    className="bg-gray-800 p-4 rounded-lg text-center hover:bg-brand-500 transition-colors cursor-pointer"
-                  >
-                    {industry}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose Tasara Limited</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Building global connections between suppliers and businesses worldwide
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Globe,
-                title: 'Global Network',
-                description: 'Connect global manufacturers with customers through direct sourcing, technical support, and reliable supply coordination.',
-              },
-              {
-                icon: Shield,
-                title: 'Quality Assurance',
-                description: 'Tasara ensures 100% quality, working with GRS-certified suppliers and complying with FR, REACH, BHT, TPCH, and Heavy Metal–Free standards, meeting global chemical compliance requirements.',
-              },
-              {
-                icon: TrendingUp,
-                title: 'Competitive Pricing',
-                description: 'On-time delivery, competitive pricing, and consistent quality to streamline your operations',
-              },
-              {
-                icon: Zap,
-                title: 'Reliable Partnerships',
-                description: 'Delivering the best materials at the right time with trusted guidance, building lasting relationships.',
-              },
-              {
-                icon: Users,
-                title: 'Industry Experience',
-                description: 'Our team brings expertise from the hanger and packaging sectors, ensuring tailored solutions for both virgin and recycled plastics.',
-              },
-              {
-                icon: Award,
-                title: 'Sustainability Focus',
-                description: 'We offer sustainable options to meet your business’s environmental goals.',
-              },
-            ].map((feature) => (
-              <Card key={feature.title} className="border-2 hover:border-brand-500 transition-colors hover:shadow-lg">
-                <CardHeader>
-                  <div className="w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center mb-4">
-                    <feature.icon className="h-6 w-6 text-brand-500" />
-                  </div>
-                  <CardTitle className="text-xl">{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base">{feature.description}</CardDescription>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-brand-500 text-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold mb-6">Ready to Partner With Us?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Get competitive quotes and expert consultation for your plastic materials needs
-          </p>
-          <Button asChild size="lg" variant="secondary" className="bg-white text-brand-500 hover:bg-gray-100 text-lg px-8 py-6">
-            <Link href="/contact">
-              Contact Us Today <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-          </Button>
-        </div>
-      </section>
-    </div>
-  );
-}
