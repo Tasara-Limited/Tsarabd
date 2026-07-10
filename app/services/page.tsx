@@ -62,8 +62,9 @@ export default function ServicesPage() {
                 data-aos="fade-up" 
                 data-aos-duration="800" 
                 data-aos-delay={index * 150}
+                className="h-full"
               >
-                <Card className="text-center h-full border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
+                <Card className="text-center h-full border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 group">
                   <CardHeader className="pt-8">
                     <div className="w-20 h-20 bg-brand-500 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-brand-500/20 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
                       <service.icon className="h-10 w-10 text-white" />
@@ -111,15 +112,15 @@ export default function ServicesPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 self-start" data-aos="fade-left" data-aos-duration="900" data-aos-delay="200">
+            <div className="grid grid-cols-2 gap-4" data-aos="fade-left" data-aos-duration="900" data-aos-delay="200">
               {[
                 { icon: Globe, label: 'Global Network' },
                 { icon: Shield, label: 'Quality Assured' },
                 { icon: TrendingUp, label: 'Best Prices' },
                 { icon: FileCheck, label: 'Certified Materials' },
               ].map((feature) => (
-                <Card key={feature.label} className="text-center hover:shadow-md transition-shadow border-gray-100 bg-white">
-                  <CardContent className="pt-8 pb-6">
+                <Card key={feature.label} className="text-center bg-white border border-gray-200 hover:shadow-md transition-shadow">
+                  <CardContent className="pt-6">
                     <div className="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center mx-auto mb-4">
                       <feature.icon className="h-6 w-6 text-brand-600" />
                     </div>
@@ -132,15 +133,15 @@ export default function ServicesPage() {
 
           {/* 2. Trading, Sourcing & Procurement Detail */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="order-2 lg:order-1 grid grid-cols-1 sm:grid-cols-2 gap-6 self-start" data-aos="fade-right" data-aos-duration="900" data-aos-delay="200">
+            <div className="order-2 lg:order-1 grid grid-cols-2 gap-4" data-aos="fade-right" data-aos-duration="900" data-aos-delay="200">
               {[
                 { icon: Globe, label: 'Specialty Materials' },
                 { icon: MessageSquare, label: 'Expert Consultation' },
                 { icon: FileCheck, label: 'Sample Testing' },
                 { icon: Shield, label: 'Quality Control' },
               ].map((feature) => (
-                <Card key={feature.label} className="text-center hover:shadow-md transition-shadow border-gray-100 bg-white">
-                  <CardContent className="pt-8 pb-6">
+                <Card key={feature.label} className="text-center bg-white border border-gray-200 hover:shadow-md transition-shadow">
+                  <CardContent className="pt-6">
                     <div className="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center mx-auto mb-4">
                       <feature.icon className="h-6 w-6 text-brand-600" />
                     </div>
@@ -207,15 +208,15 @@ export default function ServicesPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 self-start" data-aos="fade-left" data-aos-duration="900" data-aos-delay="200">
+            <div className="grid grid-cols-2 gap-4" data-aos="fade-left" data-aos-duration="900" data-aos-delay="200">
               {[
                 { icon: Zap, label: 'Fast Delivery' },
                 { icon: BarChart3, label: 'Inventory Mgmt' },
                 { icon: Globe, label: 'Global Logistics' },
                 { icon: FileCheck, label: 'Documentation' },
               ].map((feature) => (
-                <Card key={feature.label} className="text-center hover:shadow-md transition-shadow border-gray-100 bg-white">
-                  <CardContent className="pt-8 pb-6">
+                <Card key={feature.label} className="text-center bg-white border border-gray-200 hover:shadow-md transition-shadow">
+                  <CardContent className="pt-6">
                     <div className="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center mx-auto mb-4">
                       <feature.icon className="h-6 w-6 text-brand-600" />
                     </div>
@@ -377,7 +378,7 @@ export default function ServicesPage() {
                   data-aos-duration="600"
                   data-aos-delay={index * 80}
                 >
-                  <Card className="bg-gray-900 border-gray-800 hover:bg-brand-600 hover:border-brand-500 transition-all duration-300 group shadow-md">
+                  <Card className="bg-gray-900 border border-gray-800 hover:bg-brand-600 hover:border-brand-500 transition-all duration-300 group shadow-md">
                     <CardContent className="pt-6 text-center">
                       <p className="font-semibold text-gray-200 group-hover:text-white transition-colors">{industry}</p>
                     </CardContent>
