@@ -11,7 +11,7 @@ const products = [
     { src: "/materialimg/PP-natural-compound.png", name: "PP Natural Compound", grade: "Recycled", price: "$0.90 - $1.20" },
     { src: "/materialimg/PP-natural-compound2.png", name: "PP Natural Compound", grade: "Recycled", price: "$0.90 - $1.20" },
     { src: "/materialimg/p3.png", name: "PP White Compound", grade: "Recycled", price: "$0.90 - $1.20" },
-    { src: "/materialimg/p4.png", name: "PP Deep Natural Compound", grade: "Recycled", price: "$0.90 - $1.20" },
+    { src: "/materialimg/p4.png", name: "PP Dull Natural Compound", grade: "Recycled", price: "$0.90 - $1.20" },
     { src: "/materialimg/p5.png", name: "PP Black Compound", grade: "Recycled", price: "$0.65 - $0.90" },
     { src: "/materialimg/p6.png", name: "GPPS Virgin", grade: "Virgin", price: "$1.00 - $1.50" },
     { src: "/materialimg/p7.png", name: "PP Black Compound", grade: "Recycled", price: "$0.65 - $0.90" },
