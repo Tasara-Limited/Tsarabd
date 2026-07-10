@@ -9,22 +9,22 @@ import { ArrowRight, ShoppingBag } from 'lucide-react';
 export default function ProductsPage() {
   // আপনার ১৬টি মেটেরিয়াল ইমেজের লিস্ট এবং ডেমো প্রাইস ডাটা
   const products = [
-    { src: "/materialimg/PP-natural-compound.png", name: "PP Natural Compound", grade: "Virgin", price: "$1.20 - $1.45" },
-    { src: "/materialimg/PP-natural-compound2.png", name: "PP Natural Compound 2", grade: "Virgin", price: "$1.25 - $1.50" },
-    { src: "/materialimg/p3.png", name: "Plastic Granules Premium", grade: "Recycled", price: "$0.85 - $1.05" },
-    { src: "/materialimg/p4.png", name: "Polymer Resin High-Density", grade: "Virgin", price: "$1.60 - $1.85" },
-    { src: "/materialimg/p5.png", name: "Recycled PP Regrind", grade: "Recycled", price: "$0.70 - $0.90" },
-    { src: "/materialimg/p6.png", name: "Industrial Plastic Scrap", grade: "Recycled", price: "$0.65 - $0.80" },
-    { src: "/materialimg/p7.png", name: "Polypropylene Pellets", grade: "Virgin", price: "$1.30 - $1.55" },
-    { src: "/materialimg/p8.png", name: "LDPE Granules", grade: "Virgin", price: "$1.40 - $1.65" },
-    { src: "/materialimg/p9.png", name: "HDPE Recycled Chips", grade: "Recycled", price: "$0.75 - $0.95" },
-    { src: "/materialimg/p10.png", name: "PET Flakes Clear", grade: "Recycled", price: "$0.80 - $1.00" },
-    { src: "/materialimg/p11.png", name: "PS Compound Pellets", grade: "Virgin", price: "$1.50 - $1.75" },
-    { src: "/materialimg/p12.png", name: "ABS Regrind Material", grade: "Recycled", price: "$0.90 - $1.15" },
-    { src: "/materialimg/p13.png", name: "PVC Resin Powder", grade: "Virgin", price: "$1.10 - $1.35" },
-    { src: "/materialimg/p14.png", name: "Color Masterbatch", grade: "Virgin", price: "$1.70 - $2.10" },
-    { src: "/materialimg/p15.png", name: "Linear Low-Density PE", grade: "Virgin", price: "$1.35 - $1.60" },
-    { src: "/materialimg/p16.png", name: "Thermoform Plastic Sheet", grade: "Virgin", price: "$1.80 - $2.20" },
+    { src: "/materialimg/PP-natural-compound.png", name: "PP Natural Compound", grade: "Recycled", price: "$0.90 - $1.20" },
+    { src: "/materialimg/PP-natural-compound2.png", name: "PP Natural Compound", grade: "Recycled", price: "$0.90 - $1.20" },
+    { src: "/materialimg/p3.png", name: "PP White Compound", grade: "Recycled", price: "$0.90 - $1.20" },
+    { src: "/materialimg/p4.png", name: "PP Deep Natural Compound", grade: "Recycled", price: "$0.90 - $1.20" },
+    { src: "/materialimg/p5.png", name: "PP Black Compound", grade: "Recycled", price: "$0.65 - $0.90" },
+    { src: "/materialimg/p6.png", name: "GPPS Virgin", grade: "Virgin", price: "$1.00 - $1.50" },
+    { src: "/materialimg/p7.png", name: "PP Black Compound", grade: "Recycled", price: "$0.65 - $0.90" },
+    { src: "/materialimg/p8.png", name: "HIPS White Compound", grade: "Recycled", price: "$1.20 - $1.65" },
+    { src: "/materialimg/p9.png", name: "HIPS Virgin", grade: "Virgin", price: "$1.20 - $1.50" },
+    { src: "/materialimg/p10.png", name: "HIPS Virgin", grade: "Virgin", price: "$1.20 - $1.50" },
+    { src: "/materialimg/p11.png", name: "HIPS White Compound", grade: "Recycled", price: "$1.20 - $1.65" },
+    { src: "/materialimg/p12.png", name: "GPPS Natural Compound", grade: "Recycled", price: "$1.00 - $1.65" },
+    { src: "/materialimg/p13.png", name: "PP Black Compound", grade: "Recycled", price: "$0.65 - $0.90" },
+    { src: "/materialimg/p14.png", name: "HIPS Black Compound", grade: "Recycled", price: "$0.80 - $1.20" },
+    { src: "/materialimg/p15.png", name: "HIPS Black Compound", grade: "Recycled", price: "$0.80 - $1.20" },
+    { src: "/materialimg/p16.png", name: "HIPS Black Compound", grade: "Recycled", price: "$0.80 - $1.20" },
   ];
 
   return (
