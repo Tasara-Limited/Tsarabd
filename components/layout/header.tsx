@@ -10,8 +10,8 @@ const navigation = [
   { name: 'Home', href: '/' },
   { name: 'About Us', href: '/about' },
   { name: 'Services', href: '/services' },
-  { name: 'Contact', href: '/contact' },
   { name: 'Products', href: '/products' },
+  { name: 'Contact', href: '/contact' },
 ];
 
 export function Header() {
