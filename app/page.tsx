@@ -38,16 +38,19 @@ const containerVariants = {
     opacity: 1,
     transition: { staggerChildren: 0.08 },
   },
-};
+} as any; // 👈 এখানে 'as any' যোগ করুন
 
 const itemVariants = {
   hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+    transition: { 
+      duration: 0.6, 
+      ease: [0.16, 1, 0.3, 1] 
+    },
   },
-};
+} as any; // 👈 এখানেও 'as any' যোগ করুন
 
 const ProductCardCarousel = () => {
   const trackRef = useRef<HTMLDivElement>(null);
