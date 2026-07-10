@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { motion } from 'framer-motion'; // 🟢 Framer Motion ইমপোর্ট
+import { motion } from 'framer-motion'; 
 
 import {
   ArrowRight,
@@ -28,29 +28,29 @@ const CAROUSEL_CONFIG = {
   descriptionColor: 'text-gray-600',
   leftColumnRatio: 'lg:w-2/5',
   rightColumnRatio: 'lg:w-3/5',
-  slideSpeed: 3000,
+  slideSpeed: 3500, // ক্যারোসেল স্লাইড স্পিড সামান্য বাড়ানো হয়েছে
 };
 
-// 🟢 গ্লোবাল অ্যানিমেশন কনফিগারেশন
-const containerVariants = {
+// 🟢 নিচের সেকশনগুলোর জন্য স্লো ও স্মুথ অ্যানিমেশন (ক্লিন স্ক্রলিং এক্সপেরিয়েন্স)
+const scrollContainerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.08 },
+    transition: { staggerChildren: 0.12 }, // এলিমেন্টগুলোর মাঝের গ্যাপ একটু বাড়ানো হয়েছে
   },
-} as any; // 👈 এখানে 'as any' যোগ করুন
+} as any;
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
+const scrollItemVariants = {
+  hidden: { opacity: 0, y: 40 }, // সামান্য নিচ থেকে উঠবে
   visible: {
     opacity: 1,
     y: 0,
     transition: { 
-      duration: 0.6, 
-      ease: [0.16, 1, 0.3, 1] 
+      duration: 0.9, // ০.৬ সেকেন্ড থেকে বাড়িয়ে ০.৯ সেকেন্ড (অনেক স্লো ও স্মুথ) করা হয়েছে
+      ease: [0.25, 1, 0.5, 1] // আরও স্মুথ কাস্টম ইজিং
     },
   },
-} as any; // 👈 এখানেও 'as any' যোগ করুন
+} as any;
 
 const ProductCardCarousel = () => {
   const trackRef = useRef<HTMLDivElement>(null);
@@ -102,22 +102,19 @@ const ProductCardCarousel = () => {
   return (
     <section className={`py-20 ${CAROUSEL_CONFIG.backgroundColor}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* 🟢 সেকশনটি ভিউপোর্টে আসলে বাম ও ডান কলাম একসাথে রিভিল হবে */}
         <motion.div 
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-          variants={containerVariants}
+          viewport={{ once: true, margin: "0px 0px -150px 0px" }}
+          variants={scrollContainerVariants}
           className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16"
         >
-          
-          {/* LEFT COLUMN: Title & Paragraph */}
-          <motion.div variants={itemVariants} className={`${CAROUSEL_CONFIG.leftColumnRatio} w-full`}>
+          {/* LEFT COLUMN */}
+          <motion.div variants={scrollItemVariants} className={`${CAROUSEL_CONFIG.leftColumnRatio} w-full`}>
             <div className="lg:text-left lg:pr-10">
               <h2 className={`text-4xl font-bold mb-8 ${CAROUSEL_CONFIG.titleColor} tracking-tight`}>
                 Tasara Limited
               </h2>
-              
               <div className="space-y-6 text-lg text-gray-700 leading-relaxed text-justify [text-wrap:pretty] hyphens-auto">
                 <p className="tracking-[0.01em]">
                   <strong>Tasara Limited</strong>, based in Bangladesh, specializes in{' '}
@@ -125,13 +122,11 @@ const ProductCardCarousel = () => {
                   <strong>providing supplier and indenting services</strong> through{' '}
                   <strong>trusted global partners</strong>.
                 </p>
-
                 <p className="tracking-[0.01em]">
                   We source from <strong>GRS-certified suppliers</strong> and offer recycled polymers{' '}
                   compliant with <strong>FR, REACH, BHT, TPCH, and Heavy Metal–Free</strong> standards,{' '}
                   ensuring clients receive <strong>certified, sustainable, and future-ready materials</strong>.
                 </p>
-
                 <p className="tracking-[0.01em] font-medium bg-gray-50/50 p-5 rounded-xl border-l-4 border-brand-500">
                   Our goal is to be a <strong>reliable, sustainable supplier and indenting partner</strong>,{' '}
                   supporting industries with <strong>quality materials and responsible sourcing</strong>.
@@ -140,10 +135,8 @@ const ProductCardCarousel = () => {
             </div>
           </motion.div>
           
-          {/* RIGHT COLUMN: Modern Carousel */}
-          <motion.div variants={itemVariants} className={`${CAROUSEL_CONFIG.rightColumnRatio} w-full flex flex-col relative group`}>
-            
-            {/* Carousel Track */}
+          {/* RIGHT COLUMN */}
+          <motion.div variants={scrollItemVariants} className={`${CAROUSEL_CONFIG.rightColumnRatio} w-full flex flex-col relative group`}>
             <div
               ref={trackRef}
               className="flex gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory py-6 px-2 scroll-smooth"
@@ -154,7 +147,6 @@ const ProductCardCarousel = () => {
                   key={i}
                   className="flex-none w-[210px] sm:w-[230px] bg-white rounded-2xl overflow-hidden snap-center shadow-md transition-all duration-300 ease-out md:hover:scale-105 md:hover:shadow-[0_0_25px_rgba(0,0,0,0.12)] md:hover:z-10 border border-gray-100 flex flex-col"
                 >
-                  {/* Product Image */}
                   <div className="w-full h-[220px] sm:h-[240px] bg-gray-50 relative overflow-hidden">
                     <img 
                       src={product.src} 
@@ -170,8 +162,6 @@ const ProductCardCarousel = () => {
                       </span>
                     </div>
                   </div>
-
-                  {/* Product Details */}
                   <div className="p-4 flex flex-col justify-between flex-grow bg-white">
                     <h3 className="font-bold text-gray-800 text-[15px] leading-snug line-clamp-2 min-h-[40px]">
                       {product.name}
@@ -185,7 +175,6 @@ const ProductCardCarousel = () => {
               ))}
             </div>
 
-            {/* View All Products Link */}
             <div className="flex justify-center w-full mt-10">
               <Link 
                 href="/products" 
@@ -196,7 +185,6 @@ const ProductCardCarousel = () => {
               </Link>
             </div>
 
-            {/* Navigation Buttons */}
             <button
               onClick={() => scroll('left')}
               className="absolute left-2 top-[40%] -translate-y-1/2 w-11 h-11 rounded-full bg-black/70 hover:bg-black text-white hidden md:flex items-center justify-center backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 shadow-lg z-20"
@@ -204,7 +192,6 @@ const ProductCardCarousel = () => {
             >
               <span className="text-lg font-bold">❮</span>
             </button>
-            
             <button
               onClick={() => scroll('right')}
               className="absolute right-2 top-[40%] -translate-y-1/2 w-11 h-11 rounded-full bg-black/70 hover:bg-black text-white hidden md:flex items-center justify-center backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 shadow-lg z-20"
@@ -212,7 +199,6 @@ const ProductCardCarousel = () => {
             >
               <span className="text-lg font-bold">❯</span>
             </button>
-
           </motion.div>
         </motion.div>
       </div>
@@ -224,18 +210,18 @@ export default function Home() {
   return (
     <div className="min-h-screen overflow-x-hidden">
       
-      {/* 🟢 Hero Section */}
+      {/* 🟢 Hero Section: এটি পেজ লোড হওয়ার সাথে সাথে আসবে, একটু প্রফেশনাল ও এলিগেন্ট স্পিডে */}
       <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:40px_40px]" />
         <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent" />
 
-        <motion.div 
-          initial={{ opacity: 0, y: 35 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
-        >
-          <div className="max-w-4xl mx-auto text-center">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="max-w-4xl mx-auto text-center"
+          >
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
               Tasara Limited
               <span className="block text-brand-400 text-[20px] mt-[9px]">United intend Unique solutions</span>
@@ -255,11 +241,14 @@ export default function Home() {
                 </Link>
               </Button>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Stats Stats Stagger Reveal */}
+          {/* Hero Stats: মেইন হেডার আসার পর এগুলো একটার পর একটা স্মুথলি পপ-আপ করবে */}
           <motion.div 
-            variants={containerVariants}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.3 } }
+            } as any}
             initial="hidden"
             animate="visible"
             className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-10 mt-16 sm:mt-20 max-w-5xl lg:max-w-7xl xl:max-w-8xl mx-auto"
@@ -270,7 +259,14 @@ export default function Home() {
               { number: 'Integrated services', label: 'Innovative Flow' },
               { number: '2024', label: 'Established' },
             ].map((stat) => (
-              <motion.div variants={itemVariants} key={stat.label} className="text-center px-4">
+              <motion.div 
+                variants={{
+                  hidden: { opacity: 0, scale: 0.92 },
+                  visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } }
+                } as any} 
+                key={stat.label} 
+                className="text-center px-4"
+              >
                 <div className="text-2xl sm:text-3xl font-bold text-brand-400 mb-2 md:whitespace-nowrap">
                   {stat.number}
                 </div>
@@ -280,7 +276,7 @@ export default function Home() {
               </motion.div>
             ))}
           </motion.div>
-        </motion.div>
+        </div>
       </section>
 
       <ProductCardCarousel />
@@ -296,10 +292,10 @@ export default function Home() {
           </div>
 
           <motion.div 
-            variants={containerVariants}
+            variants={scrollContainerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+            viewport={{ once: true, margin: "0px 0px -120px 0px" }}
             className="grid grid-cols-1 md:grid-cols-3 gap-8"
           >
             {[
@@ -322,7 +318,7 @@ export default function Home() {
                 features: ['Inventory Management', 'Just-in-Time Delivery', 'Logistics Optimization'],
               },
             ].map((service) => (
-              <motion.div variants={itemVariants} key={service.title}>
+              <motion.div variants={scrollItemVariants} key={service.title}>
                 <Card className="hover:shadow-xl transition-shadow h-full">
                   <CardHeader>
                     <div className="w-16 h-16 bg-brand-500 rounded-lg flex items-center justify-center mb-4">
@@ -362,11 +358,11 @@ export default function Home() {
           <motion.div 
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-            variants={containerVariants}
+            viewport={{ once: true, margin: "0px 0px -120px 0px" }}
+            variants={scrollContainerVariants}
             className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
           >
-            <motion.div variants={itemVariants}>
+            <motion.div variants={scrollItemVariants}>
               <h2 className="text-4xl font-bold mb-6">Materials We Supply</h2>
               <p className="text-xl text-gray-300 mb-8">
                 High-quality plastic materials for diverse industries worldwide
@@ -429,7 +425,7 @@ export default function Home() {
               </div>
             </motion.div>
 
-            <motion.div variants={itemVariants}>
+            <motion.div variants={scrollItemVariants}>
               <h3 className="text-3xl font-bold mb-6">Industries We Serve</h3>
               <div className="grid grid-cols-2 gap-4">
                 {[
@@ -464,10 +460,10 @@ export default function Home() {
           </div>
 
           <motion.div 
-            variants={containerVariants}
+            variants={scrollContainerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+            viewport={{ once: true, margin: "0px 0px -120px 0px" }}
             className="grid grid-cols-1 md:grid-cols-3 gap-8"
           >
             {[
@@ -502,7 +498,7 @@ export default function Home() {
                 description: 'We offer sustainable options to meet your business’s environmental goals.',
               },
             ].map((feature) => (
-              <motion.div variants={itemVariants} key={feature.title}>
+              <motion.div variants={scrollItemVariants} key={feature.title}>
                 <Card className="border-2 hover:border-brand-500 transition-colors hover:shadow-lg h-full">
                   <CardHeader>
                     <div className="w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center mb-4">
@@ -523,10 +519,10 @@ export default function Home() {
       {/* 🟢 CTA Section */}
       <section className="py-20 bg-brand-500 text-white">
         <motion.div 
-          initial={{ opacity: 0, scale: 0.95 }}
+          initial={{ opacity: 0, scale: 0.96 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
           className="container mx-auto px-4 sm:px-6 lg:px-8 text-center"
         >
           <h2 className="text-4xl font-bold mb-6">Ready to Partner With Us?</h2>
