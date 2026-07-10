@@ -25,79 +25,84 @@ const products = [
     { src: "/materialimg/p15.png", name: "HIPS Black Compound", grade: "Recycled", price: "$0.80 - $1.20" },
     { src: "/materialimg/p16.png", name: "HIPS Black Compound", grade: "Recycled", price: "$0.80 - $1.20" },
   ];
+
   return (
-    <div className="min-h-screen bg-gray-50 pb-20">
+    <div className="min-h-screen">
       
-      {/* Hero Section with Dark/Black Shade and Grid (Matches About & Services) */}
-      <div className="relative bg-[#0B132B] bg-opacity-95 text-white pt-40 pb-24 text-center overflow-hidden">
-        {/* Grid Background Effect */}
-        <div className="absolute inset-0 opacity-10 bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:24px_24px]"></div>
+      {/* 🟢 Hero Section: About এবং Service পেজের সাথে হুবহু মিল রেখে ডিজাইন করা */}
+      <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white pt-32 pb-20">
+        {/* About/Service পেজের সেই চমৎকার গ্রিড লাইন ইফেক্ট */}
+        <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:40px_40px]" />
         
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-          <Badge className="bg-brand-500 hover:bg-brand-600 mb-4 px-3 py-1 text-sm uppercase tracking-wider text-white border-none">
-            Our Catalog
-          </Badge>
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-white">
-            Materials & Products We Supply
-          </h1>
-          <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
-            High-purity virgin polymers and GRS-certified sustainable recycled plastics tailored for global industrial demands.
-          </p>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <Badge className="bg-brand-500 hover:bg-brand-600 mb-4 px-3 py-1 text-sm uppercase tracking-wider text-white border-none">
+              Our Catalog
+            </Badge>
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
+              Materials & Products We Supply
+            </h1>
+            <p className="text-xl text-gray-300 leading-relaxed">
+              High-purity virgin polymers and GRS-certified sustainable recycled plastics tailored for global industrial demands.
+            </p>
+          </div>
         </div>
-      </div>
+      </section>
 
-      {/* Main Content - Products Grid */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 mt-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          {products.map((product, i) => (
-            <Card key={i} className="group overflow-hidden border border-gray-200 hover:border-brand-500 transition-all duration-300 hover:shadow-xl flex flex-col justify-between bg-white rounded-2xl">
-              
-              {/* Image Container */}
-              <div className="relative aspect-video w-full h-48 overflow-hidden bg-gray-100 border-b">
-                <img
-                  src={product.src}
-                  alt={product.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  loading="lazy"
-                />
-                <Badge className={`absolute top-4 right-4 text-white border-none ${
-                  product.grade === 'Virgin' ? 'bg-emerald-600' : 'bg-blue-600'
-                }`}>
-                  {product.grade}
-                </Badge>
-              </div>
-
-              {/* Card Body */}
-              <CardContent className="p-5 flex-grow flex flex-col justify-between">
-                <div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-brand-500 transition-colors">
-                    {product.name}
-                  </h3>
-                  <p className="text-sm text-gray-500 mb-4">
-                    Industrial standard material compliant with global quality regulations.
-                  </p>
+      {/* 🟢 Products Grid Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            {products.map((product, i) => (
+              <Card key={i} className="group overflow-hidden border border-gray-200 hover:border-brand-500 transition-all duration-300 hover:shadow-xl flex flex-col justify-between bg-white rounded-2xl">
+                
+                {/* Image Container */}
+                <div className="relative aspect-video w-full h-48 overflow-hidden bg-gray-100 border-b">
+                  <img
+                    src={product.src}
+                    alt={product.name}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <Badge className={`absolute top-4 right-4 text-white border-none ${
+                    product.grade === 'Virgin' ? 'bg-emerald-600' : 'bg-blue-600'
+                  }`}>
+                    {product.grade}
+                  </Badge>
                 </div>
 
-                {/* Price and Action Button */}
-                <div className="pt-4 border-t border-dashed border-gray-200 mt-auto flex items-center justify-between">
+                {/* Card Body */}
+                <CardContent className="p-5 flex-grow flex flex-col justify-between">
                   <div>
-                    <span className="text-xs text-gray-400 block font-medium uppercase">Est. Price</span>
-                    <span className="text-base font-bold text-brand-600">
-                      {product.price} <span className="text-xs font-normal text-gray-500">/ KG</span>
-                    </span>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-brand-500 transition-colors">
+                      {product.name}
+                    </h3>
+                    <p className="text-sm text-gray-500 mb-4">
+                      Industrial standard material compliant with global quality regulations.
+                    </p>
                   </div>
-                  <Button asChild size="sm" className="bg-brand-500 hover:bg-brand-600 text-xs text-white">
-                    <Link href="/contact">
-                      Inquire
-                    </Link>
-                  </Button>
-                </div>
-              </CardContent>
 
-            </Card>
-          ))}
+                  {/* Price and Action Button */}
+                  <div className="pt-4 border-t border-dashed border-gray-200 mt-auto flex items-center justify-between">
+                    <div>
+                      <span className="text-xs text-gray-400 block font-medium uppercase">Est. Price</span>
+                      <span className="text-base font-bold text-brand-600">
+                        {product.price} <span className="text-xs font-normal text-gray-500">/ KG</span>
+                      </span>
+                    </div>
+                    <Button asChild size="sm" className="bg-brand-500 hover:bg-brand-600 text-xs text-white">
+                      <Link href="/contact">
+                        Inquire
+                      </Link>
+                    </Button>
+                  </div>
+                </CardContent>
+
+              </Card>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
 
     </div>
   );
