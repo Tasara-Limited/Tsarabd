@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useEffect } from 'react';
@@ -15,9 +14,6 @@ import {
   ArrowRight,
   CheckCircle,
 } from 'lucide-react';
-
-// AOS এর CSS এবং JS প্রজেক্টের root বা layout ফাইলে একবার ইমপোর্ট করাই ভালো। 
-// তবে আপনি চাইলে এই পেজেও ক্লায়েন্ট সাইডে ইনিশিয়েট করতে পারেন।
 
 export default function AboutPage() {
   return (
@@ -77,7 +73,8 @@ export default function AboutPage() {
                   data-aos-duration="600" 
                   data-aos-delay={index * 150}
                 >
-                  <Card className="h-full border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                  {/* এখানে border-gray-200 এবং hover:border-brand-500 যোগ করা হয়েছে */}
+                  <Card className="h-full border border-gray-200 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-brand-500 transition-all duration-300">
                     <CardHeader className="pb-2">
                       <div className={`w-12 h-12 ${stat.color} rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 hover:rotate-6`}>
                         <stat.icon className="h-6 w-6" />
@@ -102,7 +99,8 @@ export default function AboutPage() {
             
             {/* Mission */}
             <div data-aos="fade-right" data-aos-duration="800">
-              <Card className="h-full border-t-4 border-t-brand-500 shadow-sm hover:shadow-md transition-shadow">
+              {/* বর্ডার ইফেক্ট এবং হোভার ট্রানজিশন যোগ করা হয়েছে */}
+              <Card className="h-full border-t-4 border-t-brand-500 border-x border-b border-gray-200 shadow-sm hover:shadow-md hover:border-brand-500/50 transition-all duration-300">
                 <CardHeader>
                   <div className="w-16 h-16 bg-brand-500 rounded-2xl flex items-center justify-center mb-6 shadow-md shadow-brand-500/20">
                     <Target className="h-8 w-8 text-white" />
@@ -119,7 +117,8 @@ export default function AboutPage() {
 
             {/* Vision */}
             <div data-aos="fade-left" data-aos-duration="800">
-              <Card className="h-full border-t-4 border-t-brand-500 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+              {/* বর্ডার ইফেক্ট এবং হোভার ট্রানজিশন যোগ করা হয়েছে */}
+              <Card className="h-full border-t-4 border-t-brand-500 border-x border-b border-gray-200 shadow-sm hover:shadow-md hover:border-brand-500/50 transition-all duration-300 flex flex-col justify-between">
                 <CardHeader>
                   <div className="w-16 h-16 bg-brand-500 rounded-2xl flex items-center justify-center mb-6 shadow-md shadow-brand-500/20">
                     <Eye className="h-8 w-8 text-white" />
@@ -169,7 +168,8 @@ export default function AboutPage() {
                 data-aos-duration="600" 
                 data-aos-delay={index * 100}
               >
-                <Card className="h-full border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 group">
+                {/* এখানে border-gray-200 এবং hover:border-brand-500 যোগ করা হয়েছে */}
+                <Card className="h-full border border-gray-200 shadow-sm hover:shadow-xl hover:border-brand-500 transition-all duration-300 group">
                   <CardHeader>
                     <CardTitle className="text-xl font-bold flex items-center text-gray-900 group-hover:text-brand-600 transition-colors">
                       <CheckCircle className="h-5 w-5 text-emerald-500 mr-3 flex-shrink-0" />
@@ -259,9 +259,6 @@ export default function AboutPage() {
     </div>
   );
 }
-
-
-
 
 
 
