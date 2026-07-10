@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { motion } from 'framer-motion'; 
+import { motion } from 'framer-motion';
 
 import {
   ArrowRight,
@@ -28,29 +28,44 @@ const CAROUSEL_CONFIG = {
   descriptionColor: 'text-gray-600',
   leftColumnRatio: 'lg:w-2/5',
   rightColumnRatio: 'lg:w-3/5',
-  slideSpeed: 3500, // ক্যারোসেল স্লাইড স্পিড সামান্য বাড়ানো হয়েছে
+  slideSpeed: 3000,
 };
 
-// 🟢 নিচের সেকশনগুলোর জন্য স্লো ও স্মুথ অ্যানিমেশন (ক্লিন স্ক্রলিং এক্সপেরিয়েন্স)
-const scrollContainerVariants = {
+// 🟢 কাস্টম AOS-like ভ্যারিয়েন্টস (ধীরগতির এবং স্মুথ ট্রানজিশন)
+const zoomInVariants = {
+  hidden: { opacity: 0, scale: 0.85 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] },
+  },
+};
+
+const fadeRightVariants = {
+  hidden: { opacity: 0, x: -40 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] },
+  },
+};
+
+const fadeUpContainer = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.12 }, // এলিমেন্টগুলোর মাঝের গ্যাপ একটু বাড়ানো হয়েছে
+    transition: { staggerChildren: 0.12 },
   },
-} as any;
+};
 
-const scrollItemVariants = {
-  hidden: { opacity: 0, y: 40 }, // সামান্য নিচ থেকে উঠবে
+const fadeUpItem = {
+  hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { 
-      duration: 0.9, // ০.৬ সেকেন্ড থেকে বাড়িয়ে ০.৯ সেকেন্ড (অনেক স্লো ও স্মুথ) করা হয়েছে
-      ease: [0.25, 1, 0.5, 1] // আরও স্মুথ কাস্টম ইজিং
-    },
+    transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] },
   },
-} as any;
+};
 
 const ProductCardCarousel = () => {
   const trackRef = useRef<HTMLDivElement>(null);
@@ -102,41 +117,60 @@ const ProductCardCarousel = () => {
   return (
     <section className={`py-20 ${CAROUSEL_CONFIG.backgroundColor}`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "0px 0px -150px 0px" }}
-          variants={scrollContainerVariants}
-          className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16"
-        >
-          {/* LEFT COLUMN */}
-          <motion.div variants={scrollItemVariants} className={`${CAROUSEL_CONFIG.leftColumnRatio} w-full`}>
+        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+          
+          {/* LEFT COLUMN: Title & Paragraph */}
+          <div className={`${CAROUSEL_CONFIG.leftColumnRatio} w-full`}>
             <div className="lg:text-left lg:pr-10">
-              <h2 className={`text-4xl font-bold mb-8 ${CAROUSEL_CONFIG.titleColor} tracking-tight`}>
+              {/* Tasara Limited -> data-aos="zoom-in" */}
+              <motion.h2 
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "0px 0px -50px 0px" }}
+                variants={zoomInVariants}
+                className={`text-4xl font-bold mb-8 ${CAROUSEL_CONFIG.titleColor} tracking-tight`}
+              >
                 Tasara Limited
-              </h2>
-              <div className="space-y-6 text-lg text-gray-700 leading-relaxed text-justify [text-wrap:pretty] hyphens-auto">
+              </motion.h2>
+              
+              {/* Nicher likha -> data-aos="fade-right" */}
+              <motion.div 
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "0px 0px -50px 0px" }}
+                variants={fadeRightVariants}
+                className="space-y-6 text-lg text-gray-700 leading-relaxed text-justify [text-wrap:pretty] hyphens-auto"
+              >
                 <p className="tracking-[0.01em]">
                   <strong>Tasara Limited</strong>, based in Bangladesh, specializes in{' '}
                   <strong>plastic materials, leather, and industrial accessories</strong>,{' '}
                   <strong>providing supplier and indenting services</strong> through{' '}
                   <strong>trusted global partners</strong>.
                 </p>
+
                 <p className="tracking-[0.01em]">
                   We source from <strong>GRS-certified suppliers</strong> and offer recycled polymers{' '}
                   compliant with <strong>FR, REACH, BHT, TPCH, and Heavy Metal–Free</strong> standards,{' '}
                   ensuring clients receive <strong>certified, sustainable, and future-ready materials</strong>.
                 </p>
+
                 <p className="tracking-[0.01em] font-medium bg-gray-50/50 p-5 rounded-xl border-l-4 border-brand-500">
                   Our goal is to be a <strong>reliable, sustainable supplier and indenting partner</strong>,{' '}
                   supporting industries with <strong>quality materials and responsible sourcing</strong>.
                 </p>
-              </div>
+              </motion.div>
             </div>
-          </motion.div>
+          </div>
           
-          {/* RIGHT COLUMN */}
-          <motion.div variants={scrollItemVariants} className={`${CAROUSEL_CONFIG.rightColumnRatio} w-full flex flex-col relative group`}>
+          {/* RIGHT COLUMN: Carousel -> data-aos="fade-up" */}
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "0px 0px -50px 0px" }}
+            variants={fadeUpItem}
+            className={`${CAROUSEL_CONFIG.rightColumnRatio} w-full flex flex-col relative group`}
+          >
+            {/* Carousel Track */}
             <div
               ref={trackRef}
               className="flex gap-6 overflow-x-auto scrollbar-none snap-x snap-mandatory py-6 px-2 scroll-smooth"
@@ -162,6 +196,7 @@ const ProductCardCarousel = () => {
                       </span>
                     </div>
                   </div>
+
                   <div className="p-4 flex flex-col justify-between flex-grow bg-white">
                     <h3 className="font-bold text-gray-800 text-[15px] leading-snug line-clamp-2 min-h-[40px]">
                       {product.name}
@@ -192,6 +227,7 @@ const ProductCardCarousel = () => {
             >
               <span className="text-lg font-bold">❮</span>
             </button>
+            
             <button
               onClick={() => scroll('right')}
               className="absolute right-2 top-[40%] -translate-y-1/2 w-11 h-11 rounded-full bg-black/70 hover:bg-black text-white hidden md:flex items-center justify-center backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 shadow-lg z-20"
@@ -200,7 +236,7 @@ const ProductCardCarousel = () => {
               <span className="text-lg font-bold">❯</span>
             </button>
           </motion.div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -210,18 +246,18 @@ export default function Home() {
   return (
     <div className="min-h-screen overflow-x-hidden">
       
-      {/* 🟢 Hero Section: এটি পেজ লোড হওয়ার সাথে সাথে আসবে, একটু প্রফেশনাল ও এলিগেন্ট স্পিডে */}
+      {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:40px_40px]" />
         <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent" />
 
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="max-w-4xl mx-auto text-center"
-          >
+        <motion.div 
+          initial={{ opacity: 0, y: 35 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: [0.25, 1, 0.5, 1] }}
+          className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
+        >
+          <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
               Tasara Limited
               <span className="block text-brand-400 text-[20px] mt-[9px]">United intend Unique solutions</span>
@@ -241,14 +277,10 @@ export default function Home() {
                 </Link>
               </Button>
             </div>
-          </motion.div>
+          </div>
 
-          {/* Hero Stats: মেইন হেডার আসার পর এগুলো একটার পর একটা স্মুথলি পপ-আপ করবে */}
           <motion.div 
-            variants={{
-              hidden: { opacity: 0 },
-              visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.3 } }
-            } as any}
+            variants={fadeUpContainer}
             initial="hidden"
             animate="visible"
             className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-10 mt-16 sm:mt-20 max-w-5xl lg:max-w-7xl xl:max-w-8xl mx-auto"
@@ -259,14 +291,7 @@ export default function Home() {
               { number: 'Integrated services', label: 'Innovative Flow' },
               { number: '2024', label: 'Established' },
             ].map((stat) => (
-              <motion.div 
-                variants={{
-                  hidden: { opacity: 0, scale: 0.92 },
-                  visible: { opacity: 1, scale: 1, transition: { duration: 0.5 } }
-                } as any} 
-                key={stat.label} 
-                className="text-center px-4"
-              >
+              <motion.div variants={fadeUpItem} key={stat.label} className="text-center px-4">
                 <div className="text-2xl sm:text-3xl font-bold text-brand-400 mb-2 md:whitespace-nowrap">
                   {stat.number}
                 </div>
@@ -276,26 +301,35 @@ export default function Home() {
               </motion.div>
             ))}
           </motion.div>
-        </div>
+        </motion.div>
       </section>
 
       <ProductCardCarousel />
 
-      {/* 🟢 Core Services Section */}
+      {/* Core Services Section */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          
+          {/* Header -> data-aos="zoom-in" */}
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+            variants={zoomInVariants}
+            className="text-center mb-16"
+          >
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Core Services</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Comprehensive solutions for your plastic materials supply chain needs
             </p>
-          </div>
+          </motion.div>
 
+          {/* Cards -> data-aos="fade-up" Staggered */}
           <motion.div 
-            variants={scrollContainerVariants}
+            variants={fadeUpContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "0px 0px -120px 0px" }}
+            viewport={{ once: true, margin: "0px 0px -100px 0px" }}
             className="grid grid-cols-1 md:grid-cols-3 gap-8"
           >
             {[
@@ -318,7 +352,7 @@ export default function Home() {
                 features: ['Inventory Management', 'Just-in-Time Delivery', 'Logistics Optimization'],
               },
             ].map((service) => (
-              <motion.div variants={scrollItemVariants} key={service.title}>
+              <motion.div variants={fadeUpItem} key={service.title}>
                 <Card className="hover:shadow-xl transition-shadow h-full">
                   <CardHeader>
                     <div className="w-16 h-16 bg-brand-500 rounded-lg flex items-center justify-center mb-4">
@@ -352,23 +386,34 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 🟢 Materials Section */}
+      {/* Materials Section */}
       <section className="py-20 bg-gray-900 text-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div 
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "0px 0px -120px 0px" }}
-            variants={scrollContainerVariants}
-            className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
-          >
-            <motion.div variants={scrollItemVariants}>
-              <h2 className="text-4xl font-bold mb-6">Materials We Supply</h2>
-              <p className="text-xl text-gray-300 mb-8">
-                High-quality plastic materials for diverse industries worldwide
-              </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            
+            {/* Left Side Content */}
+            <div>
+              {/* Header -> data-aos="zoom-in" */}
+              <motion.div
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+                variants={zoomInVariants}
+              >
+                <h2 className="text-4xl font-bold mb-6">Materials We Supply</h2>
+                <p className="text-xl text-gray-300 mb-8">
+                  High-quality plastic materials for diverse industries worldwide
+                </p>
+              </motion.div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Material Cards -> data-aos="fade-up" */}
+              <motion.div 
+                variants={fadeUpContainer}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+                className="grid grid-cols-1 md:grid-cols-3 gap-6"
+              >
                 {[
                   {
                     name: 'Virgin Plastics',
@@ -389,43 +434,50 @@ export default function Home() {
                     types: 'Garment Accs, Raw Leather, Safety Goods, Apparel',
                   },
                 ].map((material, idx) => (
-                  <Link
-                    key={idx}
-                    href="/services#materials-list"
-                    className="group relative overflow-hidden bg-gray-900 rounded-xl transition-all duration-500 ease-in-out hover:scale-[1.03] hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] cursor-pointer h-64 block"
-                  >
-                    <div
-                      className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
-                      style={{ backgroundImage: `url(${material.image})` }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/100 via-black/40 to-transparent" />
-                    <div className="absolute inset-0 p-6 flex flex-col justify-end">
-                      <div className="mb-1">
-                        <h3 className={`font-black leading-tight transition-all duration-300 text-[#73d9f5] group-hover:text-white ${
-                          material.name === 'Industrial Products' ? 'text-[17px] group-hover:text-[18px]' : 'text-[18px] group-hover:text-[19px]'
-                        }`}>
-                          {material.name}
-                        </h3>
-                        <p className={`font-bold uppercase tracking-wider transition-all duration-300 text-white group-hover:text-[#73d9f5] ${
-                          material.name === 'Industrial Products' ? 'text-[11px] group-hover:text-[12px]' : 'text-[12px] group-hover:text-[13px]'
-                        }`}>
-                          {material.subNames}
-                        </p>
-                      </div>
-                      <div className="max-h-0 opacity-0 group-hover:max-h-16 group-hover:opacity-100 transition-all duration-500 overflow-hidden">
-                        <div className="pt-2 border-t border-white/20 mt-2">
-                          <p className="text-[12px] text-gray-200 font-medium leading-tight">
-                            {material.types}
+                  <motion.div variants={fadeUpItem} key={idx}>
+                    <Link
+                      href="/services#materials-list"
+                      className="group relative overflow-hidden bg-gray-900 rounded-xl transition-all duration-500 ease-in-out hover:scale-[1.03] hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] cursor-pointer h-64 block"
+                    >
+                      <div
+                        className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 opacity-70 group-hover:opacity-100"
+                        style={{ backgroundImage: `url(${material.image})` }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/100 via-black/40 to-transparent" />
+                      <div className="absolute inset-0 p-6 flex flex-col justify-end">
+                        <div className="mb-1">
+                          <h3 className={`font-black leading-tight transition-all duration-300 text-[#73d9f5] group-hover:text-white ${
+                            material.name === 'Industrial Products' ? 'text-[17px] group-hover:text-[18px]' : 'text-[18px] group-hover:text-[19px]'
+                          }`}>
+                            {material.name}
+                          </h3>
+                          <p className={`font-bold uppercase tracking-wider transition-all duration-300 text-white group-hover:text-[#73d9f5] ${
+                            material.name === 'Industrial Products' ? 'text-[11px] group-hover:text-[12px]' : 'text-[12px] group-hover:text-[13px]'
+                          }`}>
+                            {material.subNames}
                           </p>
                         </div>
+                        <div className="max-h-0 opacity-0 group-hover:max-h-16 group-hover:opacity-100 transition-all duration-500 overflow-hidden">
+                          <div className="pt-2 border-t border-white/20 mt-2">
+                            <p className="text-[12px] text-gray-200 font-medium leading-tight">
+                              {material.types}
+                            </p>
+                          </div>
+                        </div>
                       </div>
-                    </div>
-                  </Link>
+                    </Link>
+                  </motion.div>
                 ))}
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
 
-            <motion.div variants={scrollItemVariants}>
+            {/* Right Side Content (Industries) -> data-aos="fade-up" */}
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+              variants={fadeUpItem}
+            >
               <h3 className="text-3xl font-bold mb-6">Industries We Serve</h3>
               <div className="grid grid-cols-2 gap-4">
                 {[
@@ -445,25 +497,34 @@ export default function Home() {
                 ))}
               </div>
             </motion.div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* 🟢 Why Choose Us Section */}
+      {/* Why Choose Us Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          
+          {/* Header -> data-aos="zoom-in" */}
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+            variants={zoomInVariants}
+            className="text-center mb-16"
+          >
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Why Choose Tasara Limited</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">
               Building global connections between suppliers and businesses worldwide
             </p>
-          </div>
+          </motion.div>
 
+          {/* Feature Grid -> data-aos="fade-up" Staggered */}
           <motion.div 
-            variants={scrollContainerVariants}
+            variants={fadeUpContainer}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "0px 0px -120px 0px" }}
+            viewport={{ once: true, margin: "0px 0px -100px 0px" }}
             className="grid grid-cols-1 md:grid-cols-3 gap-8"
           >
             {[
@@ -498,7 +559,7 @@ export default function Home() {
                 description: 'We offer sustainable options to meet your business’s environmental goals.',
               },
             ].map((feature) => (
-              <motion.div variants={scrollItemVariants} key={feature.title}>
+              <motion.div variants={fadeUpItem} key={feature.title}>
                 <Card className="border-2 hover:border-brand-500 transition-colors hover:shadow-lg h-full">
                   <CardHeader>
                     <div className="w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center mb-4">
@@ -516,13 +577,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 🟢 CTA Section */}
+      {/* CTA Section */}
       <section className="py-20 bg-brand-500 text-white">
         <motion.div 
-          initial={{ opacity: 0, scale: 0.96 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
+          variants={zoomInVariants}
           className="container mx-auto px-4 sm:px-6 lg:px-8 text-center"
         >
           <h2 className="text-4xl font-bold mb-6">Ready to Partner With Us?</h2>
@@ -539,6 +600,12 @@ export default function Home() {
     </div>
   );
 }
+
+
+
+
+
+
 
 // 'use client';
 
