@@ -22,6 +22,9 @@ import {
 } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 
+// 🟢 Framer Motion থেকে Variants টাইপ ইম্পোর্ট করা হলো যেন টাইপস্ক্রিপ্ট এরর না দেয়
+import { Variants } from 'framer-motion';
+
 const CAROUSEL_CONFIG = {
   backgroundColor: 'bg-gradient-to-r from-blue-50 to-purple-50',
   titleColor: 'text-gray-900',
@@ -31,39 +34,39 @@ const CAROUSEL_CONFIG = {
   slideSpeed: 3000,
 };
 
-// 🟢 কাস্টম AOS-like ভ্যারিয়েন্টস (ধীরগতির এবং স্মুথ ট্রানজিশন)
-const zoomInVariants = {
+// 🟢 প্রতিটি ভ্যারিয়েন্টে স্পষ্ট করে ': Variants' টাইপ সেট করে দেওয়া হলো
+const zoomInVariants: Variants = {
   hidden: { opacity: 0, scale: 0.85 },
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] },
+    transition: { duration: 1.0, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
-const fadeRightVariants = {
-  hidden: { opacity: 0, x: -40 },
+const fadeRightVariants: Variants = {
+  hidden: { opacity: 0, x: -50 },
   visible: {
     opacity: 1,
     x: 0,
-    transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] },
+    transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] },
   },
 };
 
-const fadeUpContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.12 },
-  },
-};
-
-const fadeUpItem = {
-  hidden: { opacity: 0, y: 40 },
+const fadeUpVariants: Variants = {
+  hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] },
+    transition: { duration: 1.0, ease: [0.16, 1, 0.3, 1] },
+  },
+};
+
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 },
   },
 };
 
