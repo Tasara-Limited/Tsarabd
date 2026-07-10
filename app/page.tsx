@@ -113,7 +113,7 @@ const ProductCardCarousel = () => {
           </div>
           
           {/* RIGHT COLUMN: Modern Carousel */}
-          <div className={`${CAROUSEL_CONFIG.rightColumnRatio} w-full relative group`}>
+          <div className={`${CAROUSEL_CONFIG.rightColumnRatio} w-full flex flex-col relative group`}>
             
             {/* Carousel Track */}
             <div
@@ -157,10 +157,20 @@ const ProductCardCarousel = () => {
               ))}
             </div>
 
+            {/* View All Products Button (নিউ অ্যাডড) */}
+            <div className="flex justify-center mt-6 lg:justify-start lg:pl-2">
+              <Button asChild size="lg" className="bg-brand-500 hover:bg-brand-600 text-white font-medium px-8 py-5 rounded-xl shadow-md transition-all hover:shadow-lg group/btn">
+                <Link href="/products" className="flex items-center gap-2">
+                  View All Products 
+                  <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                </Link>
+              </Button>
+            </div>
+
             {/* Navigation Buttons */}
             <button
               onClick={() => scroll('left')}
-              className="absolute left-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/70 hover:bg-black text-white hidden md:flex items-center justify-center backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 shadow-lg z-20"
+              className="absolute left-2 top-[40%] -translate-y-1/2 w-11 h-11 rounded-full bg-black/70 hover:bg-black text-white hidden md:flex items-center justify-center backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 shadow-lg z-20"
               aria-label="Previous product"
             >
               <span className="text-lg font-bold">❮</span>
@@ -168,7 +178,7 @@ const ProductCardCarousel = () => {
             
             <button
               onClick={() => scroll('right')}
-              className="absolute right-2 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-black/70 hover:bg-black text-white hidden md:flex items-center justify-center backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 shadow-lg z-20"
+              className="absolute right-2 top-[40%] -translate-y-1/2 w-11 h-11 rounded-full bg-black/70 hover:bg-black text-white hidden md:flex items-center justify-center backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100 shadow-lg z-20"
               aria-label="Next product"
             >
               <span className="text-lg font-bold">❯</span>
@@ -464,8 +474,6 @@ export default function Home() {
     </div>
   );
 }
-
-
 
 
 // 'use client';
