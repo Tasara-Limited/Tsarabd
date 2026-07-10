@@ -7,6 +7,28 @@ import { Footer } from '@/components/layout/footer';
 
 
 
+'use client';
+
+import { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    AOS.init({
+      once: true,      // অ্যানিমেশন শুধু একবার হবে (স্ক্রল আপ-ডাউন করলে বারবার রিলোড হবে না, যা দেখতে ভালো লাগে)
+      duration: 800,   // গ্লোবাল ডিফল্ট অ্যানিমেশন টাইম
+      easing: 'ease-out-cubic',
+    });
+  }, []);
+
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  );
+}
+
 
 
 export const dynamic = 'force-dynamic';
