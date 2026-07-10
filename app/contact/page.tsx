@@ -234,10 +234,13 @@ export default function ContactPage() {
                   <p className="mb-6 opacity-90 font-light max-w-md">
                     For urgent inquiries, call us directly on WhatsApp or WeChat during business hours.
                   </p>
-                  <a href="https://wa.me" className="inline-block text-2xl md:text-3xl font-extrabold tracking-tight hover:underline transition-all bg-white/10 px-5 py-2.5 rounded-xl backdrop-blur-sm" 
-                    target="_blank" 
-                    rel="noopener noreferrer">Chat on WhatsApp
-                  </a>
+                    <a 
+                      href="https://wa.me/8801886538187" 
+                      className="inline-block text-2xl md:text-3xl font-extrabold tracking-tight hover:underline transition-all bg-white/10 px-5 py-2.5 rounded-xl backdrop-blur-sm"  
+                      target="_blank"  
+                      rel="noopener noreferrer">
+                      Chat on WhatsApp
+                    </a>
                 </CardContent>
               </Card>
               
