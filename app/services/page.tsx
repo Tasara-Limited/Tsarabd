@@ -111,15 +111,15 @@ export default function ServicesPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4" data-aos="fade-left" data-aos-duration="900" data-aos-delay="200">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 self-start" data-aos="fade-left" data-aos-duration="900" data-aos-delay="200">
               {[
                 { icon: Globe, label: 'Global Network' },
                 { icon: Shield, label: 'Quality Assured' },
                 { icon: TrendingUp, label: 'Best Prices' },
                 { icon: FileCheck, label: 'Certified Materials' },
-              ].map((feature, idx) => (
-                <Card key={feature.label} className="text-center hover:shadow-md transition-shadow border-gray-100">
-                  <CardContent className="pt-6">
+              ].map((feature) => (
+                <Card key={feature.label} className="text-center hover:shadow-md transition-shadow border-gray-100 bg-white">
+                  <CardContent className="pt-8 pb-6">
                     <div className="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center mx-auto mb-4">
                       <feature.icon className="h-6 w-6 text-brand-600" />
                     </div>
@@ -132,15 +132,15 @@ export default function ServicesPage() {
 
           {/* 2. Trading, Sourcing & Procurement Detail */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="order-2 lg:order-1 grid grid-cols-2 gap-4" data-aos="fade-right" data-aos-duration="900" data-aos-delay="200">
+            <div className="order-2 lg:order-1 grid grid-cols-1 sm:grid-cols-2 gap-6 self-start" data-aos="fade-right" data-aos-duration="900" data-aos-delay="200">
               {[
                 { icon: Globe, label: 'Specialty Materials' },
                 { icon: MessageSquare, label: 'Expert Consultation' },
                 { icon: FileCheck, label: 'Sample Testing' },
                 { icon: Shield, label: 'Quality Control' },
               ].map((feature) => (
-                <Card key={feature.label} className="text-center hover:shadow-md transition-shadow border-gray-100">
-                  <CardContent className="pt-6">
+                <Card key={feature.label} className="text-center hover:shadow-md transition-shadow border-gray-100 bg-white">
+                  <CardContent className="pt-8 pb-6">
                     <div className="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center mx-auto mb-4">
                       <feature.icon className="h-6 w-6 text-brand-600" />
                     </div>
@@ -207,15 +207,15 @@ export default function ServicesPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-2 gap-4" data-aos="fade-left" data-aos-duration="900" data-aos-delay="200">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 self-start" data-aos="fade-left" data-aos-duration="900" data-aos-delay="200">
               {[
                 { icon: Zap, label: 'Fast Delivery' },
                 { icon: BarChart3, label: 'Inventory Mgmt' },
                 { icon: Globe, label: 'Global Logistics' },
                 { icon: FileCheck, label: 'Documentation' },
               ].map((feature) => (
-                <Card key={feature.label} className="text-center hover:shadow-md transition-shadow border-gray-100">
-                  <CardContent className="pt-6">
+                <Card key={feature.label} className="text-center hover:shadow-md transition-shadow border-gray-100 bg-white">
+                  <CardContent className="pt-8 pb-6">
                     <div className="w-12 h-12 bg-brand-50 rounded-xl flex items-center justify-center mx-auto mb-4">
                       <feature.icon className="h-6 w-6 text-brand-600" />
                     </div>
@@ -407,7 +407,6 @@ export default function ServicesPage() {
     </div>
   );
 }
-
 
 
 
