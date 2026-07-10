@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from 'next/link';
@@ -22,7 +21,7 @@ import {
 } from 'lucide-react';
 import { useState, useEffect, useRef } from 'react';
 
-// 🟢 Framer Motion থেকে Variants টাইপ ইম্পোর্ট করা হলো যেন টাইপস্ক্রিপ্ট এরর না দেয়
+// 🟢 Framer Motion থেকে Variants টাইপ ইম্পোর্ট করা হলো যেন টাইপস্ক্রিপ্ট এরর না দেয়
 import { Variants } from 'framer-motion';
 
 const CAROUSEL_CONFIG = {
@@ -34,7 +33,7 @@ const CAROUSEL_CONFIG = {
   slideSpeed: 3000,
 };
 
-// 🟢 প্রতিটি ভ্যারিয়েন্টে স্পষ্ট করে ': Variants' টাইপ সেট করে দেওয়া হলো
+// 🟢 প্রতিটি ভ্যারিয়েন্টে স্পষ্ট করে ': Variants' টাইপ সেট করে দেওয়া হলো
 const zoomInVariants: Variants = {
   hidden: { opacity: 0, scale: 0.85 },
   visible: {
@@ -165,12 +164,12 @@ const ProductCardCarousel = () => {
             </div>
           </div>
           
-          {/* RIGHT COLUMN: Carousel -> data-aos="fade-up" */}
+          {/* RIGHT COLUMN: Carousel -> data-aos="zoom-in" */}
           <motion.div 
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "0px 0px -50px 0px" }}
-            variants={fadeUpItem}
+            variants={zoomInVariants}
             className={`${CAROUSEL_CONFIG.rightColumnRatio} w-full flex flex-col relative group`}
           >
             {/* Carousel Track */}
@@ -283,7 +282,7 @@ export default function Home() {
           </div>
 
           <motion.div 
-            variants={fadeUpContainer}
+            variants={containerVariants}
             initial="hidden"
             animate="visible"
             className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-10 mt-16 sm:mt-20 max-w-5xl lg:max-w-7xl xl:max-w-8xl mx-auto"
@@ -294,7 +293,7 @@ export default function Home() {
               { number: 'Integrated services', label: 'Innovative Flow' },
               { number: '2024', label: 'Established' },
             ].map((stat) => (
-              <motion.div variants={fadeUpItem} key={stat.label} className="text-center px-4">
+              <motion.div variants={fadeUpVariants} key={stat.label} className="text-center px-4">
                 <div className="text-2xl sm:text-3xl font-bold text-brand-400 mb-2 md:whitespace-nowrap">
                   {stat.number}
                 </div>
@@ -329,7 +328,7 @@ export default function Home() {
 
           {/* Cards -> data-aos="fade-up" Staggered */}
           <motion.div 
-            variants={fadeUpContainer}
+            variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "0px 0px -100px 0px" }}
@@ -355,7 +354,7 @@ export default function Home() {
                 features: ['Inventory Management', 'Just-in-Time Delivery', 'Logistics Optimization'],
               },
             ].map((service) => (
-              <motion.div variants={fadeUpItem} key={service.title}>
+              <motion.div variants={fadeUpVariants} key={service.title}>
                 <Card className="hover:shadow-xl transition-shadow h-full">
                   <CardHeader>
                     <div className="w-16 h-16 bg-brand-500 rounded-lg flex items-center justify-center mb-4">
@@ -411,7 +410,7 @@ export default function Home() {
 
               {/* Material Cards -> data-aos="fade-up" */}
               <motion.div 
-                variants={fadeUpContainer}
+                variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true, margin: "0px 0px -100px 0px" }}
@@ -437,7 +436,7 @@ export default function Home() {
                     types: 'Garment Accs, Raw Leather, Safety Goods, Apparel',
                   },
                 ].map((material, idx) => (
-                  <motion.div variants={fadeUpItem} key={idx}>
+                  <motion.div variants={fadeUpVariants} key={idx}>
                     <Link
                       href="/services#materials-list"
                       className="group relative overflow-hidden bg-gray-900 rounded-xl transition-all duration-500 ease-in-out hover:scale-[1.03] hover:shadow-[0_0_20px_rgba(255,255,255,0.15)] cursor-pointer h-64 block"
@@ -479,7 +478,7 @@ export default function Home() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "0px 0px -100px 0px" }}
-              variants={fadeUpItem}
+              variants={fadeUpVariants}
             >
               <h3 className="text-3xl font-bold mb-6">Industries We Serve</h3>
               <div className="grid grid-cols-2 gap-4">
@@ -524,7 +523,7 @@ export default function Home() {
 
           {/* Feature Grid -> data-aos="fade-up" Staggered */}
           <motion.div 
-            variants={fadeUpContainer}
+            variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "0px 0px -100px 0px" }}
@@ -562,7 +561,7 @@ export default function Home() {
                 description: 'We offer sustainable options to meet your business’s environmental goals.',
               },
             ].map((feature) => (
-              <motion.div variants={fadeUpItem} key={feature.title}>
+              <motion.div variants={fadeUpVariants} key={feature.title}>
                 <Card className="border-2 hover:border-brand-500 transition-colors hover:shadow-lg h-full">
                   <CardHeader>
                     <div className="w-12 h-12 bg-brand-100 rounded-lg flex items-center justify-center mb-4">
@@ -603,7 +602,6 @@ export default function Home() {
     </div>
   );
 }
-
 
 
 
