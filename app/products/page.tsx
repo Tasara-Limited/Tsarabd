@@ -40,7 +40,7 @@ const products = [
               Our Catalog
             </Badge>
             <h1 className="text-5xl md:text-6xl font-bold mb-6 text-white">
-              Materials & Products We Supply
+              Materials We Supply
             </h1>
             <p className="text-xl text-gray-300 leading-relaxed">
               High-purity virgin polymers and GRS-certified sustainable recycled plastics tailored for global industrial demands.
