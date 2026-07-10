@@ -4,32 +4,7 @@ import { Inter } from 'next/font/google';
 import Script from 'next/script';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
-
-
-
-'use client';
-
-import { useEffect } from 'react';
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  useEffect(() => {
-    AOS.init({
-      once: true,      // অ্যানিমেশন শুধু একবার হবে (স্ক্রল আপ-ডাউন করলে বারবার রিলোড হবে না, যা দেখতে ভালো লাগে)
-      duration: 800,   // গ্লোবাল ডিফল্ট অ্যানিমেশন টাইম
-      easing: 'ease-out-cubic',
-    });
-  }, []);
-
-  return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
-  );
-}
-
-
+import { AOSProvider } from '@/components/aos-provider'; // ধাপ ১ এ তৈরি করা কম্পোনেন্ট
 
 export const dynamic = 'force-dynamic';
 
@@ -37,21 +12,15 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.tasarabd.com'),
-
   title: 'Tasara Limited - Global Plastic Materials Supply & Indenting Services',
-
   applicationName: 'Tasara Limited',
-
   description:
     'Tasara Limited connects raw material suppliers with international buyers. Tasara offers a global network for sourcing high-quality plastic materials, providing indenting, procurement, and supply chain solutions tailored for diverse industries worldwide.',
-
   keywords:
     'Tasara, Tasarabd, plastic materials, indenting services, supply chain, global sourcing, polypropylene, polyethylene, polystyrene, procurement, Bangladesh, Tasara Bangladesh',
-
   alternates: {
     canonical: 'https://www.tasarabd.com',
   },
-
   openGraph: {
     title: 'Tasara Limited - Global Plastic Materials Supply & Indenting Services',
     description:
@@ -69,7 +38,6 @@ export const metadata: Metadata = {
     ],
     locale: 'en_US',
   },
-
   twitter: {
     card: 'summary_large_image',
     title: 'Tasara Limited - Plastics Supply & Indenting Business',
@@ -77,7 +45,6 @@ export const metadata: Metadata = {
       'Tasara Limited offers global plastic materials supply, indenting, sourcing, and procurement services from Bangladesh.',
     images: ['/logo.png'],
   },
-
   robots: {
     index: true,
     follow: true,
@@ -88,7 +55,6 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon-32x32.png',
@@ -99,7 +65,6 @@ export const metadata: Metadata = {
     ],
   },
 };
-
 
 export default function RootLayout({
   children,
@@ -138,13 +103,13 @@ export default function RootLayout({
           `}
         </Script>
 
-
-        
         <Header />
-        <main>{children}</main>
+        {/* AOSProvider দিয়ে পুরো মেইন কনটেন্টকে র‍্যাপ করা হয়েছে */}
+        <AOSProvider>
+          <main>{children}</main>
+        </AOSProvider>
         <Footer />
       </body>
     </html>
   );
 }
-
