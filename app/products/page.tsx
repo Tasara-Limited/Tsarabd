@@ -141,12 +141,12 @@ const cardVariants = {
 
                     {/* Price and Action Button */}
                     <div className="pt-4 border-t border-dashed border-gray-200 mt-auto flex items-center justify-between">
-                      <div>
+                      {/* <div>
                         <span className="text-xs text-gray-400 block font-medium uppercase">Est. Price</span>
                         <span className="text-base font-bold text-brand-600">
                           {product.price} <span className="text-xs font-normal text-gray-500">/ KG</span>
                         </span>
-                      </div>
+                      </div> */}
                       <Button asChild size="sm" className="bg-brand-500 hover:bg-brand-600 text-xs text-white">
                         <Link href="/contact">
                           Inquire
