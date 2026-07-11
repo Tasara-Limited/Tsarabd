@@ -8,23 +8,44 @@ import { motion } from 'framer-motion'; // 🟢 ফ্রেমার মোশ�
 
 export default function ProductsList() {
   // আপনার ১৬টি প্রোডাক্টের ডাটা
-  const products = [
-    { src: "/materialimg/PP-natural-compound.png", name: "PP Natural Compound", grade: "Recycled", price: "$0.90 - $1.20" },
-    { src: "/materialimg/PP-natural-compound2.png", name: "PP Natural Compound", grade: "Recycled", price: "$0.90 - $1.20" },
-    { src: "/materialimg/p3.png", name: "PP White Compound", grade: "Recycled", price: "$0.90 - $1.20" },
-    { src: "/materialimg/p4.png", name: "PP Dull Natural Compound", grade: "Recycled", price: "$0.90 - $1.20" },
-    { src: "/materialimg/p5.png", name: "PP Black Compound", grade: "Recycled", price: "$0.65 - $0.90" },
-    { src: "/materialimg/p6.png", name: "GPPS Virgin", grade: "Virgin", price: "$1.00 - $1.50" },
-    { src: "/materialimg/p7.png", name: "PP Black Compound", grade: "Recycled", price: "$0.65 - $0.90" },
-    { src: "/materialimg/p8.png", name: "HIPS White Compound", grade: "Recycled", price: "$1.20 - $1.65" },
-    { src: "/materialimg/p9.png", name: "HIPS Virgin", grade: "Virgin", price: "$1.20 - $1.50" },
-    { src: "/materialimg/p10.png", name: "HIPS Virgin", grade: "Virgin", price: "$1.20 - $1.50" },
-    { src: "/materialimg/p11.png", name: "HIPS White Compound", grade: "Recycled", price: "$1.20 - $1.65" },
-    { src: "/materialimg/p12.png", name: "GPPS Natural Compound", grade: "Recycled", price: "$1.00 - $1.65" },
-    { src: "/materialimg/p13.png", name: "PP Black Compound", grade: "Recycled", price: "$0.65 - $0.90" },
-    { src: "/materialimg/p14.png", name: "HIPS Black Compound", grade: "Recycled", price: "$0.80 - $1.20" },
-    { src: "/materialimg/p15.png", name: "HIPS Black Compound", grade: "Recycled", price: "$0.80 - $1.20" },
-    { src: "/materialimg/p16.png", name: "HIPS Black Compound", grade: "Recycled", price: "$0.80 - $1.20" },
+  // const products = [
+  //   { src: "/materialimg/PP-natural-compound.png", name: "PP Natural Compound", grade: "Recycled", price: "$0.90 - $1.20" },
+  //   { src: "/materialimg/PP-natural-compound2.png", name: "PP Natural Compound", grade: "Recycled", price: "$0.90 - $1.20" },
+  //   { src: "/materialimg/p3.png", name: "PP White Compound", grade: "Recycled", price: "$0.90 - $1.20" },
+  //   { src: "/materialimg/p4.png", name: "PP Dull Natural Compound", grade: "Recycled", price: "$0.90 - $1.20" },
+  //   { src: "/materialimg/p5.png", name: "PP Black Compound", grade: "Recycled", price: "$0.65 - $0.90" },
+  //   { src: "/materialimg/p6.png", name: "GPPS Virgin", grade: "Virgin", price: "$1.00 - $1.50" },
+  //   { src: "/materialimg/p7.png", name: "PP Black Compound", grade: "Recycled", price: "$0.65 - $0.90" },
+  //   { src: "/materialimg/p8.png", name: "HIPS White Compound", grade: "Recycled", price: "$1.20 - $1.65" },
+  //   { src: "/materialimg/p9.png", name: "HIPS Virgin", grade: "Virgin", price: "$1.20 - $1.50" },
+  //   { src: "/materialimg/p10.png", name: "HIPS Virgin", grade: "Virgin", price: "$1.20 - $1.50" },
+  //   { src: "/materialimg/p11.png", name: "HIPS White Compound", grade: "Recycled", price: "$1.20 - $1.65" },
+  //   { src: "/materialimg/p12.png", name: "GPPS Natural Compound", grade: "Recycled", price: "$1.00 - $1.65" },
+  //   { src: "/materialimg/p13.png", name: "PP Black Compound", grade: "Recycled", price: "$0.65 - $0.90" },
+  //   { src: "/materialimg/p14.png", name: "HIPS Black Compound", grade: "Recycled", price: "$0.80 - $1.20" },
+  //   { src: "/materialimg/p15.png", name: "HIPS Black Compound", grade: "Recycled", price: "$0.80 - $1.20" },
+  //   { src: "/materialimg/p16.png", name: "HIPS Black Compound", grade: "Recycled", price: "$0.80 - $1.20" },
+  // ];
+
+
+
+    const products = [
+    { src: "/materialimg/PP-natural-compound.png", name: "PP Natural Compound", grade: "Recycled" },
+    { src: "/materialimg/PP-natural-compound2.png", name: "PP Natural Compound", grade: "Recycled" },
+    { src: "/materialimg/p3.png", name: "PP White Compound", grade: "Recycled" },
+    { src: "/materialimg/p4.png", name: "PP Dull Natural Compound", grade: "Recycled" },
+    { src: "/materialimg/p5.png", name: "PP Black Compound", grade: "Recycled" },
+    { src: "/materialimg/p6.png", name: "GPPS Virgin", grade: "Virgin" },
+    { src: "/materialimg/p7.png", name: "PP Black Compound", grade: "Recycled" },
+    { src: "/materialimg/p8.png", name: "HIPS White Compound", grade: "Recycled" },
+    { src: "/materialimg/p9.png", name: "HIPS Virgin", grade: "Virgin" },
+    { src: "/materialimg/p10.png", name: "HIPS Virgin", grade: "Virgin" },
+    { src: "/materialimg/p11.png", name: "HIPS White Compound", grade: "Recycled" },
+    { src: "/materialimg/p12.png", name: "GPPS Natural Compound", grade: "Recycled" },
+    { src: "/materialimg/p13.png", name: "PP Black Compound", grade: "Recycled" },
+    { src: "/materialimg/p14.png", name: "HIPS Black Compound", grade: "Recycled" },
+    { src: "/materialimg/p15.png", name: "HIPS Black Compound", grade: "Recycled" },
+    { src: "/materialimg/p16.png", name: "HIPS Black Compound", grade: "Recycled" },
   ];
 
   // 🟢 স্ট্যাগার (একটার পর একটা আসা) অ্যানিমেশনের নিয়ম
