@@ -4,7 +4,8 @@ import { Inter } from 'next/font/google';
 import Script from 'next/script';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
-import { AOSProvider } from '@/components/aos-provider'; // ধাপ ১ এ তৈরি করা কম্পোনেন্ট
+import { AOSProvider } from '@/components/aos-provider'; 
+import LoaderWrapper from '@/components/LoaderWrapper'; // নতুন রেপার কম্পোনেন্ট
 
 export const dynamic = 'force-dynamic';
 
@@ -97,18 +98,21 @@ export default function RootLayout({
         <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
+            window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-Q0NG6R2H6G');
           `}
         </Script>
 
-        <Header />
-        {/* AOSProvider দিয়ে পুরো মেইন কনটেন্টকে র‍্যাপ করা হয়েছে */}
-        <AOSProvider>
-          <main>{children}</main>
-        </AOSProvider>
-        <Footer />
+        {/* LoaderWrapper দিয়ে পুরো সাইটের লেআউট কন্ট্রোল করা হচ্ছে */}
+        <LoaderWrapper>
+          <Header />
+          <AOSProvider>
+            <main>{children}</main>
+          </AOSProvider>
+          <Footer />
+        </LoaderWrapper>
       </body>
     </html>
   );
