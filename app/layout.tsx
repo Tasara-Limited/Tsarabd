@@ -5,7 +5,7 @@ import Script from 'next/script';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
 import { AOSProvider } from '@/components/aos-provider'; 
-import LoaderWrapper from '../components/LoaderWrapper';ট
+import LoaderWrapper from '../components/LoaderWrapper';
 
 export const dynamic = 'force-dynamic';
 
