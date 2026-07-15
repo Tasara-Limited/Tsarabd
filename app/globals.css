@@ -88,3 +88,50 @@
 
 
 
+
+
+
+
+/* ==========================================================================
+   Tasara Limited - Modern Glassmorphism & Floating Thumb Scrollbar
+   ========================================================================== */
+
+/* ১. গ্লোবাল স্ক্রোলবার উইডথ (আল্ট্রা স্লিম ৮ পিক্সেল) */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px; /* হরাইজন্টাল স্ক্রোলবারের জন্য */
+}
+
+/* ২. স্ক্রোলবার ট্র্যাক (ব্যাকগ্রাউন্ড সম্পূর্ণ ইনভিজিবল/ক্লিন রাখার জন্য) */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ৩. গ্লাস মরফিজম ফ্লোটিং থাম্ব */
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 180, 216, 0.15); /* হালকা সায়ান গ্লাস ইফেক্ট */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 20px;
+  
+  /* চারপাশ থেকে গ্যাপ তৈরি করে থাম্বটিকে ভাসমান দেখানোর ম্যাজিক ট্রিক */
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  
+  /* স্মুথ ট্রানজিশন */
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* ৪. ইউজার যখন মাউস হোভার করবে তখন ডাইনামিক লাইট-আপ UX ফিডব্যাক */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 180, 216, 0.6); /* হোভারে আরও স্পষ্ট হবে */
+  box-shadow: 0 0 8px rgba(0, 180, 216, 0.4); /* হালকা নিয়ন গ্লো */
+}
+
+/* Firefox ব্রাউজারের জন্য মডার্ন ফলব্যাক সাপোর্ট */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 180, 216, 0.2) transparent;
+}
+
+
