@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-=======
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
->>>>>>> 66836520f39302f443cfccb6428169fdaac62986
 # dependencies
 /node_modules
 /.pnp
@@ -14,10 +9,7 @@
 # next.js
 /.next/
 /out/
-<<<<<<< HEAD
 next-env.d.ts
-=======
->>>>>>> 66836520f39302f443cfccb6428169fdaac62986
 
 # production
 /build
@@ -25,10 +17,7 @@ next-env.d.ts
 # misc
 .DS_Store
 *.pem
-<<<<<<< HEAD
 Thumbs.db
-=======
->>>>>>> 66836520f39302f443cfccb6428169fdaac62986
 
 # debug
 npm-debug.log*
@@ -37,10 +26,7 @@ yarn-error.log*
 
 # local env files
 .env
-<<<<<<< HEAD
 .env.local
-=======
->>>>>>> 66836520f39302f443cfccb6428169fdaac62986
 .env*.local
 
 # vercel
@@ -48,12 +34,7 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
-<<<<<<< HEAD
 
 # IDE
 .vscode/
 .idea/
-
-=======
-next-env.d.ts
->>>>>>> 66836520f39302f443cfccb6428169fdaac62986
