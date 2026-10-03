@@ -58,7 +58,10 @@
     "lucide-react": "^0.446.0",
     "next": "13.5.1",
     "next-themes": "^0.3.0",
+<<<<<<< HEAD
     "nodemailer": "^10.0.14",
+=======
+>>>>>>> 66836520f39302f443cfccb6428169fdaac62986
     "postcss": "8.4.30",
     "react": "18.2.0",
     "react-day-picker": "^8.10.1",
@@ -75,6 +78,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "@types/aos": "^3.0.8",
     "@types/nodemailer": "^8.0.2"
   }
@@ -86,3 +90,8 @@
 
 
 
+=======
+    "@types/aos": "^3.0.8"
+  }
+}
+>>>>>>> 66836520f39302f443cfccb6428169fdaac62986
