@@ -1,13 +1,10 @@
-
-// app/not-found.tsx
 import Link from 'next/link';
-import Image from 'next/image';
 import { Home, MessageCircle, Mail, Phone } from 'lucide-react';
 
 export default function NotFound() {
   return (
     <main className="relative min-h-screen flex items-center justify-center px-4 py-12 sm:py-16 overflow-hidden bg-gradient-to-b from-white via-slate-50 to-white">
-      {/* ===== Background grid pattern ===== */}
+      {/* Background grid */}
       <div
         aria-hidden="true"
         className="absolute inset-0 pointer-events-none opacity-60"
@@ -22,27 +19,24 @@ export default function NotFound() {
         }}
       />
 
-      {/* ===== Floating blobs ===== */}
+      {/* Blobs */}
       <div
         aria-hidden="true"
-        className="absolute -top-20 -left-20 w-[280px] h-[280px] sm:w-[320px] sm:h-[320px] rounded-full bg-brand-500/30 blur-[70px] animate-float-slow"
+        className="absolute -top-20 -left-20 w-[280px] h-[280px] rounded-full bg-brand-500/30 blur-[70px] animate-float-slow"
       />
       <div
         aria-hidden="true"
-        className="absolute -bottom-16 -right-16 w-[220px] h-[220px] sm:w-[260px] sm:h-[260px] rounded-full bg-brand-600/30 blur-[70px] animate-float-slower"
+        className="absolute -bottom-16 -right-16 w-[220px] h-[220px] rounded-full bg-brand-600/30 blur-[70px] animate-float-slower"
       />
 
-      {/* ===== Content ===== */}
+      {/* Content */}
       <div className="relative z-10 w-full max-w-3xl text-center">
-        {/* Brand logo */}
+        {/* Logo */}
         <div className="inline-flex items-center gap-3 sm:gap-4 mb-10 sm:mb-12 px-4 sm:px-6 py-2.5 sm:py-3 bg-white rounded-2xl shadow-[0_8px_28px_rgba(0,180,216,0.10)] ring-1 ring-brand-500/5">
-          <Image
+          <img
             src="https://www.tasarabd.com/android-chrome-512x512.png"
             alt="Tasara Limited"
-            width={42}
-            height={42}
             className="w-10 h-10 sm:w-11 sm:h-11 object-contain rounded-lg"
-            unoptimized
           />
           <div className="flex flex-col items-start leading-tight">
             <span className="text-sm sm:text-base font-extrabold tracking-[3px] uppercase bg-gradient-to-br from-[#0b1a33] to-[#0f2547] bg-clip-text text-transparent">
@@ -54,7 +48,7 @@ export default function NotFound() {
           </div>
         </div>
 
-        {/* Big 404 */}
+        {/* 404 */}
         <div className="relative inline-block mb-4">
           <h1
             aria-hidden="true"
@@ -62,19 +56,16 @@ export default function NotFound() {
           >
             404
           </h1>
-          {/* Pulse dot */}
           <span
             aria-hidden="true"
             className="absolute top-[22%] right-[12%] w-3 h-3 rounded-full bg-brand-500 shadow-[0_0_0_6px_rgba(0,180,216,0.15)] animate-pulse-dot"
           />
         </div>
 
-        {/* Title */}
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 mb-4">
           Oops! Page Not Found
         </h2>
 
-        {/* Subtitle */}
         <p className="text-base sm:text-lg text-slate-500 leading-relaxed max-w-xl mx-auto mb-10 sm:mb-11">
           The page you&apos;re looking for doesn&apos;t exist or has been moved.
           Let&apos;s get you back on track —{' '}
@@ -84,7 +75,6 @@ export default function NotFound() {
           shouldn&apos;t stop here.
         </p>
 
-        {/* Action buttons */}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 mb-12">
           <Link
             href="/"
@@ -95,14 +85,13 @@ export default function NotFound() {
           </Link>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl text-sm sm:text-base font-semibold text-slate-900 bg-white border-[1.5px] border-slate-300 shadow-[0_4px_12px_rgba(15,23,42,0.04)] hover:border-brand-500 hover:text-brand-600 hover:-translate-y-0.5 hover:shadow-[0_10px_22px_rgba(0,180,216,0.15)] transition-all duration-200"
+            className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-2xl text-sm sm:text-base font-semibold text-slate-900 bg-white border-[1.5px] border-slate-300 shadow-[0_4px_12px_rgba(15,23,42,0.04)] hover:border-brand-500 hover:text-brand-600 hover:-translate-y-0.5 transition-all duration-200"
           >
             <MessageCircle className="w-[18px] h-[18px]" strokeWidth={2.2} />
             Contact Us
           </Link>
         </div>
 
-        {/* Quick links */}
         <div className="pt-8 border-t border-slate-100">
           <div className="text-[11px] font-semibold uppercase tracking-[2.5px] text-slate-400 mb-4">
             Or explore these pages
@@ -127,7 +116,6 @@ export default function NotFound() {
           </nav>
         </div>
 
-        {/* Footer contact note */}
         <p className="mt-10 text-xs text-slate-400">
           Need help? Email us at{' '}
           <a

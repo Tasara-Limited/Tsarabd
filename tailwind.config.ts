@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-// tailwind.config.ts
-=======
->>>>>>> 66836520f39302f443cfccb6428169fdaac62986
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
@@ -79,23 +75,13 @@ const config: Config = {
       },
       keyframes: {
         'accordion-down': {
-          from: {
-            height: '0',
-          },
-          to: {
-            height: 'var(--radix-accordion-content-height)',
-          },
+          from: { height: '0' },
+          to: { height: 'var(--radix-accordion-content-height)' },
         },
         'accordion-up': {
-          from: {
-            height: 'var(--radix-accordion-content-height)',
-          },
-          to: {
-            height: '0',
-          },
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: '0' },
         },
-<<<<<<< HEAD
-        // ===== New: 404 page animations =====
         floatSlow: {
           '0%, 100%': { transform: 'translate(0, 0) scale(1)' },
           '50%': { transform: 'translate(30px, -30px) scale(1.08)' },
@@ -104,27 +90,17 @@ const config: Config = {
           '0%, 100%': { transform: 'scale(1)', opacity: '1' },
           '50%': { transform: 'scale(1.3)', opacity: '0.7' },
         },
-=======
->>>>>>> 66836520f39302f443cfccb6428169fdaac62986
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-<<<<<<< HEAD
-        // ===== New: 404 page animations =====
         'float-slow': 'floatSlow 12s ease-in-out infinite',
         'float-slower': 'floatSlow 14s ease-in-out infinite',
         'pulse-dot': 'pulseDot 2s ease-in-out infinite',
-=======
->>>>>>> 66836520f39302f443cfccb6428169fdaac62986
       },
     },
   },
   plugins: [require('tailwindcss-animate')],
 };
-<<<<<<< HEAD
 
 export default config;
-=======
-export default config;
->>>>>>> 66836520f39302f443cfccb6428169fdaac62986

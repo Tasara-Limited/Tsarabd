@@ -6,7 +6,7 @@ import Script from 'next/script';
 import React, { useState, useEffect } from 'react';
 import { Header } from '@/components/layout/header';
 import { Footer } from '@/components/layout/footer';
-import { AOSProvider } from '@/components/aos-provider';
+import AOSProvider from '@/components/aos-provider';
 import Loader from '@/components/Loader'; // সরাসরি Loader.tsx ইমপোর্ট
 
 const inter = Inter({ subsets: ['latin'] });

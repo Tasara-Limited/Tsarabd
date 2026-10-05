@@ -1,52 +1,115 @@
 
-// app/contact/page.tsx
+
 'use client';
 
-import { useEffect } from 'react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { MapPin, Phone, Mail, Clock } from 'lucide-react';
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  Loader2,
+  CheckCircle2,
+  AlertCircle,
+} from 'lucide-react';
 
 export default function ContactPage() {
-  // Show success message if redirected from FormSubmit
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('success') === 'true') {
-      alert('Thank you! Your message has been sent. We’ll get back to you soon.');
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    phone: '',
+    message: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState('');
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setStatus('idle');
+    setErrorMessage('');
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      const data = await res.json();
+
+      if (res.ok) {
+        setStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          company: '',
+          phone: '',
+          message: '',
+        });
+      } else {
+        setStatus('error');
+        setErrorMessage(data.error || 'Something went wrong. Please try again.');
+      }
+    } catch {
+      setStatus('error');
+      setErrorMessage('Network error. Please check your connection.');
+    } finally {
+      setIsSubmitting(false);
     }
-  }, []);
+  };
 
   return (
     <div className="min-h-screen overflow-x-hidden">
-      {/* Hero Section */}
+      {/* ============ Hero Section ============ */}
       <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white pt-32 pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[size:40px_40px]" />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="max-w-4xl mx-auto text-center" data-aos="fade-up" data-aos-duration="1000">
+          <div
+            className="max-w-4xl mx-auto text-center"
+            data-aos="fade-up"
+            data-aos-duration="1000"
+          >
             <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white via-gray-200 to-gray-400">
               Contact Us
             </h1>
             <p className="text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">
-              Get in touch with our team for quotes, inquiries, or partnership opportunities
+              Get in touch with our team for quotes, inquiries, or partnership
+              opportunities
             </p>
           </div>
         </div>
       </section>
 
-      {/* Main Content Section */}
+      {/* ============ Main Content ============ */}
       <section className="py-20 bg-white overflow-hidden">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          
-          {/* Top Info Cards (Staggered Animation) */}
+          {/* ----- Info Cards ----- */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
             {[
               {
                 icon: MapPin,
                 title: 'Our Office',
-                content: 'House No # 15 , Road No: 05 , Sector 11, Uttara, Dhaka, Bangladesh',
+                content:
+                  'House No # 15 , Road No: 05 , Sector 11, Uttara, Dhaka, Bangladesh',
               },
               {
                 icon: Phone,
@@ -59,10 +122,10 @@ export default function ContactPage() {
                 content: 'sales@tasarabd.com',
               },
             ].map((item, index) => (
-              <div 
+              <div
                 key={item.title}
-                data-aos="fade-up" 
-                data-aos-duration="800" 
+                data-aos="fade-up"
+                data-aos-duration="800"
                 data-aos-delay={index * 150}
               >
                 <Card className="text-center h-full hover:shadow-xl border-gray-100 transition-all duration-300 hover:-translate-y-1 group">
@@ -70,121 +133,174 @@ export default function ContactPage() {
                     <div className="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center mx-auto mb-5 shadow-sm transition-transform duration-300 group-hover:scale-110">
                       <item.icon className="h-6 w-6 text-brand-500" />
                     </div>
-                    <h3 className="font-bold text-xl text-gray-900 mb-2">{item.title}</h3>
-                    <p className="text-gray-600 leading-relaxed px-4">{item.content}</p>
+                    <h3 className="font-bold text-xl text-gray-900 mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed px-4">
+                      {item.content}
+                    </p>
                   </CardContent>
                 </Card>
               </div>
             ))}
           </div>
 
-          {/* Form and Side Block Layout */}
+          {/* ----- Form + Side Info ----- */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-16">
-            
-            {/* Contact Form Block */}
+            {/* Form */}
             <div data-aos="fade-right" data-aos-duration="900">
               <Card className="border-gray-100 shadow-md">
                 <CardHeader className="pb-4">
-                  <CardTitle className="text-3xl font-bold text-gray-900">Send Us a Message</CardTitle>
+                  <CardTitle className="text-3xl font-bold text-gray-900">
+                    Send Us a Message
+                  </CardTitle>
                   <CardDescription className="text-base">
-                    Fill out the form below and we&apos;ll get back to you within 24 hours
+                    Fill out the form below and we&apos;ll get back to you within
+                    24 hours
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <form
-                    action="https://formsubmit.co/tasaralimited@gmail.com"
-                    method="POST"
-                    className="space-y-6"
-                  >
-                    <div>
-                      <Label htmlFor="name" className="text-gray-700 font-medium"> Full Name <span className="text-red-500">*</span></Label>
-                      <Input
-                        id="name"
-                        name="name"
-                        type="text"
-                        required
-                        placeholder="John Doe"
-                        className="mt-1.5 h-11 border-gray-200 focus-visible:ring-brand-500"
-                      />
+                  {status === 'success' ? (
+                    <div className="text-center py-10">
+                      <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <CheckCircle2 className="h-8 w-8 text-green-600" />
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-2">
+                        Message Sent Successfully!
+                      </h3>
+                      <p className="text-gray-600 mb-6">
+                        We&apos;ll get back to you within 24 hours.
+                      </p>
+                      <Button
+                        variant="outline"
+                        onClick={() => setStatus('idle')}
+                        className="rounded-xl"
+                      >
+                        Send Another Message
+                      </Button>
                     </div>
+                  ) : (
+                    <form onSubmit={handleSubmit} className="space-y-6">
+                      <div>
+                        <Label htmlFor="name" className="text-gray-700 font-medium">
+                          Full Name <span className="text-red-500">*</span>
+                        </Label>
+                        <Input
+                          id="name"
+                          name="name"
+                          type="text"
+                          required
+                          value={formData.name}
+                          onChange={handleChange}
+                          placeholder="John Doe"
+                          className="mt-1.5 h-11 border-gray-200"
+                        />
+                      </div>
 
-                    <div>
-                      <Label htmlFor="email" className="text-gray-700 font-medium"> Email Address <span className="text-red-500">*</span></Label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        required
-                        placeholder="john@company.com"
-                        className="mt-1.5 h-11 border-gray-200 focus-visible:ring-brand-500"
-                      />
-                    </div>
+                      <div>
+                        <Label htmlFor="email" className="text-gray-700 font-medium">
+                          Email Address <span className="text-red-500">*</span>
+                        </Label>
+                        <Input
+                          id="email"
+                          name="email"
+                          type="email"
+                          required
+                          value={formData.email}
+                          onChange={handleChange}
+                          placeholder="john@company.com"
+                          className="mt-1.5 h-11 border-gray-200"
+                        />
+                      </div>
 
-                    <div>
-                      <Label htmlFor="company" className="text-gray-700 font-medium">Company Name</Label>
-                      <Input
-                        id="company"
-                        name="company"
-                        type="text"
-                        placeholder="ABC Corporation"
-                        className="mt-1.5 h-11 border-gray-200 focus-visible:ring-brand-500"
-                      />
-                    </div>
+                      <div>
+                        <Label htmlFor="company" className="text-gray-700 font-medium">
+                          Company Name
+                        </Label>
+                        <Input
+                          id="company"
+                          name="company"
+                          type="text"
+                          value={formData.company}
+                          onChange={handleChange}
+                          placeholder="ABC Corporation"
+                          className="mt-1.5 h-11 border-gray-200"
+                        />
+                      </div>
 
-                    <div>
-                      <Label htmlFor="phone" className="text-gray-700 font-medium">Phone Number</Label>
-                      <Input
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        placeholder="+880 1XXX XXXXXX"
-                        className="mt-1.5 h-11 border-gray-200 focus-visible:ring-brand-500"
-                      />
-                    </div>
+                      <div>
+                        <Label htmlFor="phone" className="text-gray-700 font-medium">
+                          Phone Number
+                        </Label>
+                        <Input
+                          id="phone"
+                          name="phone"
+                          type="tel"
+                          value={formData.phone}
+                          onChange={handleChange}
+                          placeholder="+880 1XXX XXXXXX"
+                          className="mt-1.5 h-11 border-gray-200"
+                        />
+                      </div>
 
-                    <div>
-                      <Label htmlFor="message" className="text-gray-700 font-medium"> Message <span className="text-red-500">*</span></Label>
-                      <Textarea
-                        id="message"
-                        name="message"
-                        required
-                        placeholder="Tell us about your plastic materials needs..."
-                        className="mt-1.5 min-h-[150px] border-gray-200 focus-visible:ring-brand-500"
-                      />
-                    </div>
+                      <div>
+                        <Label htmlFor="message" className="text-gray-700 font-medium">
+                          Message <span className="text-red-500">*</span>
+                        </Label>
+                        <Textarea
+                          id="message"
+                          name="message"
+                          required
+                          value={formData.message}
+                          onChange={handleChange}
+                          placeholder="Tell us about your plastic materials needs..."
+                          className="mt-1.5 min-h-[150px] border-gray-200"
+                        />
+                      </div>
 
-                    {/* Disable CAPTCHA */}
-                    <input type="hidden" name="_captcha" value="false" />
+                      {status === 'error' && (
+                        <div className="bg-red-50 border border-red-200 text-red-800 rounded-xl p-4 text-sm flex items-start gap-2">
+                          <AlertCircle className="h-4 w-4 flex-shrink-0 mt-0.5" />
+                          <span>{errorMessage}</span>
+                        </div>
+                      )}
 
-                    {/* Redirect after success */}
-                    <input
-                      type="hidden"
-                      name="_next"
-                      value="https://tasarabd.com/contact?success=true"
-                    />
-
-                    <Button
-                      type="submit"
-                      className="w-full bg-brand-500 hover:bg-brand-600 font-semibold text-base h-12 rounded-xl transition-colors shadow-md"
-                      size="lg"
-                    >
-                      Send Message
-                    </Button>
-                  </form>
+                      <Button
+                        type="submit"
+                        disabled={isSubmitting}
+                        className="w-full bg-brand-500 hover:bg-brand-600 font-semibold text-base h-12 rounded-xl transition-colors shadow-md disabled:opacity-60"
+                        size="lg"
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                            Sending...
+                          </>
+                        ) : (
+                          'Send Message'
+                        )}
+                      </Button>
+                    </form>
+                  )}
                 </CardContent>
               </Card>
             </div>
 
-            {/* Side Info Block */}
-            <div className="space-y-6" data-aos="fade-left" data-aos-duration="900">
-              
+            {/* Side Info */}
+            <div
+              className="space-y-6"
+              data-aos="fade-left"
+              data-aos-duration="900"
+            >
               {/* Business Hours */}
               <Card className="border-gray-100 shadow-sm">
                 <CardHeader className="pb-4">
                   <div className="w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center mb-2">
                     <Clock className="h-6 w-6 text-brand-500" />
                   </div>
-                  <CardTitle className="text-xl font-bold text-gray-900">Business Hours</CardTitle>
+                  <CardTitle className="text-xl font-bold text-gray-900">
+                    Business Hours
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3 text-gray-700">
@@ -207,7 +323,9 @@ export default function ContactPage() {
               {/* Why Contact Us */}
               <Card className="bg-gray-50/70 border-gray-100 shadow-sm">
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-xl font-bold text-gray-900">Why Contact Us?</CardTitle>
+                  <CardTitle className="text-xl font-bold text-gray-900">
+                    Why Contact Us?
+                  </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3.5 text-gray-700">
@@ -219,59 +337,61 @@ export default function ContactPage() {
                       'Custom sourcing and procurement inquiries',
                     ].map((benefit) => (
                       <li key={benefit} className="flex items-start">
-                        <span className="text-emerald-500 font-bold mr-2.5 mt-0.5">✓</span>
-                        <span className="font-medium text-sm md:text-base text-gray-600">{benefit}</span>
+                        <span className="text-emerald-500 font-bold mr-2.5 mt-0.5">
+                          ✓
+                        </span>
+                        <span className="font-medium text-sm md:text-base text-gray-600">
+                          {benefit}
+                        </span>
                       </li>
                     ))}
                   </ul>
                 </CardContent>
               </Card>
 
-              {/* Immediate Assistance Emergency Block */}
+              {/* WhatsApp CTA */}
               <Card className="bg-gradient-to-br from-brand-500 to-brand-600 text-white border-none shadow-lg shadow-brand-500/10">
                 <CardContent className="pt-8 pb-8 text-center lg:text-left">
-                  <h3 className="text-2xl font-bold mb-2">Need Immediate Assistance?</h3>
+                  <h3 className="text-2xl font-bold mb-2">
+                    Need Immediate Assistance?
+                  </h3>
                   <p className="mb-6 opacity-90 font-light max-w-md">
-                    For urgent inquiries, call us directly on WhatsApp or WeChat during business hours.
+                    For urgent inquiries, message us on WhatsApp during business
+                    hours.
                   </p>
-                    <a 
-                      href="https://wa.me/8801886538187" 
-                      className="inline-block text-2xl md:text-3xl font-extrabold tracking-tight hover:underline transition-all bg-white/10 px-5 py-2.5 rounded-xl backdrop-blur-sm"  
-                      target="_blank"  
-                      rel="noopener noreferrer">
-                      Chat on WhatsApp
-                    </a>
+                  <a
+                    href="https://wa.me/8801886538187"
+                    className="inline-block text-2xl md:text-3xl font-extrabold tracking-tight hover:underline transition-all bg-white/10 px-5 py-2.5 rounded-xl backdrop-blur-sm"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Chat on WhatsApp
+                  </a>
                 </CardContent>
               </Card>
-              
             </div>
           </div>
 
-          {/* New Google Maps Section for Tasara Limited */}
+          {/* ----- Google Maps ----- */}
           <div className="w-full mt-12" data-aos="fade-up" data-aos-duration="1000">
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden h-full min-h-[500px]">
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4489.299162301807!2d90.40211607533973!3d23.873787778586454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c563c4c13fab%3A0x40a842d2104318fe!2sTasara%20Limited!5e1!3m2!1sen!2sbd!4v1783692740517!5m2!1sen!2sbd"
                 width="100%"
-                height="100%"
-                style={{ border: 0, minHeight: '500px' }}
+                height="500"
+                style={{ border: 0 }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="strict-origin-when-cross-origin"
                 title="Tasara Limited Location"
-              ></iframe>
+              />
             </div>
           </div>
-
         </div>
       </section>
     </div>
   );
 }
-
-
-
-
 
 
 
